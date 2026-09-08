@@ -11,23 +11,17 @@
     <!-- 검색창 -->
     <div class="benz-search-box">
       <span class="benz-search-icon">🔍</span>
-      <input type="text" id="benz-search" class="benz-search-input"
-        placeholder="차량명, 바디코드, 엔진코드, 배기량 등으로 검색... (예: E300, W213, M274, OM654, S500, G63, M177, E220d)"
-        autocomplete="off">
+      <input type="text" id="benz-search" class="benz-search-input" placeholder="차량명, 바디코드, 엔진코드, 배기량 등으로 검색... (예: E300, W213, M274, OM654, S500, G63, M177, E220d)" autocomplete="off">
     </div>
 
     <!-- 라인업/세그먼트 필터 -->
     <div class="benz-filter-group">
       <span class="benz-filter-label">라인업</span>
       <button type="button" class="benz-btn-chip active" data-filter-type="segment" data-val="ALL">전체 모델</button>
-      <button type="button" class="benz-btn-chip" data-filter-type="segment"
-        data-val="A-클래스|B-클래스|C-클래스|E-클래스|S-클래스|마이바흐">세단 · 해치백 (A/C/E/S)</button>
-      <button type="button" class="benz-btn-chip" data-filter-type="segment"
-        data-val="CLA|CLS|GT 4도어|SL|SLK|SLC|SLS|AMG GT">쿠페 · 로드스터 · GT</button>
-      <button type="button" class="benz-btn-chip" data-filter-type="segment"
-        data-val="GLA|GLB|GLC|GLK|GLE|M-클래스|GLS|G-클래스|G 580">SUV · 오프로더 (GL / G)</button>
-      <button type="button" class="benz-btn-chip" data-filter-type="segment"
-        data-val="AMG|마이바흐|63|45|53|55|65|E-Performance">AMG & 마이바흐</button>
+      <button type="button" class="benz-btn-chip" data-filter-type="segment" data-val="A-클래스|B-클래스|C-클래스|E-클래스|S-클래스|마이바흐">세단 · 해치백 (A/C/E/S)</button>
+      <button type="button" class="benz-btn-chip" data-filter-type="segment" data-val="CLA|CLS|GT 4도어|SL|SLK|SLC|SLS|AMG GT">쿠페 · 로드스터 · GT</button>
+      <button type="button" class="benz-btn-chip" data-filter-type="segment" data-val="GLA|GLB|GLC|GLK|GLE|M-클래스|GLS|G-클래스|G 580">SUV · 오프로더 (GL / G)</button>
+      <button type="button" class="benz-btn-chip" data-filter-type="segment" data-val="AMG|마이바흐|63|45|53|55|65|E-Performance">AMG & 마이바흐</button>
     </div>
 
     <!-- 연료 필터 -->
@@ -86,11 +80,9 @@
     line-height: 1.5;
     box-sizing: border-box;
   }
-
   #benz-engine-wrap * {
     box-sizing: border-box;
   }
-
   #benz-engine-wrap .benz-header {
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
     color: #ffffff;
@@ -98,9 +90,8 @@
     border-radius: 16px;
     margin-bottom: 20px;
     box-shadow: 0 4px 20px rgba(15, 23, 42, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255,255,255,0.1);
   }
-
   #benz-engine-wrap .benz-title {
     margin: 0 0 8px 0;
     font-size: 1.35rem;
@@ -109,27 +100,23 @@
     line-height: 1.3;
     color: #ffffff;
   }
-
   #benz-engine-wrap .benz-desc {
     margin: 0;
     font-size: 0.88rem;
     color: #cbd5e1;
   }
-
   #benz-engine-wrap .benz-controls {
     background: #ffffff;
     padding: 16px;
     border-radius: 12px;
     border: 1px solid #e2e8f0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     margin-bottom: 16px;
   }
-
   #benz-engine-wrap .benz-search-box {
     position: relative;
     margin-bottom: 12px;
   }
-
   #benz-engine-wrap .benz-search-input {
     width: 100%;
     padding: 12px 16px 12px 40px;
@@ -141,13 +128,11 @@
     color: #0f172a;
     transition: all 0.2s;
   }
-
   #benz-engine-wrap .benz-search-input:focus {
     background: #ffffff;
     border-color: #0f172a;
     box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.15);
   }
-
   #benz-engine-wrap .benz-search-icon {
     position: absolute;
     left: 14px;
@@ -157,7 +142,6 @@
     font-size: 1.05rem;
     pointer-events: none;
   }
-
   #benz-engine-wrap .benz-filter-group {
     display: flex;
     flex-wrap: wrap;
@@ -165,7 +149,6 @@
     align-items: center;
     margin-bottom: 8px;
   }
-
   #benz-engine-wrap .benz-filter-label {
     font-size: 0.8rem;
     font-weight: 700;
@@ -173,7 +156,6 @@
     margin-right: 4px;
     min-width: 48px;
   }
-
   #benz-engine-wrap .benz-btn-chip {
     background: #f1f5f9;
     color: #475569;
@@ -186,18 +168,15 @@
     transition: all 0.2s ease;
     user-select: none;
   }
-
   #benz-engine-wrap .benz-btn-chip:hover {
     background: #e2e8f0;
     color: #1e293b;
   }
-
   #benz-engine-wrap .benz-btn-chip.active {
     background: #0f172a;
     color: #ffffff;
     border-color: #0f172a;
   }
-
   #benz-engine-wrap .benz-meta-bar {
     display: flex;
     justify-content: space-between;
@@ -208,17 +187,14 @@
     flex-wrap: wrap;
     gap: 8px;
   }
-
   #benz-engine-wrap .benz-count-highlight {
     color: #0f172a;
     font-weight: 700;
   }
-
   #benz-engine-wrap .benz-action-buttons {
     display: flex;
     gap: 8px;
   }
-
   #benz-engine-wrap .benz-tool-btn {
     display: inline-flex;
     align-items: center;
@@ -233,7 +209,6 @@
     cursor: pointer;
     transition: all 0.2s;
   }
-
   #benz-engine-wrap .benz-tool-btn:hover {
     background: #f1f5f9;
     border-color: #94a3b8;
@@ -245,16 +220,14 @@
     border-radius: 12px;
     border: 1px solid #e2e8f0;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
   }
-
   #benz-engine-wrap table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
     font-size: 0.88rem;
   }
-
   #benz-engine-wrap th {
     background: #f8fafc;
     color: #475569;
@@ -263,17 +236,14 @@
     border-bottom: 2px solid #e2e8f0;
     white-space: nowrap;
   }
-
   #benz-engine-wrap td {
     padding: 12px 14px;
     border-bottom: 1px solid #f1f5f9;
     vertical-align: middle;
   }
-
   #benz-engine-wrap tr:last-child td {
     border-bottom: none;
   }
-
   #benz-engine-wrap tr:hover td {
     background-color: #f8fafc;
   }
@@ -288,32 +258,12 @@
     letter-spacing: -0.02em;
     white-space: nowrap;
   }
-
-  #benz-engine-wrap .badge-benz {
-    background: #f8fafc;
-    color: #0f172a;
-    border: 1px solid #cbd5e1;
-  }
-
-  #benz-engine-wrap .fuel-gasoline {
-    background: #f0fdf4;
-    color: #15803d;
-  }
-
-  #benz-engine-wrap .fuel-diesel {
-    background: #f1f5f9;
-    color: #334155;
-  }
-
-  #benz-engine-wrap .fuel-phev {
-    background: #ecfeff;
-    color: #0e7490;
-  }
-
-  #benz-engine-wrap .fuel-ev {
-    background: #faf5ff;
-    color: #7e22ce;
-  }
+  #benz-engine-wrap .badge-benz { background: #f8fafc; color: #0f172a; border: 1px solid #cbd5e1; }
+  
+  #benz-engine-wrap .fuel-gasoline { background: #f0fdf4; color: #15803d; }
+  #benz-engine-wrap .fuel-diesel { background: #f1f5f9; color: #334155; }
+  #benz-engine-wrap .fuel-phev { background: #ecfeff; color: #0e7490; }
+  #benz-engine-wrap .fuel-ev { background: #faf5ff; color: #7e22ce; }
 
   #benz-engine-wrap .engine-code-text {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -330,47 +280,39 @@
     #benz-engine-wrap {
       padding: 10px 4px;
     }
-
     #benz-engine-wrap .benz-header {
       padding: 18px 14px;
       border-radius: 12px;
     }
-
     #benz-engine-wrap .benz-title {
       font-size: 1.15rem;
     }
-
     #benz-engine-wrap .benz-controls {
       padding: 12px;
     }
-
     #benz-engine-wrap .benz-table-container {
       background: transparent;
       border: none;
       box-shadow: none;
     }
-
-    #benz-engine-wrap table,
-    #benz-engine-wrap thead,
-    #benz-engine-wrap tbody,
-    #benz-engine-wrap th,
+    #benz-engine-wrap table, 
+    #benz-engine-wrap thead, 
+    #benz-engine-wrap tbody, 
+    #benz-engine-wrap th, 
     #benz-engine-wrap tr {
       display: block;
     }
-
     #benz-engine-wrap thead {
       display: none;
     }
-
     #benz-engine-wrap tr {
       background: #ffffff;
       border-radius: 12px;
       border: 1px solid #e2e8f0;
       margin-bottom: 12px;
       padding: 12px 14px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
     }
-
     #benz-engine-wrap td {
       display: flex;
       justify-content: space-between;
@@ -379,12 +321,10 @@
       border-bottom: 1px dashed #f1f5f9;
       font-size: 0.85rem;
     }
-
     #benz-engine-wrap td:last-child {
       border-bottom: none;
       padding-top: 8px;
     }
-
     #benz-engine-wrap td::before {
       content: attr(data-label);
       font-weight: 700;
@@ -407,1132 +347,1132 @@
 </style>
 
 <script>
-  (function () {
-    const rawData = [
-      {
-        "brand": "벤츠",
-        "model": "A-클래스 A200 CDI / A200d (W176)",
-        "generation": "3세대 (W176, 2012~2018)",
-        "fuel": "디젤",
-        "displacement": "1,796cc / 2,143cc",
-        "engine_code": "OM651 (1.8/2.1 직렬 4기통 디젤 136ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "A-클래스 A200 / A250 (W176)",
-        "generation": "3세대 (W176, 2012~2018)",
-        "fuel": "가솔린",
-        "displacement": "1,595cc / 1,991cc",
-        "engine_code": "M270 (1.6T 156ps / 2.0T 211ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "A 45 AMG 4MATIC (W176)",
-        "generation": "3세대 (W176 AMG, 2013~2018)",
-        "fuel": "가솔린",
-        "displacement": "1,991cc",
-        "engine_code": "M133 (2.0 직렬 4기통 핸드크래프트 터보 360ps / F/L 381ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "A-클래스 A200d (W177)",
-        "generation": "4세대 (W177, 2018~2022)",
-        "fuel": "디젤",
-        "displacement": "1,950cc",
-        "engine_code": "OM654q (2.0 알루미늄 디젤 150ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "A-클래스 A200 / A220 / A250 (W177)",
-        "generation": "4세대 (W177, 2018~현재)",
-        "fuel": "가솔린",
-        "displacement": "1,332cc / 1,991cc",
-        "engine_code": "M282 (1.33T 163ps) / M260 (2.0T 190ps/224ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG A 35 4MATIC (W177)",
-        "generation": "4세대 (W177 AMG, 2019~현재)",
-        "fuel": "가솔린",
-        "displacement": "1,991cc",
-        "engine_code": "M260 (2.0 직렬 4기통 트윈스크롤 터보 306ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG A 45 S 4MATIC+ (W177)",
-        "generation": "4세대 (W177 AMG, 2020~현재)",
-        "fuel": "가솔린",
-        "displacement": "1,991cc",
-        "engine_code": "M139 (2.0 직렬 4기통 롤러베어링 트윈스크롤 터보 421ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "B-클래스 B200 CDI (W245/W246)",
-        "generation": "1/2세대 (W245/W246, 2007~2019)",
-        "fuel": "디젤 / 가솔린",
-        "displacement": "1,991cc / 2,143cc",
-        "engine_code": "OM640 / OM651 (2.0/2.1 디젤 136ps) / M270 (1.6T)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "CLA 200d / CLA 250 4MATIC (C117)",
-        "generation": "1세대 (C117, 2013~2019)",
-        "fuel": "디젤 / 가솔린",
-        "displacement": "2,143cc / 1,991cc",
-        "engine_code": "OM651 (2.1 디젤 136ps/177ps) / M270 (2.0T 211ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "CLA 45 AMG (C117)",
-        "generation": "1세대 (C117 AMG, 2014~2019)",
-        "fuel": "가솔린",
-        "displacement": "1,991cc",
-        "engine_code": "M133 (2.0 직렬 4기통 터보 360ps/381ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "CLA 250 4MATIC (C118)",
-        "generation": "2세대 (C118, 2019~현재)",
-        "fuel": "가솔린",
-        "displacement": "1,991cc",
-        "engine_code": "M260 (2.0 직렬 4기통 터보 224ps / 48V MHEV)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG CLA 45 S 4MATIC+ (C118)",
-        "generation": "2세대 (C118 AMG, 2020~현재)",
-        "fuel": "가솔린",
-        "displacement": "1,991cc",
-        "engine_code": "M139 (2.0 직렬 4기통 터보 421ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "GLA 200d / GLA 250 4MATIC (X156)",
-        "generation": "1세대 (X156, 2014~2020)",
-        "fuel": "디젤 / 가솔린",
-        "displacement": "2,143cc / 1,991cc",
-        "engine_code": "OM651 (2.1 디젤 136ps/177ps) / M270 (2.0T 211ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "GLA 45 AMG (X156)",
-        "generation": "1세대 (X156 AMG, 2014~2020)",
-        "fuel": "가솔린",
-        "displacement": "1,991cc",
-        "engine_code": "M133 (2.0 터보 360ps/381ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "GLA 250 4MATIC (H247)",
-        "generation": "2세대 (H247, 2020~현재)",
-        "fuel": "가솔린",
-        "displacement": "1,991cc",
-        "engine_code": "M260 (2.0T 224ps / 48V MHEV 224ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "GLB 200d / GLB 220 / GLB 250 (X247)",
-        "generation": "1세대 (X247, 2020~현재)",
-        "fuel": "디젤 / 가솔린",
-        "displacement": "1,950cc / 1,991cc",
-        "engine_code": "OM654q (2.0 디젤 150ps) / M260 (2.0T 190ps/224ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG GLB 35 4MATIC (X247)",
-        "generation": "1세대 (X247 AMG, 2021~현재)",
-        "fuel": "가솔린",
-        "displacement": "1,991cc",
-        "engine_code": "M260 (2.0 직렬 4기통 터보 306ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "C-클래스 C200K / C240 / C320 (W203)",
-        "generation": "2세대 (W203, 2000~2007)",
-        "fuel": "가솔린",
-        "displacement": "1,796cc / 2,597cc / 3,199cc",
-        "engine_code": "M271 (1.8 수퍼차저 163ps) / M112 (2.6/3.2 V6 170ps/218ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "C 32 AMG / C 55 AMG (W203)",
-        "generation": "2세대 (W203 AMG, 2001~2007)",
-        "fuel": "가솔린",
-        "displacement": "3,199cc / 5,439cc",
-        "engine_code": "M112 (3.2 V6 수퍼차저 354ps) / M113 (5.4 V8 367ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "C-클래스 C200 CGI / C230 / C300 (W204)",
-        "generation": "3세대 (W204, 2007~2014)",
-        "fuel": "가솔린",
-        "displacement": "1,796cc / 2,496cc / 2,996cc",
-        "engine_code": "M271 (1.8 CGI 터보 184ps) / M272 (2.5/3.0 V6 204ps/231ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "C-클래스 C220 CDI / C250 CDI (W204)",
-        "generation": "3세대 (W204, 2007~2014)",
-        "fuel": "디젤",
-        "displacement": "2,143cc",
-        "engine_code": "OM646 / OM651 (2.1 직렬 4기통 트윈터보 디젤 170ps/204ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "C 63 AMG 세단 / 쿠페 (W204 6.2 V8)",
-        "generation": "3세대 (W204 AMG, 2008~2015)",
-        "fuel": "가솔린",
-        "displacement": "6,208cc",
-        "engine_code": "M156 (6.2 V8 자연흡기 457ps / 507에디션 507ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "C-클래스 C200 / C250 / C300 (W205)",
-        "generation": "4세대 (W205, 2014~2021)",
-        "fuel": "가솔린",
-        "displacement": "1,991cc",
-        "engine_code": "M274 (2.0T 184ps/211ps/245ps) / M264 (F/L 2.0T 258ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "C-클래스 C220d / C250d (W205)",
-        "generation": "4세대 (W205, 2014~2021)",
-        "fuel": "디젤",
-        "displacement": "2,143cc / 1,950cc",
-        "engine_code": "OM651 (2.1 디젤 170ps/204ps) / OM654 (2.0 디젤 194ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "C-클래스 C350e (W205 PHEV)",
-        "generation": "4세대 (W205 PHEV, 2018~2021)",
-        "fuel": "가솔린 플러그인 HEV",
-        "displacement": "1,991cc",
-        "engine_code": "M274 (2.0T 211ps) + 60kW 모터 (합산 279ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG C 43 4MATIC (W205 V6)",
-        "generation": "4세대 (W205 AMG, 2016~2021)",
-        "fuel": "가솔린",
-        "displacement": "2,996cc",
-        "engine_code": "M276 (3.0 V6 바이터보 367ps / F/L 390ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG C 63 / C 63 S (W205 V8)",
-        "generation": "4세대 (W205 AMG, 2015~2021)",
-        "fuel": "가솔린",
-        "displacement": "3,982cc",
-        "engine_code": "M177 (4.0 V8 핫인사이드V 바이터보 476ps / S 510ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "C-클래스 C200 / C300 (W206)",
-        "generation": "5세대 (W206, 2022~현재)",
-        "fuel": "가솔린",
-        "displacement": "1,496cc / 1,999cc",
-        "engine_code": "M254 (1.5T 204ps / 2.0T 258ps + 2세대 ISG 48V MHEV)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "C-클래스 C220d (W206)",
-        "generation": "5세대 (W206, 2022~2023)",
-        "fuel": "디젤",
-        "displacement": "1,993cc",
-        "engine_code": "OM654M (2.0 직렬 4기통 48V MHEV 디젤 200ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG C 43 4MATIC (W206 4기통 터보)",
-        "generation": "5세대 (W206 AMG, 2023~현재)",
-        "fuel": "가솔린",
-        "displacement": "1,991cc",
-        "engine_code": "M139 (2.0 전동배기가스터보 408ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG C 63 S E-Performance (W206 PHEV)",
-        "generation": "5세대 (W206 AMG, 2024~현재)",
-        "fuel": "가솔린 플러그인 HEV",
-        "displacement": "1,991cc",
-        "engine_code": "M139 (476ps) + 후륜 150kW 전기모터 (합산 680ps / 1,020Nm)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "E-클래스 E200K / E240 / E320 / E500 (W211)",
-        "generation": "8세대 (W211, 2002~2009)",
-        "fuel": "가솔린",
-        "displacement": "1,796cc / 2,597cc / 3,199cc / 4,966cc",
-        "engine_code": "M271 (1.8K) / M112 (2.6/3.2 V6) / M113 (5.0 V8 306ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "E-클래스 E280 / E350 (W211 후기)",
-        "generation": "8세대 (W211 후기, 2005~2009)",
-        "fuel": "가솔린",
-        "displacement": "2,996cc / 3,498cc",
-        "engine_code": "M272 (3.0 V6 231ps / 3.5 V6 272ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "E-클래스 E220 CDI / E320 CDI (W211)",
-        "generation": "8세대 (W211, 2002~2009)",
-        "fuel": "디젤",
-        "displacement": "2,148cc / 2,987cc",
-        "engine_code": "OM646 (2.2 디젤 150ps/170ps) / OM642 (3.0 V6 디젤 224ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "E 55 AMG / E 63 AMG (W211)",
-        "generation": "8세대 (W211 AMG, 2003~2009)",
-        "fuel": "가솔린",
-        "displacement": "5,439cc / 6,208cc",
-        "engine_code": "M113 (5.4 V8 수퍼차저 476ps) / M156 (6.2 V8 자연흡기 514ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "E-클래스 E200 CGI / E300 / E350 (W212)",
-        "generation": "9세대 (W212, 2009~2016)",
-        "fuel": "가솔린",
-        "displacement": "1,796cc / 1,991cc / 3,498cc",
-        "engine_code": "M271/M274 (1.8/2.0T 184ps) / M272 (3.0 V6 231ps) / M276 (3.5 V6 252ps/306ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "E-클래스 E400 / E500 (W212 후기)",
-        "generation": "9세대 (W212, 2013~2016)",
-        "fuel": "가솔린",
-        "displacement": "2,996cc / 4,663cc",
-        "engine_code": "M276 (3.0 V6 바이터보 333ps) / M278 (4.7 V8 바이터보 408ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "E-클래스 E220 CDI/BlueTEC / E250 CDI / E350 BlueTEC (W212)",
-        "generation": "9세대 (W212, 2009~2016)",
-        "fuel": "디젤",
-        "displacement": "2,143cc / 2,987cc",
-        "engine_code": "OM651 (2.1 디젤 170ps/204ps) / OM642 (3.0 V6 디젤 231ps/252ps/258ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "E 63 AMG / 4MATIC (W212 V8)",
-        "generation": "9세대 (W212 AMG, 2009~2016)",
-        "fuel": "가솔린",
-        "displacement": "6,208cc / 5,461cc",
-        "engine_code": "M156 (6.2 V8 525ps) / M157 (5.5 V8 바이터보 557ps / S 585ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "E-클래스 E200 / E250 / E300 (W213)",
-        "generation": "10세대 (W213, 2016~2023)",
-        "fuel": "가솔린",
-        "displacement": "1,991cc",
-        "engine_code": "M274 (2.0T 184ps/245ps) / M264 (F/L 2.0T 211ps/258ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "E-클래스 E400 / E450 4MATIC (W213)",
-        "generation": "10세대 (W213, 2016~2023)",
-        "fuel": "가솔린",
-        "displacement": "2,996cc / 2,999cc",
-        "engine_code": "M276 (3.0 V6 333ps) / M256 (3.0 직렬 6기통 48V ISG 터보 367ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "E-클래스 E220d (W213)",
-        "generation": "10세대 (W213, 2016~2023)",
-        "fuel": "디젤",
-        "displacement": "1,950cc",
-        "engine_code": "OM654 (2.0 직렬 4기통 알루미늄 디젤 194ps / 48V MHEV 200ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "E-클래스 E350d / E400d 4MATIC (W213)",
-        "generation": "10세대 (W213, 2016~2023)",
-        "fuel": "디젤",
-        "displacement": "2,987cc / 2,925cc",
-        "engine_code": "OM642 (3.0 V6 258ps) / OM656 (3.0 직렬 6기통 디젤 330ps/340ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "E-클래스 E300e / E300de (W213 PHEV)",
-        "generation": "10세대 (W213 PHEV, 2019~2023)",
-        "fuel": "가솔린/디젤 PHEV",
-        "displacement": "1,991cc / 1,950cc",
-        "engine_code": "M274/M264 (합산 320ps) / OM654 (디젤 PHEV 합산 306ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG E 53 4MATIC+ (W213)",
-        "generation": "10세대 (W213 AMG, 2018~2023)",
-        "fuel": "가솔린",
-        "displacement": "2,999cc",
-        "engine_code": "M256 (3.0 직렬 6기통 터보 + 전동슈퍼차저 + 48V EQ Boost 435ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG E 63 S 4MATIC+ (W213)",
-        "generation": "10세대 (W213 AMG, 2017~2023)",
-        "fuel": "가솔린",
-        "displacement": "3,982cc",
-        "engine_code": "M177 (4.0 V8 트윈스크롤 바이터보 612ps / 850Nm)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "E-클래스 E200 / E300 4MATIC (W214)",
-        "generation": "11세대 (W214, 2024~현재)",
-        "fuel": "가솔린",
-        "displacement": "1,999cc",
-        "engine_code": "M254 (2.0 직렬 4기통 터보 + 2세대 ISG 48V MHEV 204ps/258ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "E-클래스 E450 4MATIC (W214)",
-        "generation": "11세대 (W214, 2024~현재)",
-        "fuel": "가솔린",
-        "displacement": "2,999cc",
-        "engine_code": "M256M (3.0 직렬 6기통 트윈스크롤 터보 + 48V MHEV 381ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "E-클래스 E220d 4MATIC (W214)",
-        "generation": "11세대 (W214, 2024~현재)",
-        "fuel": "디젤",
-        "displacement": "1,993cc",
-        "engine_code": "OM654M (2.0 직렬 4기통 48V MHEV 디젤 197ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "E-클래스 E300e 4MATIC (W214 PHEV)",
-        "generation": "11세대 (W214 PHEV, 2024~현재)",
-        "fuel": "가솔린 플러그인 HEV",
-        "displacement": "1,999cc",
-        "engine_code": "M254 (2.0T 204ps) + 95kW 모터 (합산 313ps / 25.4kWh 배터리)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG E 53 HYBRID 4MATIC+ (W214 PHEV)",
-        "generation": "11세대 (W214 AMG, 2024~현재)",
-        "fuel": "가솔린 플러그인 HEV",
-        "displacement": "2,999cc",
-        "engine_code": "M256M (3.0T 449ps) + 120kW 모터 (합산 585ps / 612ps 부스트)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "CLS 350 / CLS 500 / CLS 55 AMG (W219)",
-        "generation": "1세대 (W219, 2004~2010)",
-        "fuel": "가솔린",
-        "displacement": "3,498cc / 4,966cc / 5,439cc",
-        "engine_code": "M272 (3.5 V6 272ps) / M113 (5.0 V8 306ps) / M113K (5.4 V8 수퍼차저 476ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "CLS 63 AMG (W219 6.2 V8)",
-        "generation": "1세대 (W219 AMG, 2006~2010)",
-        "fuel": "가솔린",
-        "displacement": "6,208cc",
-        "engine_code": "M156 (6.2 V8 자연흡기 514ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "CLS 250 CDI / CLS 350 / CLS 400 (W218)",
-        "generation": "2세대 (W218, 2011~2018)",
-        "fuel": "디젤 / 가솔린",
-        "displacement": "2,143cc / 3,498cc / 2,996cc",
-        "engine_code": "OM651 (2.1 디젤 204ps) / M276 (3.5 V6 306ps / 3.0 V6 바이터보 333ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "CLS 63 AMG / S 4MATIC (W218)",
-        "generation": "2세대 (W218 AMG, 2011~2018)",
-        "fuel": "가솔린",
-        "displacement": "5,461cc",
-        "engine_code": "M157 (5.5 V8 바이터보 525ps / 557ps / S 585ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "CLS 300d / CLS 400d 4MATIC (C257)",
-        "generation": "3세대 (C257, 2018~2023단종)",
-        "fuel": "디젤",
-        "displacement": "1,950cc / 2,925cc",
-        "engine_code": "OM654 (2.0 디젤 245ps) / OM656 (3.0 직렬 6기통 디젤 330ps/340ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "CLS 450 4MATIC (C257)",
-        "generation": "3세대 (C257, 2018~2023단종)",
-        "fuel": "가솔린",
-        "displacement": "2,999cc",
-        "engine_code": "M256 (3.0 직렬 6기통 48V ISG 트윈스크롤 터보 367ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG CLS 53 4MATIC+ (C257)",
-        "generation": "3세대 (C257 AMG, 2018~2023단종)",
-        "fuel": "가솔린",
-        "displacement": "2,999cc",
-        "engine_code": "M256 (3.0 직렬 6기통 터보 + 전동슈퍼차저 + 48V EQ Boost 435ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG GT 43 4MATIC+ 4도어 (X290)",
-        "generation": "1세대 (X290 4-Door, 2019~현재)",
-        "fuel": "가솔린",
-        "displacement": "2,999cc",
-        "engine_code": "M256 (3.0 직렬 6기통 48V MHEV 터보 367ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG GT 63 S 4MATIC+ 4도어 (X290)",
-        "generation": "1세대 (X290 4-Door, 2019~현재)",
-        "fuel": "가솔린",
-        "displacement": "3,982cc",
-        "engine_code": "M177 (4.0 V8 바이터보 639ps / 900Nm)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG GT 63 S E-Performance 4도어 (PHEV)",
-        "generation": "1세대 (X290 PHEV, 2022~현재)",
-        "fuel": "가솔린 플러그인 HEV",
-        "displacement": "3,982cc",
-        "engine_code": "M177 (639ps) + 150kW 전기모터 (합산 843ps / 1,470Nm)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "S-클래스 S320 / S350 / S430 / S500 (W220)",
-        "generation": "4세대 (W220, 1998~2005)",
-        "fuel": "가솔린",
-        "displacement": "3,199cc / 3,724cc / 4,266cc / 4,966cc",
-        "engine_code": "M112 (3.2/3.7 V6 224ps/245ps) / M113 (4.3/5.0 V8 279ps/306ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "S-클래스 S600 (W220 V12)",
-        "generation": "4세대 (W220 V12, 2000~2005)",
-        "fuel": "가솔린",
-        "displacement": "5,786cc / 5,513cc",
-        "engine_code": "M137 (5.8 V12 367ps) / M275 (5.5 V12 트윈터보 500ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "S 55 AMG / S 65 AMG (W220)",
-        "generation": "4세대 (W220 AMG, 2002~2005)",
-        "fuel": "가솔린",
-        "displacement": "5,439cc / 5,980cc",
-        "engine_code": "M113K (5.4 V8 수퍼차저 500ps) / M275 (6.0 V12 바이터보 612ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "S-클래스 S350 / S450 / S500 / S550 (W221)",
-        "generation": "5세대 (W221, 2005~2013)",
-        "fuel": "가솔린",
-        "displacement": "3,498cc / 4,663cc / 5,461cc",
-        "engine_code": "M272 (3.5 V6 272ps) / M273 (4.7/5.5 V8 340ps/388ps) / M278 (4.7 V8 바이터보 435ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "S-클래스 S320 CDI / S350 BlueTEC (W221)",
-        "generation": "5세대 (W221, 2006~2013)",
-        "fuel": "디젤",
-        "displacement": "2,987cc",
-        "engine_code": "OM642 (3.0 V6 디젤 235ps/258ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "S-클래스 S600 / S600L (W221 V12)",
-        "generation": "5세대 (W221 V12, 2006~2013)",
-        "fuel": "가솔린",
-        "displacement": "5,513cc",
-        "engine_code": "M275 (5.5 V12 바이터보 517ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "S 63 AMG / S 65 AMG (W221)",
-        "generation": "5세대 (W221 AMG, 2006~2013)",
-        "fuel": "가솔린",
-        "displacement": "6,208cc / 5,461cc / 5,980cc",
-        "engine_code": "M156 (6.2 V8 525ps) / M157 (5.5 V8 바이터보 544ps/571ps) / M275 (6.0 V12 612ps/630ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "S-클래스 S350d / S400d 4MATIC (W222)",
-        "generation": "6세대 (W222, 2013~2020)",
-        "fuel": "디젤",
-        "displacement": "2,987cc / 2,925cc",
-        "engine_code": "OM642 (3.0 V6 258ps) / OM656 (3.0 직렬 6기통 디젤 286ps/340ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "S-클래스 S400 / S450 / S500 / S560 (W222)",
-        "generation": "6세대 (W222, 2013~2020)",
-        "fuel": "가솔린",
-        "displacement": "2,996cc / 2,999cc / 4,663cc / 3,982cc",
-        "engine_code": "M276 (3.0 V6 333ps/367ps) / M256 (3.0 I6 367ps) / M278 (4.7 V8 455ps) / M176 (4.0 V8 469ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "S-클래스 S500e / S560e (W222 PHEV)",
-        "generation": "6세대 (W222 PHEV, 2015~2020)",
-        "fuel": "가솔린 플러그인 HEV",
-        "displacement": "2,996cc",
-        "engine_code": "M276 (3.0 V6 333ps/367ps) + 85kW/90kW 모터 (합산 442ps/476ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "마이바흐 S 500 / S 560 / S 600 / S 650 (X222)",
-        "generation": "6세대 (X222 Maybach, 2015~2020)",
-        "fuel": "가솔린",
-        "displacement": "4,663cc / 3,982cc / 5,980cc",
-        "engine_code": "M278 (V8 455ps) / M176 (V8 469ps) / M277/M279 (6.0 V12 바이터보 530ps/630ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG S 63 4MATIC / S 65 (W222)",
-        "generation": "6세대 (W222 AMG, 2013~2020)",
-        "fuel": "가솔린",
-        "displacement": "5,461cc / 3,982cc / 5,980cc",
-        "engine_code": "M157 (5.5 V8 585ps) / M177 (4.0 V8 612ps) / M279 (6.0 V12 630ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "S-클래스 S350d / S400d / S450d (W223)",
-        "generation": "7세대 (W223, 2021~현재)",
-        "fuel": "디젤",
-        "displacement": "2,925cc / 2,989cc",
-        "engine_code": "OM656 (3.0 직렬 6기통 286ps/330ps) / OM656M (48V MHEV 367ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "S-클래스 S450 / S500 4MATIC (W223)",
-        "generation": "7세대 (W223, 2021~현재)",
-        "fuel": "가솔린",
-        "displacement": "2,999cc",
-        "engine_code": "M256 (3.0 직렬 6기통 48V ISG 트윈스크롤 터보 367ps/435ps + 22ps EQ Boost)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "S-클래스 S580 4MATIC (W223 V8)",
-        "generation": "7세대 (W223, 2021~현재)",
-        "fuel": "가솔린",
-        "displacement": "3,982cc",
-        "engine_code": "M176 (4.0 V8 바이터보 + 48V MHEV 503ps + 20ps Boost)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "S-클래스 S580e (W223 PHEV)",
-        "generation": "7세대 (W223 PHEV, 2022~현재)",
-        "fuel": "가솔린 플러그인 HEV",
-        "displacement": "2,999cc",
-        "engine_code": "M256 (3.0T 367ps) + 110kW 모터 (합산 510ps / 28.6kWh 배터리)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "마이바흐 S 580 / 마이바흐 S 680 (Z223)",
-        "generation": "7세대 (Z223 Maybach, 2021~현재)",
-        "fuel": "가솔린",
-        "displacement": "3,982cc / 5,980cc",
-        "engine_code": "M176 (4.0 V8 503ps) / M279 (6.0 V12 바이터보 630ps / 4MATIC)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG S 63 E-Performance (W223 PHEV)",
-        "generation": "7세대 (W223 AMG, 2023~현재)",
-        "fuel": "가솔린 플러그인 HEV",
-        "displacement": "3,982cc",
-        "engine_code": "M177 (4.0 V8 612ps) + 140kW 모터 (합산 802ps / 1,430Nm)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "SLK 200K / SLK 350 / SLK 55 AMG (R171)",
-        "generation": "2세대 (R171, 2004~2011)",
-        "fuel": "가솔린",
-        "displacement": "1,796cc / 3,498cc / 5,439cc",
-        "engine_code": "M271 (1.8K 163ps/184ps) / M272 (3.5 V6 272ps/305ps) / M113 (5.4 V8 360ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "SLK 200 / SLC 200 / SLK 55 AMG (R172)",
-        "generation": "3세대 (R172, 2011~2020)",
-        "fuel": "가솔린",
-        "displacement": "1,796cc / 1,991cc / 5,461cc",
-        "engine_code": "M271/M274 (1.8/2.0T 184ps) / M152 (5.5 V8 자연흡기 실린더비활성화 421ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "SL 350 / SL 500 / SL 55 AMG / SL 65 AMG (R230)",
-        "generation": "5세대 (R230, 2001~2011)",
-        "fuel": "가솔린",
-        "displacement": "3,498cc / 4,966cc / 5,439cc / 5,980cc",
-        "engine_code": "M272 (3.5 V6) / M113/M273 (5.0/5.5 V8 306ps/388ps) / M113K (V8 500ps) / M275 (V12 612ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "SL 400 / SL 500 / SL 63 AMG (R231)",
-        "generation": "6세대 (R231, 2012~2020)",
-        "fuel": "가솔린",
-        "displacement": "2,996cc / 4,663cc / 5,461cc",
-        "engine_code": "M276 (3.0 V6 333ps/367ps) / M278 (4.7 V8 435ps/455ps) / M157 (5.5 V8 바이터보 537ps/585ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG SL 43 / SL 63 4MATIC+ (R232)",
-        "generation": "7세대 (R232 AMG, 2022~현재)",
-        "fuel": "가솔린",
-        "displacement": "1,991cc / 3,982cc",
-        "engine_code": "M139 (2.0 전동터보 381ps) / M177 (4.0 V8 핫인사이드V 바이터보 585ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "SLS AMG 쿠페 / 로드스터 (C197/R197 걸윙도어)",
-        "generation": "1세대 (C197 걸윙, 2010~2015)",
-        "fuel": "가솔린",
-        "displacement": "6,208cc",
-        "engine_code": "M159 (6.2 V8 자연흡기 드라이섬프 571ps / 블랙시리즈 631ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG GT / GT S / GT C / GT R (C190 2도어)",
-        "generation": "1세대 (C190 2도어, 2015~2021)",
-        "fuel": "가솔린",
-        "displacement": "3,982cc",
-        "engine_code": "M178 (4.0 V8 드라이섬프 바이터보 462ps / 510ps / 557ps / GT R 585ps / Black Series 평면크랭크 730ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG GT 55 / GT 63 4MATIC+ (C192 2세대)",
-        "generation": "2세대 (C192, 2023~현재)",
-        "fuel": "가솔린",
-        "displacement": "3,982cc",
-        "engine_code": "M177 (4.0 V8 트윈스크롤 바이터보 476ps / 585ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "GLK 220 CDI 4MATIC (X204)",
-        "generation": "1세대 (X204, 2008~2015)",
-        "fuel": "디젤",
-        "displacement": "2,143cc",
-        "engine_code": "OM651 (2.1 직렬 4기통 트윈터보 디젤 170ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "GLC 220d / 250d (X253)",
-        "generation": "1세대 (X253, 2015~2022)",
-        "fuel": "디젤",
-        "displacement": "2,143cc / 1,950cc",
-        "engine_code": "OM651 (2.1 디젤 170ps/204ps) / OM654 (F/L 2.0 디젤 194ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "GLC 300 / 300 4MATIC (X253)",
-        "generation": "1세대 (X253, 2015~2022)",
-        "fuel": "가솔린",
-        "displacement": "1,991cc",
-        "engine_code": "M274 (2.0T 245ps) / M264 (F/L 2.0T 258ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "GLC 300e / 350e (X253 PHEV)",
-        "generation": "1세대 (X253 PHEV, 2018~2022)",
-        "fuel": "가솔린 플러그인 HEV",
-        "displacement": "1,991cc",
-        "engine_code": "M274 (합산 320ps / 350e 320ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG GLC 43 / GLC 63 S (X253)",
-        "generation": "1세대 (X253 AMG, 2016~2022)",
-        "fuel": "가솔린",
-        "displacement": "2,996cc / 3,982cc",
-        "engine_code": "M276 (3.0 V6 367ps/390ps) / M177 (4.0 V8 510ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "GLC 220d / GLC 300 4MATIC (X254)",
-        "generation": "2세대 (X254, 2023~현재)",
-        "fuel": "디젤 / 가솔린",
-        "displacement": "1,993cc / 1,999cc",
-        "engine_code": "OM654M (2.0 디젤 197ps) / M254 (2.0T 258ps + 48V MHEV)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "GLC 300e 4MATIC (X254 PHEV)",
-        "generation": "2세대 (X254 PHEV, 2023~현재)",
-        "fuel": "가솔린 플러그인 HEV",
-        "displacement": "1,999cc",
-        "engine_code": "M254 (2.0T 204ps) + 100kW 모터 (합산 313ps / 31.2kWh 배터리)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG GLC 43 4MATIC (X254 4기통)",
-        "generation": "2세대 (X254 AMG, 2024~현재)",
-        "fuel": "가솔린",
-        "displacement": "1,991cc",
-        "engine_code": "M139 (2.0 전동터보 421ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "M-클래스 ML250 / ML350 / ML63 AMG (W166)",
-        "generation": "3세대 (W166, 2011~2015)",
-        "fuel": "디젤 / 가솔린",
-        "displacement": "2,143cc / 2,987cc / 5,461cc",
-        "engine_code": "OM651 (2.1 디젤 204ps) / OM642 (3.0 V6 디젤 258ps) / M157 (5.5 V8 525ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "GLE 250d / 350d / 500 (W166 F/L)",
-        "generation": "3세대 (W166 GLE, 2015~2019)",
-        "fuel": "디젤 / 가솔린",
-        "displacement": "2,143cc / 2,987cc / 4,663cc",
-        "engine_code": "OM651 (204ps) / OM642 (3.0 V6 258ps) / M278 (4.7 V8 435ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG GLE 43 / GLE 63 S (W166/C292 쿠페)",
-        "generation": "3세대 (W166 AMG, 2015~2019)",
-        "fuel": "가솔린",
-        "displacement": "2,996cc / 5,461cc",
-        "engine_code": "M276 (3.0 V6 367ps/390ps) / M157 (5.5 V8 585ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "GLE 300d / 400d / 450d 4MATIC (V167)",
-        "generation": "4세대 (V167/C167, 2019~현재)",
-        "fuel": "디젤",
-        "displacement": "1,950cc / 2,925cc / 2,989cc",
-        "engine_code": "OM654 (2.0 디젤 245ps/269ps) / OM656 (3.0 I6 330ps / 450d 367ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "GLE 450 4MATIC (V167)",
-        "generation": "4세대 (V167, 2019~현재)",
-        "fuel": "가솔린",
-        "displacement": "2,999cc",
-        "engine_code": "M256 (3.0 직렬 6기통 48V ISG 터보 367ps / F/L 381ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "GLE 350e / 400e (V167 PHEV)",
-        "generation": "4세대 (V167 PHEV, 2020~현재)",
-        "fuel": "가솔린 플러그인 HEV",
-        "displacement": "1,991cc / 1,999cc",
-        "engine_code": "M274/M254 + 100kW 모터 (합산 333ps/381ps / 31.2kWh 배터리)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG GLE 53 / GLE 63 S 4MATIC+ (V167)",
-        "generation": "4세대 (V167 AMG, 2020~현재)",
-        "fuel": "가솔린",
-        "displacement": "2,999cc / 3,982cc",
-        "engine_code": "M256 (3.0 I6 435ps) / M177 (4.0 V8 트윈터보 612ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "GLS 350d / GLS 500 (X166)",
-        "generation": "2세대 (X166 GLS, 2016~2019)",
-        "fuel": "디젤 / 가솔린",
-        "displacement": "2,987cc / 4,663cc",
-        "engine_code": "OM642 (3.0 V6 258ps) / M278 (4.7 V8 455ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "GLS 400d / GLS 450d 4MATIC (X167)",
-        "generation": "3세대 (X167, 2020~현재)",
-        "fuel": "디젤",
-        "displacement": "2,925cc / 2,989cc",
-        "engine_code": "OM656 (3.0 직렬 6기통 디젤 330ps / 450d 48V MHEV 367ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "GLS 450 / GLS 580 4MATIC (X167)",
-        "generation": "3세대 (X167, 2020~현재)",
-        "fuel": "가솔린",
-        "displacement": "2,999cc / 3,982cc",
-        "engine_code": "M256 (3.0 I6 367ps/381ps) / M176 (4.0 V8 바이터보 489ps/517ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "마이바흐 GLS 600 4MATIC (X167 Maybach)",
-        "generation": "3세대 (X167 Maybach, 2021~현재)",
-        "fuel": "가솔린",
-        "displacement": "3,982cc",
-        "engine_code": "M176 (4.0 V8 바이터보 + 48V EQ Boost 557ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG GLS 63 4MATIC+ (X167)",
-        "generation": "3세대 (X167 AMG, 2020~현재)",
-        "fuel": "가솔린",
-        "displacement": "3,982cc",
-        "engine_code": "M177 (4.0 V8 트윈스크롤 바이터보 612ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "G-클래스 G350 BlueTEC / G350d (W463 구형)",
-        "generation": "1세대 후기 (W463, 2012~2018)",
-        "fuel": "디젤",
-        "displacement": "2,987cc",
-        "engine_code": "OM642 (3.0 V6 디젤 211ps/245ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "G-클래스 G500 / G550 (W463 구형)",
-        "generation": "1세대 후기 (W463, 2008~2018)",
-        "fuel": "가솔린",
-        "displacement": "5,461cc / 3,982cc",
-        "engine_code": "M273 (5.5 V8 388ps) / M176 (4.0 V8 바이터보 422ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "G 55 AMG / G 63 AMG (W463 구형)",
-        "generation": "1세대 (W463 AMG, 2004~2018)",
-        "fuel": "가솔린",
-        "displacement": "5,439cc / 5,461cc",
-        "engine_code": "M113K (5.4 V8 수퍼차저 507ps) / M157 (5.5 V8 바이터보 544ps/571ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "G-클래스 G400d / G450d (W463 신형)",
-        "generation": "2세대 (W463/W465, 2020~현재)",
-        "fuel": "디젤",
-        "displacement": "2,925cc / 2,989cc",
-        "engine_code": "OM656 (3.0 직렬 6기통 330ps) / OM656M (48V MHEV 367ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "G-클래스 G500 (W465 페이스리프트)",
-        "generation": "2세대 (W465, 2024~현재)",
-        "fuel": "가솔린",
-        "displacement": "2,999cc",
-        "engine_code": "M256M (3.0 직렬 6기통 48V MHEV 트윈터보 449ps)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG G 63 (W463/W465 신형)",
-        "generation": "2세대 (W463/W465 AMG, 2018~현재)",
-        "fuel": "가솔린",
-        "displacement": "3,982cc",
-        "engine_code": "M177 (4.0 V8 핫인사이드V 바이터보 585ps / 850Nm)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "G 580 with EQ Technology (G클래스 EV)",
-        "generation": "2세대 (W465 EV, 2024~현재)",
-        "fuel": "전기",
-        "displacement": "-",
-        "engine_code": "116kWh 배터리 / 432kW (587ps, 토크 1,164Nm) 개별 제어 4모터 AWD (G-Turn 지원)"
-      },
-      {
-        "brand": "벤츠",
-        "model": "EQA 250 (H243 EV)",
-        "generation": "1세대 (H243 EV, 2021~현재)",
-        "fuel": "전기",
-        "displacement": "-",
-        "engine_code": "66.5kWh 리튬이온 배터리 / 140kW (190ps) 싱글모터 전륜"
-      },
-      {
-        "brand": "벤츠",
-        "model": "EQB 300 4MATIC (X243 EV)",
-        "generation": "1세대 (X243 EV, 2022~현재)",
-        "fuel": "전기",
-        "displacement": "-",
-        "engine_code": "66.5kWh 배터리 / 168kW (228ps) 듀얼모터 AWD"
-      },
-      {
-        "brand": "벤츠",
-        "model": "EQC 400 4MATIC (N293 EV)",
-        "generation": "1세대 (N293 EV, 2019~2023단종)",
-        "fuel": "전기",
-        "displacement": "-",
-        "engine_code": "80kWh 배터리 / 300kW (408ps) 듀얼모터 AWD"
-      },
-      {
-        "brand": "벤츠",
-        "model": "EQE 300 / EQE 350+ (V295 EV)",
-        "generation": "1세대 (V295 EV, 2022~현재)",
-        "fuel": "전기",
-        "displacement": "-",
-        "engine_code": "88.8kWh / 90.6kWh 배터리 / 180kW(245ps) / 215kW(292ps) 후륜 싱글모터"
-      },
-      {
-        "brand": "벤츠",
-        "model": "EQE 350 4MATIC / AMG EQE 53 4MATIC+",
-        "generation": "1세대 (V295 EV, 2022~현재)",
-        "fuel": "전기",
-        "displacement": "-",
-        "engine_code": "90.6kWh 배터리 / 215kW(292ps) / 460kW(626ps/687ps 부스트) 듀얼모터 AWD"
-      },
-      {
-        "brand": "벤츠",
-        "model": "EQE SUV 350 4MATIC / 500 4MATIC",
-        "generation": "1세대 (X294 EV, 2023~현재)",
-        "fuel": "전기",
-        "displacement": "-",
-        "engine_code": "88.8kWh / 90.6kWh 배터리 / 215kW(292ps) / 300kW(408ps) 듀얼모터 AWD"
-      },
-      {
-        "brand": "벤츠",
-        "model": "EQS 450+ / EQS 450 4MATIC (V297 EV)",
-        "generation": "1세대 (V297 EV, 2021~현재)",
-        "fuel": "전기",
-        "displacement": "-",
-        "engine_code": "107.8kWh / 118kWh 배터리 / 245kW(333ps) / 265kW(360ps) 모터"
-      },
-      {
-        "brand": "벤츠",
-        "model": "AMG EQS 53 4MATIC+ (V297 M EV)",
-        "generation": "1세대 (V297 AMG EV, 2022~현재)",
-        "fuel": "전기",
-        "displacement": "-",
-        "engine_code": "107.8kWh 배터리 / 484kW (658ps / 761ps 다이내믹플러스) 듀얼모터 AWD"
-      },
-      {
-        "brand": "벤츠",
-        "model": "EQS SUV 450 4MATIC / 580 4MATIC",
-        "generation": "1세대 (X296 EV, 2023~현재)",
-        "fuel": "전기",
-        "displacement": "-",
-        "engine_code": "107.8kWh / 118kWh 배터리 / 265kW(360ps) / 400kW(544ps) 듀얼모터 AWD"
-      },
-      {
-        "brand": "벤츠",
-        "model": "마이바흐 EQS 680 SUV (Z296 Maybach EV)",
-        "generation": "1세대 (Z296 Maybach EV, 2024~현재)",
-        "fuel": "전기",
-        "displacement": "-",
-        "engine_code": "118kWh 배터리 / 484kW (658ps, 토크 950Nm) 최고급 플래그십 듀얼모터 AWD"
+(function() {
+  const rawData = [
+  {
+    "brand": "벤츠",
+    "model": "A-클래스 A200 CDI / A200d (W176)",
+    "generation": "3세대 (W176, 2012~2018)",
+    "fuel": "디젤",
+    "displacement": "1,796cc / 2,143cc",
+    "engine_code": "OM651 (1.8/2.1 직렬 4기통 디젤 136ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "A-클래스 A200 / A250 (W176)",
+    "generation": "3세대 (W176, 2012~2018)",
+    "fuel": "가솔린",
+    "displacement": "1,595cc / 1,991cc",
+    "engine_code": "M270 (1.6T 156ps / 2.0T 211ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "A 45 AMG 4MATIC (W176)",
+    "generation": "3세대 (W176 AMG, 2013~2018)",
+    "fuel": "가솔린",
+    "displacement": "1,991cc",
+    "engine_code": "M133 (2.0 직렬 4기통 핸드크래프트 터보 360ps / F/L 381ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "A-클래스 A200d (W177)",
+    "generation": "4세대 (W177, 2018~2022)",
+    "fuel": "디젤",
+    "displacement": "1,950cc",
+    "engine_code": "OM654q (2.0 알루미늄 디젤 150ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "A-클래스 A200 / A220 / A250 (W177)",
+    "generation": "4세대 (W177, 2018~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,332cc / 1,991cc",
+    "engine_code": "M282 (1.33T 163ps) / M260 (2.0T 190ps/224ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG A 35 4MATIC (W177)",
+    "generation": "4세대 (W177 AMG, 2019~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,991cc",
+    "engine_code": "M260 (2.0 직렬 4기통 트윈스크롤 터보 306ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG A 45 S 4MATIC+ (W177)",
+    "generation": "4세대 (W177 AMG, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,991cc",
+    "engine_code": "M139 (2.0 직렬 4기통 롤러베어링 트윈스크롤 터보 421ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "B-클래스 B200 CDI (W245/W246)",
+    "generation": "1/2세대 (W245/W246, 2007~2019)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "1,991cc / 2,143cc",
+    "engine_code": "OM640 / OM651 (2.0/2.1 디젤 136ps) / M270 (1.6T)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "CLA 200d / CLA 250 4MATIC (C117)",
+    "generation": "1세대 (C117, 2013~2019)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "2,143cc / 1,991cc",
+    "engine_code": "OM651 (2.1 디젤 136ps/177ps) / M270 (2.0T 211ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "CLA 45 AMG (C117)",
+    "generation": "1세대 (C117 AMG, 2014~2019)",
+    "fuel": "가솔린",
+    "displacement": "1,991cc",
+    "engine_code": "M133 (2.0 직렬 4기통 터보 360ps/381ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "CLA 250 4MATIC (C118)",
+    "generation": "2세대 (C118, 2019~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,991cc",
+    "engine_code": "M260 (2.0 직렬 4기통 터보 224ps / 48V MHEV)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG CLA 45 S 4MATIC+ (C118)",
+    "generation": "2세대 (C118 AMG, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,991cc",
+    "engine_code": "M139 (2.0 직렬 4기통 터보 421ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "GLA 200d / GLA 250 4MATIC (X156)",
+    "generation": "1세대 (X156, 2014~2020)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "2,143cc / 1,991cc",
+    "engine_code": "OM651 (2.1 디젤 136ps/177ps) / M270 (2.0T 211ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "GLA 45 AMG (X156)",
+    "generation": "1세대 (X156 AMG, 2014~2020)",
+    "fuel": "가솔린",
+    "displacement": "1,991cc",
+    "engine_code": "M133 (2.0 터보 360ps/381ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "GLA 250 4MATIC (H247)",
+    "generation": "2세대 (H247, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,991cc",
+    "engine_code": "M260 (2.0T 224ps / 48V MHEV 224ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "GLB 200d / GLB 220 / GLB 250 (X247)",
+    "generation": "1세대 (X247, 2020~현재)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "1,950cc / 1,991cc",
+    "engine_code": "OM654q (2.0 디젤 150ps) / M260 (2.0T 190ps/224ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG GLB 35 4MATIC (X247)",
+    "generation": "1세대 (X247 AMG, 2021~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,991cc",
+    "engine_code": "M260 (2.0 직렬 4기통 터보 306ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "C-클래스 C200K / C240 / C320 (W203)",
+    "generation": "2세대 (W203, 2000~2007)",
+    "fuel": "가솔린",
+    "displacement": "1,796cc / 2,597cc / 3,199cc",
+    "engine_code": "M271 (1.8 수퍼차저 163ps) / M112 (2.6/3.2 V6 170ps/218ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "C 32 AMG / C 55 AMG (W203)",
+    "generation": "2세대 (W203 AMG, 2001~2007)",
+    "fuel": "가솔린",
+    "displacement": "3,199cc / 5,439cc",
+    "engine_code": "M112 (3.2 V6 수퍼차저 354ps) / M113 (5.4 V8 367ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "C-클래스 C200 CGI / C230 / C300 (W204)",
+    "generation": "3세대 (W204, 2007~2014)",
+    "fuel": "가솔린",
+    "displacement": "1,796cc / 2,496cc / 2,996cc",
+    "engine_code": "M271 (1.8 CGI 터보 184ps) / M272 (2.5/3.0 V6 204ps/231ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "C-클래스 C220 CDI / C250 CDI (W204)",
+    "generation": "3세대 (W204, 2007~2014)",
+    "fuel": "디젤",
+    "displacement": "2,143cc",
+    "engine_code": "OM646 / OM651 (2.1 직렬 4기통 트윈터보 디젤 170ps/204ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "C 63 AMG 세단 / 쿠페 (W204 6.2 V8)",
+    "generation": "3세대 (W204 AMG, 2008~2015)",
+    "fuel": "가솔린",
+    "displacement": "6,208cc",
+    "engine_code": "M156 (6.2 V8 자연흡기 457ps / 507에디션 507ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "C-클래스 C200 / C250 / C300 (W205)",
+    "generation": "4세대 (W205, 2014~2021)",
+    "fuel": "가솔린",
+    "displacement": "1,991cc",
+    "engine_code": "M274 (2.0T 184ps/211ps/245ps) / M264 (F/L 2.0T 258ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "C-클래스 C220d / C250d (W205)",
+    "generation": "4세대 (W205, 2014~2021)",
+    "fuel": "디젤",
+    "displacement": "2,143cc / 1,950cc",
+    "engine_code": "OM651 (2.1 디젤 170ps/204ps) / OM654 (2.0 디젤 194ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "C-클래스 C350e (W205 PHEV)",
+    "generation": "4세대 (W205 PHEV, 2018~2021)",
+    "fuel": "가솔린 플러그인 HEV",
+    "displacement": "1,991cc",
+    "engine_code": "M274 (2.0T 211ps) + 60kW 모터 (합산 279ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG C 43 4MATIC (W205 V6)",
+    "generation": "4세대 (W205 AMG, 2016~2021)",
+    "fuel": "가솔린",
+    "displacement": "2,996cc",
+    "engine_code": "M276 (3.0 V6 바이터보 367ps / F/L 390ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG C 63 / C 63 S (W205 V8)",
+    "generation": "4세대 (W205 AMG, 2015~2021)",
+    "fuel": "가솔린",
+    "displacement": "3,982cc",
+    "engine_code": "M177 (4.0 V8 핫인사이드V 바이터보 476ps / S 510ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "C-클래스 C200 / C300 (W206)",
+    "generation": "5세대 (W206, 2022~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,496cc / 1,999cc",
+    "engine_code": "M254 (1.5T 204ps / 2.0T 258ps + 2세대 ISG 48V MHEV)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "C-클래스 C220d (W206)",
+    "generation": "5세대 (W206, 2022~2023)",
+    "fuel": "디젤",
+    "displacement": "1,993cc",
+    "engine_code": "OM654M (2.0 직렬 4기통 48V MHEV 디젤 200ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG C 43 4MATIC (W206 4기통 터보)",
+    "generation": "5세대 (W206 AMG, 2023~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,991cc",
+    "engine_code": "M139 (2.0 전동배기가스터보 408ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG C 63 S E-Performance (W206 PHEV)",
+    "generation": "5세대 (W206 AMG, 2024~현재)",
+    "fuel": "가솔린 플러그인 HEV",
+    "displacement": "1,991cc",
+    "engine_code": "M139 (476ps) + 후륜 150kW 전기모터 (합산 680ps / 1,020Nm)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "E-클래스 E200K / E240 / E320 / E500 (W211)",
+    "generation": "8세대 (W211, 2002~2009)",
+    "fuel": "가솔린",
+    "displacement": "1,796cc / 2,597cc / 3,199cc / 4,966cc",
+    "engine_code": "M271 (1.8K) / M112 (2.6/3.2 V6) / M113 (5.0 V8 306ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "E-클래스 E280 / E350 (W211 후기)",
+    "generation": "8세대 (W211 후기, 2005~2009)",
+    "fuel": "가솔린",
+    "displacement": "2,996cc / 3,498cc",
+    "engine_code": "M272 (3.0 V6 231ps / 3.5 V6 272ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "E-클래스 E220 CDI / E320 CDI (W211)",
+    "generation": "8세대 (W211, 2002~2009)",
+    "fuel": "디젤",
+    "displacement": "2,148cc / 2,987cc",
+    "engine_code": "OM646 (2.2 디젤 150ps/170ps) / OM642 (3.0 V6 디젤 224ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "E 55 AMG / E 63 AMG (W211)",
+    "generation": "8세대 (W211 AMG, 2003~2009)",
+    "fuel": "가솔린",
+    "displacement": "5,439cc / 6,208cc",
+    "engine_code": "M113 (5.4 V8 수퍼차저 476ps) / M156 (6.2 V8 자연흡기 514ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "E-클래스 E200 CGI / E300 / E350 (W212)",
+    "generation": "9세대 (W212, 2009~2016)",
+    "fuel": "가솔린",
+    "displacement": "1,796cc / 1,991cc / 3,498cc",
+    "engine_code": "M271/M274 (1.8/2.0T 184ps) / M272 (3.0 V6 231ps) / M276 (3.5 V6 252ps/306ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "E-클래스 E400 / E500 (W212 후기)",
+    "generation": "9세대 (W212, 2013~2016)",
+    "fuel": "가솔린",
+    "displacement": "2,996cc / 4,663cc",
+    "engine_code": "M276 (3.0 V6 바이터보 333ps) / M278 (4.7 V8 바이터보 408ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "E-클래스 E220 CDI/BlueTEC / E250 CDI / E350 BlueTEC (W212)",
+    "generation": "9세대 (W212, 2009~2016)",
+    "fuel": "디젤",
+    "displacement": "2,143cc / 2,987cc",
+    "engine_code": "OM651 (2.1 디젤 170ps/204ps) / OM642 (3.0 V6 디젤 231ps/252ps/258ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "E 63 AMG / 4MATIC (W212 V8)",
+    "generation": "9세대 (W212 AMG, 2009~2016)",
+    "fuel": "가솔린",
+    "displacement": "6,208cc / 5,461cc",
+    "engine_code": "M156 (6.2 V8 525ps) / M157 (5.5 V8 바이터보 557ps / S 585ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "E-클래스 E200 / E250 / E300 (W213)",
+    "generation": "10세대 (W213, 2016~2023)",
+    "fuel": "가솔린",
+    "displacement": "1,991cc",
+    "engine_code": "M274 (2.0T 184ps/245ps) / M264 (F/L 2.0T 211ps/258ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "E-클래스 E400 / E450 4MATIC (W213)",
+    "generation": "10세대 (W213, 2016~2023)",
+    "fuel": "가솔린",
+    "displacement": "2,996cc / 2,999cc",
+    "engine_code": "M276 (3.0 V6 333ps) / M256 (3.0 직렬 6기통 48V ISG 터보 367ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "E-클래스 E220d (W213)",
+    "generation": "10세대 (W213, 2016~2023)",
+    "fuel": "디젤",
+    "displacement": "1,950cc",
+    "engine_code": "OM654 (2.0 직렬 4기통 알루미늄 디젤 194ps / 48V MHEV 200ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "E-클래스 E350d / E400d 4MATIC (W213)",
+    "generation": "10세대 (W213, 2016~2023)",
+    "fuel": "디젤",
+    "displacement": "2,987cc / 2,925cc",
+    "engine_code": "OM642 (3.0 V6 258ps) / OM656 (3.0 직렬 6기통 디젤 330ps/340ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "E-클래스 E300e / E300de (W213 PHEV)",
+    "generation": "10세대 (W213 PHEV, 2019~2023)",
+    "fuel": "가솔린/디젤 PHEV",
+    "displacement": "1,991cc / 1,950cc",
+    "engine_code": "M274/M264 (합산 320ps) / OM654 (디젤 PHEV 합산 306ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG E 53 4MATIC+ (W213)",
+    "generation": "10세대 (W213 AMG, 2018~2023)",
+    "fuel": "가솔린",
+    "displacement": "2,999cc",
+    "engine_code": "M256 (3.0 직렬 6기통 터보 + 전동슈퍼차저 + 48V EQ Boost 435ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG E 63 S 4MATIC+ (W213)",
+    "generation": "10세대 (W213 AMG, 2017~2023)",
+    "fuel": "가솔린",
+    "displacement": "3,982cc",
+    "engine_code": "M177 (4.0 V8 트윈스크롤 바이터보 612ps / 850Nm)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "E-클래스 E200 / E300 4MATIC (W214)",
+    "generation": "11세대 (W214, 2024~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,999cc",
+    "engine_code": "M254 (2.0 직렬 4기통 터보 + 2세대 ISG 48V MHEV 204ps/258ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "E-클래스 E450 4MATIC (W214)",
+    "generation": "11세대 (W214, 2024~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,999cc",
+    "engine_code": "M256M (3.0 직렬 6기통 트윈스크롤 터보 + 48V MHEV 381ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "E-클래스 E220d 4MATIC (W214)",
+    "generation": "11세대 (W214, 2024~현재)",
+    "fuel": "디젤",
+    "displacement": "1,993cc",
+    "engine_code": "OM654M (2.0 직렬 4기통 48V MHEV 디젤 197ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "E-클래스 E300e 4MATIC (W214 PHEV)",
+    "generation": "11세대 (W214 PHEV, 2024~현재)",
+    "fuel": "가솔린 플러그인 HEV",
+    "displacement": "1,999cc",
+    "engine_code": "M254 (2.0T 204ps) + 95kW 모터 (합산 313ps / 25.4kWh 배터리)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG E 53 HYBRID 4MATIC+ (W214 PHEV)",
+    "generation": "11세대 (W214 AMG, 2024~현재)",
+    "fuel": "가솔린 플러그인 HEV",
+    "displacement": "2,999cc",
+    "engine_code": "M256M (3.0T 449ps) + 120kW 모터 (합산 585ps / 612ps 부스트)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "CLS 350 / CLS 500 / CLS 55 AMG (W219)",
+    "generation": "1세대 (W219, 2004~2010)",
+    "fuel": "가솔린",
+    "displacement": "3,498cc / 4,966cc / 5,439cc",
+    "engine_code": "M272 (3.5 V6 272ps) / M113 (5.0 V8 306ps) / M113K (5.4 V8 수퍼차저 476ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "CLS 63 AMG (W219 6.2 V8)",
+    "generation": "1세대 (W219 AMG, 2006~2010)",
+    "fuel": "가솔린",
+    "displacement": "6,208cc",
+    "engine_code": "M156 (6.2 V8 자연흡기 514ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "CLS 250 CDI / CLS 350 / CLS 400 (W218)",
+    "generation": "2세대 (W218, 2011~2018)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "2,143cc / 3,498cc / 2,996cc",
+    "engine_code": "OM651 (2.1 디젤 204ps) / M276 (3.5 V6 306ps / 3.0 V6 바이터보 333ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "CLS 63 AMG / S 4MATIC (W218)",
+    "generation": "2세대 (W218 AMG, 2011~2018)",
+    "fuel": "가솔린",
+    "displacement": "5,461cc",
+    "engine_code": "M157 (5.5 V8 바이터보 525ps / 557ps / S 585ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "CLS 300d / CLS 400d 4MATIC (C257)",
+    "generation": "3세대 (C257, 2018~2023단종)",
+    "fuel": "디젤",
+    "displacement": "1,950cc / 2,925cc",
+    "engine_code": "OM654 (2.0 디젤 245ps) / OM656 (3.0 직렬 6기통 디젤 330ps/340ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "CLS 450 4MATIC (C257)",
+    "generation": "3세대 (C257, 2018~2023단종)",
+    "fuel": "가솔린",
+    "displacement": "2,999cc",
+    "engine_code": "M256 (3.0 직렬 6기통 48V ISG 트윈스크롤 터보 367ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG CLS 53 4MATIC+ (C257)",
+    "generation": "3세대 (C257 AMG, 2018~2023단종)",
+    "fuel": "가솔린",
+    "displacement": "2,999cc",
+    "engine_code": "M256 (3.0 직렬 6기통 터보 + 전동슈퍼차저 + 48V EQ Boost 435ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG GT 43 4MATIC+ 4도어 (X290)",
+    "generation": "1세대 (X290 4-Door, 2019~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,999cc",
+    "engine_code": "M256 (3.0 직렬 6기통 48V MHEV 터보 367ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG GT 63 S 4MATIC+ 4도어 (X290)",
+    "generation": "1세대 (X290 4-Door, 2019~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,982cc",
+    "engine_code": "M177 (4.0 V8 바이터보 639ps / 900Nm)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG GT 63 S E-Performance 4도어 (PHEV)",
+    "generation": "1세대 (X290 PHEV, 2022~현재)",
+    "fuel": "가솔린 플러그인 HEV",
+    "displacement": "3,982cc",
+    "engine_code": "M177 (639ps) + 150kW 전기모터 (합산 843ps / 1,470Nm)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "S-클래스 S320 / S350 / S430 / S500 (W220)",
+    "generation": "4세대 (W220, 1998~2005)",
+    "fuel": "가솔린",
+    "displacement": "3,199cc / 3,724cc / 4,266cc / 4,966cc",
+    "engine_code": "M112 (3.2/3.7 V6 224ps/245ps) / M113 (4.3/5.0 V8 279ps/306ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "S-클래스 S600 (W220 V12)",
+    "generation": "4세대 (W220 V12, 2000~2005)",
+    "fuel": "가솔린",
+    "displacement": "5,786cc / 5,513cc",
+    "engine_code": "M137 (5.8 V12 367ps) / M275 (5.5 V12 트윈터보 500ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "S 55 AMG / S 65 AMG (W220)",
+    "generation": "4세대 (W220 AMG, 2002~2005)",
+    "fuel": "가솔린",
+    "displacement": "5,439cc / 5,980cc",
+    "engine_code": "M113K (5.4 V8 수퍼차저 500ps) / M275 (6.0 V12 바이터보 612ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "S-클래스 S350 / S450 / S500 / S550 (W221)",
+    "generation": "5세대 (W221, 2005~2013)",
+    "fuel": "가솔린",
+    "displacement": "3,498cc / 4,663cc / 5,461cc",
+    "engine_code": "M272 (3.5 V6 272ps) / M273 (4.7/5.5 V8 340ps/388ps) / M278 (4.7 V8 바이터보 435ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "S-클래스 S320 CDI / S350 BlueTEC (W221)",
+    "generation": "5세대 (W221, 2006~2013)",
+    "fuel": "디젤",
+    "displacement": "2,987cc",
+    "engine_code": "OM642 (3.0 V6 디젤 235ps/258ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "S-클래스 S600 / S600L (W221 V12)",
+    "generation": "5세대 (W221 V12, 2006~2013)",
+    "fuel": "가솔린",
+    "displacement": "5,513cc",
+    "engine_code": "M275 (5.5 V12 바이터보 517ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "S 63 AMG / S 65 AMG (W221)",
+    "generation": "5세대 (W221 AMG, 2006~2013)",
+    "fuel": "가솔린",
+    "displacement": "6,208cc / 5,461cc / 5,980cc",
+    "engine_code": "M156 (6.2 V8 525ps) / M157 (5.5 V8 바이터보 544ps/571ps) / M275 (6.0 V12 612ps/630ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "S-클래스 S350d / S400d 4MATIC (W222)",
+    "generation": "6세대 (W222, 2013~2020)",
+    "fuel": "디젤",
+    "displacement": "2,987cc / 2,925cc",
+    "engine_code": "OM642 (3.0 V6 258ps) / OM656 (3.0 직렬 6기통 디젤 286ps/340ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "S-클래스 S400 / S450 / S500 / S560 (W222)",
+    "generation": "6세대 (W222, 2013~2020)",
+    "fuel": "가솔린",
+    "displacement": "2,996cc / 2,999cc / 4,663cc / 3,982cc",
+    "engine_code": "M276 (3.0 V6 333ps/367ps) / M256 (3.0 I6 367ps) / M278 (4.7 V8 455ps) / M176 (4.0 V8 469ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "S-클래스 S500e / S560e (W222 PHEV)",
+    "generation": "6세대 (W222 PHEV, 2015~2020)",
+    "fuel": "가솔린 플러그인 HEV",
+    "displacement": "2,996cc",
+    "engine_code": "M276 (3.0 V6 333ps/367ps) + 85kW/90kW 모터 (합산 442ps/476ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "마이바흐 S 500 / S 560 / S 600 / S 650 (X222)",
+    "generation": "6세대 (X222 Maybach, 2015~2020)",
+    "fuel": "가솔린",
+    "displacement": "4,663cc / 3,982cc / 5,980cc",
+    "engine_code": "M278 (V8 455ps) / M176 (V8 469ps) / M277/M279 (6.0 V12 바이터보 530ps/630ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG S 63 4MATIC / S 65 (W222)",
+    "generation": "6세대 (W222 AMG, 2013~2020)",
+    "fuel": "가솔린",
+    "displacement": "5,461cc / 3,982cc / 5,980cc",
+    "engine_code": "M157 (5.5 V8 585ps) / M177 (4.0 V8 612ps) / M279 (6.0 V12 630ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "S-클래스 S350d / S400d / S450d (W223)",
+    "generation": "7세대 (W223, 2021~현재)",
+    "fuel": "디젤",
+    "displacement": "2,925cc / 2,989cc",
+    "engine_code": "OM656 (3.0 직렬 6기통 286ps/330ps) / OM656M (48V MHEV 367ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "S-클래스 S450 / S500 4MATIC (W223)",
+    "generation": "7세대 (W223, 2021~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,999cc",
+    "engine_code": "M256 (3.0 직렬 6기통 48V ISG 트윈스크롤 터보 367ps/435ps + 22ps EQ Boost)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "S-클래스 S580 4MATIC (W223 V8)",
+    "generation": "7세대 (W223, 2021~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,982cc",
+    "engine_code": "M176 (4.0 V8 바이터보 + 48V MHEV 503ps + 20ps Boost)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "S-클래스 S580e (W223 PHEV)",
+    "generation": "7세대 (W223 PHEV, 2022~현재)",
+    "fuel": "가솔린 플러그인 HEV",
+    "displacement": "2,999cc",
+    "engine_code": "M256 (3.0T 367ps) + 110kW 모터 (합산 510ps / 28.6kWh 배터리)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "마이바흐 S 580 / 마이바흐 S 680 (Z223)",
+    "generation": "7세대 (Z223 Maybach, 2021~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,982cc / 5,980cc",
+    "engine_code": "M176 (4.0 V8 503ps) / M279 (6.0 V12 바이터보 630ps / 4MATIC)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG S 63 E-Performance (W223 PHEV)",
+    "generation": "7세대 (W223 AMG, 2023~현재)",
+    "fuel": "가솔린 플러그인 HEV",
+    "displacement": "3,982cc",
+    "engine_code": "M177 (4.0 V8 612ps) + 140kW 모터 (합산 802ps / 1,430Nm)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "SLK 200K / SLK 350 / SLK 55 AMG (R171)",
+    "generation": "2세대 (R171, 2004~2011)",
+    "fuel": "가솔린",
+    "displacement": "1,796cc / 3,498cc / 5,439cc",
+    "engine_code": "M271 (1.8K 163ps/184ps) / M272 (3.5 V6 272ps/305ps) / M113 (5.4 V8 360ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "SLK 200 / SLC 200 / SLK 55 AMG (R172)",
+    "generation": "3세대 (R172, 2011~2020)",
+    "fuel": "가솔린",
+    "displacement": "1,796cc / 1,991cc / 5,461cc",
+    "engine_code": "M271/M274 (1.8/2.0T 184ps) / M152 (5.5 V8 자연흡기 실린더비활성화 421ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "SL 350 / SL 500 / SL 55 AMG / SL 65 AMG (R230)",
+    "generation": "5세대 (R230, 2001~2011)",
+    "fuel": "가솔린",
+    "displacement": "3,498cc / 4,966cc / 5,439cc / 5,980cc",
+    "engine_code": "M272 (3.5 V6) / M113/M273 (5.0/5.5 V8 306ps/388ps) / M113K (V8 500ps) / M275 (V12 612ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "SL 400 / SL 500 / SL 63 AMG (R231)",
+    "generation": "6세대 (R231, 2012~2020)",
+    "fuel": "가솔린",
+    "displacement": "2,996cc / 4,663cc / 5,461cc",
+    "engine_code": "M276 (3.0 V6 333ps/367ps) / M278 (4.7 V8 435ps/455ps) / M157 (5.5 V8 바이터보 537ps/585ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG SL 43 / SL 63 4MATIC+ (R232)",
+    "generation": "7세대 (R232 AMG, 2022~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,991cc / 3,982cc",
+    "engine_code": "M139 (2.0 전동터보 381ps) / M177 (4.0 V8 핫인사이드V 바이터보 585ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "SLS AMG 쿠페 / 로드스터 (C197/R197 걸윙도어)",
+    "generation": "1세대 (C197 걸윙, 2010~2015)",
+    "fuel": "가솔린",
+    "displacement": "6,208cc",
+    "engine_code": "M159 (6.2 V8 자연흡기 드라이섬프 571ps / 블랙시리즈 631ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG GT / GT S / GT C / GT R (C190 2도어)",
+    "generation": "1세대 (C190 2도어, 2015~2021)",
+    "fuel": "가솔린",
+    "displacement": "3,982cc",
+    "engine_code": "M178 (4.0 V8 드라이섬프 바이터보 462ps / 510ps / 557ps / GT R 585ps / Black Series 평면크랭크 730ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG GT 55 / GT 63 4MATIC+ (C192 2세대)",
+    "generation": "2세대 (C192, 2023~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,982cc",
+    "engine_code": "M177 (4.0 V8 트윈스크롤 바이터보 476ps / 585ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "GLK 220 CDI 4MATIC (X204)",
+    "generation": "1세대 (X204, 2008~2015)",
+    "fuel": "디젤",
+    "displacement": "2,143cc",
+    "engine_code": "OM651 (2.1 직렬 4기통 트윈터보 디젤 170ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "GLC 220d / 250d (X253)",
+    "generation": "1세대 (X253, 2015~2022)",
+    "fuel": "디젤",
+    "displacement": "2,143cc / 1,950cc",
+    "engine_code": "OM651 (2.1 디젤 170ps/204ps) / OM654 (F/L 2.0 디젤 194ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "GLC 300 / 300 4MATIC (X253)",
+    "generation": "1세대 (X253, 2015~2022)",
+    "fuel": "가솔린",
+    "displacement": "1,991cc",
+    "engine_code": "M274 (2.0T 245ps) / M264 (F/L 2.0T 258ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "GLC 300e / 350e (X253 PHEV)",
+    "generation": "1세대 (X253 PHEV, 2018~2022)",
+    "fuel": "가솔린 플러그인 HEV",
+    "displacement": "1,991cc",
+    "engine_code": "M274 (합산 320ps / 350e 320ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG GLC 43 / GLC 63 S (X253)",
+    "generation": "1세대 (X253 AMG, 2016~2022)",
+    "fuel": "가솔린",
+    "displacement": "2,996cc / 3,982cc",
+    "engine_code": "M276 (3.0 V6 367ps/390ps) / M177 (4.0 V8 510ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "GLC 220d / GLC 300 4MATIC (X254)",
+    "generation": "2세대 (X254, 2023~현재)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "1,993cc / 1,999cc",
+    "engine_code": "OM654M (2.0 디젤 197ps) / M254 (2.0T 258ps + 48V MHEV)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "GLC 300e 4MATIC (X254 PHEV)",
+    "generation": "2세대 (X254 PHEV, 2023~현재)",
+    "fuel": "가솔린 플러그인 HEV",
+    "displacement": "1,999cc",
+    "engine_code": "M254 (2.0T 204ps) + 100kW 모터 (합산 313ps / 31.2kWh 배터리)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG GLC 43 4MATIC (X254 4기통)",
+    "generation": "2세대 (X254 AMG, 2024~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,991cc",
+    "engine_code": "M139 (2.0 전동터보 421ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "M-클래스 ML250 / ML350 / ML63 AMG (W166)",
+    "generation": "3세대 (W166, 2011~2015)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "2,143cc / 2,987cc / 5,461cc",
+    "engine_code": "OM651 (2.1 디젤 204ps) / OM642 (3.0 V6 디젤 258ps) / M157 (5.5 V8 525ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "GLE 250d / 350d / 500 (W166 F/L)",
+    "generation": "3세대 (W166 GLE, 2015~2019)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "2,143cc / 2,987cc / 4,663cc",
+    "engine_code": "OM651 (204ps) / OM642 (3.0 V6 258ps) / M278 (4.7 V8 435ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG GLE 43 / GLE 63 S (W166/C292 쿠페)",
+    "generation": "3세대 (W166 AMG, 2015~2019)",
+    "fuel": "가솔린",
+    "displacement": "2,996cc / 5,461cc",
+    "engine_code": "M276 (3.0 V6 367ps/390ps) / M157 (5.5 V8 585ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "GLE 300d / 400d / 450d 4MATIC (V167)",
+    "generation": "4세대 (V167/C167, 2019~현재)",
+    "fuel": "디젤",
+    "displacement": "1,950cc / 2,925cc / 2,989cc",
+    "engine_code": "OM654 (2.0 디젤 245ps/269ps) / OM656 (3.0 I6 330ps / 450d 367ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "GLE 450 4MATIC (V167)",
+    "generation": "4세대 (V167, 2019~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,999cc",
+    "engine_code": "M256 (3.0 직렬 6기통 48V ISG 터보 367ps / F/L 381ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "GLE 350e / 400e (V167 PHEV)",
+    "generation": "4세대 (V167 PHEV, 2020~현재)",
+    "fuel": "가솔린 플러그인 HEV",
+    "displacement": "1,991cc / 1,999cc",
+    "engine_code": "M274/M254 + 100kW 모터 (합산 333ps/381ps / 31.2kWh 배터리)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG GLE 53 / GLE 63 S 4MATIC+ (V167)",
+    "generation": "4세대 (V167 AMG, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,999cc / 3,982cc",
+    "engine_code": "M256 (3.0 I6 435ps) / M177 (4.0 V8 트윈터보 612ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "GLS 350d / GLS 500 (X166)",
+    "generation": "2세대 (X166 GLS, 2016~2019)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "2,987cc / 4,663cc",
+    "engine_code": "OM642 (3.0 V6 258ps) / M278 (4.7 V8 455ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "GLS 400d / GLS 450d 4MATIC (X167)",
+    "generation": "3세대 (X167, 2020~현재)",
+    "fuel": "디젤",
+    "displacement": "2,925cc / 2,989cc",
+    "engine_code": "OM656 (3.0 직렬 6기통 디젤 330ps / 450d 48V MHEV 367ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "GLS 450 / GLS 580 4MATIC (X167)",
+    "generation": "3세대 (X167, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,999cc / 3,982cc",
+    "engine_code": "M256 (3.0 I6 367ps/381ps) / M176 (4.0 V8 바이터보 489ps/517ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "마이바흐 GLS 600 4MATIC (X167 Maybach)",
+    "generation": "3세대 (X167 Maybach, 2021~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,982cc",
+    "engine_code": "M176 (4.0 V8 바이터보 + 48V EQ Boost 557ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG GLS 63 4MATIC+ (X167)",
+    "generation": "3세대 (X167 AMG, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,982cc",
+    "engine_code": "M177 (4.0 V8 트윈스크롤 바이터보 612ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "G-클래스 G350 BlueTEC / G350d (W463 구형)",
+    "generation": "1세대 후기 (W463, 2012~2018)",
+    "fuel": "디젤",
+    "displacement": "2,987cc",
+    "engine_code": "OM642 (3.0 V6 디젤 211ps/245ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "G-클래스 G500 / G550 (W463 구형)",
+    "generation": "1세대 후기 (W463, 2008~2018)",
+    "fuel": "가솔린",
+    "displacement": "5,461cc / 3,982cc",
+    "engine_code": "M273 (5.5 V8 388ps) / M176 (4.0 V8 바이터보 422ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "G 55 AMG / G 63 AMG (W463 구형)",
+    "generation": "1세대 (W463 AMG, 2004~2018)",
+    "fuel": "가솔린",
+    "displacement": "5,439cc / 5,461cc",
+    "engine_code": "M113K (5.4 V8 수퍼차저 507ps) / M157 (5.5 V8 바이터보 544ps/571ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "G-클래스 G400d / G450d (W463 신형)",
+    "generation": "2세대 (W463/W465, 2020~현재)",
+    "fuel": "디젤",
+    "displacement": "2,925cc / 2,989cc",
+    "engine_code": "OM656 (3.0 직렬 6기통 330ps) / OM656M (48V MHEV 367ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "G-클래스 G500 (W465 페이스리프트)",
+    "generation": "2세대 (W465, 2024~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,999cc",
+    "engine_code": "M256M (3.0 직렬 6기통 48V MHEV 트윈터보 449ps)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG G 63 (W463/W465 신형)",
+    "generation": "2세대 (W463/W465 AMG, 2018~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,982cc",
+    "engine_code": "M177 (4.0 V8 핫인사이드V 바이터보 585ps / 850Nm)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "G 580 with EQ Technology (G클래스 EV)",
+    "generation": "2세대 (W465 EV, 2024~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "116kWh 배터리 / 432kW (587ps, 토크 1,164Nm) 개별 제어 4모터 AWD (G-Turn 지원)"
+  },
+  {
+    "brand": "벤츠",
+    "model": "EQA 250 (H243 EV)",
+    "generation": "1세대 (H243 EV, 2021~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "66.5kWh 리튬이온 배터리 / 140kW (190ps) 싱글모터 전륜"
+  },
+  {
+    "brand": "벤츠",
+    "model": "EQB 300 4MATIC (X243 EV)",
+    "generation": "1세대 (X243 EV, 2022~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "66.5kWh 배터리 / 168kW (228ps) 듀얼모터 AWD"
+  },
+  {
+    "brand": "벤츠",
+    "model": "EQC 400 4MATIC (N293 EV)",
+    "generation": "1세대 (N293 EV, 2019~2023단종)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "80kWh 배터리 / 300kW (408ps) 듀얼모터 AWD"
+  },
+  {
+    "brand": "벤츠",
+    "model": "EQE 300 / EQE 350+ (V295 EV)",
+    "generation": "1세대 (V295 EV, 2022~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "88.8kWh / 90.6kWh 배터리 / 180kW(245ps) / 215kW(292ps) 후륜 싱글모터"
+  },
+  {
+    "brand": "벤츠",
+    "model": "EQE 350 4MATIC / AMG EQE 53 4MATIC+",
+    "generation": "1세대 (V295 EV, 2022~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "90.6kWh 배터리 / 215kW(292ps) / 460kW(626ps/687ps 부스트) 듀얼모터 AWD"
+  },
+  {
+    "brand": "벤츠",
+    "model": "EQE SUV 350 4MATIC / 500 4MATIC",
+    "generation": "1세대 (X294 EV, 2023~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "88.8kWh / 90.6kWh 배터리 / 215kW(292ps) / 300kW(408ps) 듀얼모터 AWD"
+  },
+  {
+    "brand": "벤츠",
+    "model": "EQS 450+ / EQS 450 4MATIC (V297 EV)",
+    "generation": "1세대 (V297 EV, 2021~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "107.8kWh / 118kWh 배터리 / 245kW(333ps) / 265kW(360ps) 모터"
+  },
+  {
+    "brand": "벤츠",
+    "model": "AMG EQS 53 4MATIC+ (V297 M EV)",
+    "generation": "1세대 (V297 AMG EV, 2022~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "107.8kWh 배터리 / 484kW (658ps / 761ps 다이내믹플러스) 듀얼모터 AWD"
+  },
+  {
+    "brand": "벤츠",
+    "model": "EQS SUV 450 4MATIC / 580 4MATIC",
+    "generation": "1세대 (X296 EV, 2023~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "107.8kWh / 118kWh 배터리 / 265kW(360ps) / 400kW(544ps) 듀얼모터 AWD"
+  },
+  {
+    "brand": "벤츠",
+    "model": "마이바흐 EQS 680 SUV (Z296 Maybach EV)",
+    "generation": "1세대 (Z296 Maybach EV, 2024~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "118kWh 배터리 / 484kW (658ps, 토크 950Nm) 최고급 플래그십 듀얼모터 AWD"
+  }
+];
+
+  let currentSegment = "ALL";
+  let currentFuel = "ALL";
+  let currentSearch = "";
+
+  const tbody = document.getElementById("benz-tbody");
+  const noResults = document.getElementById("benz-no-results");
+  const totalCountEl = document.getElementById("benz-total-count");
+  const searchInput = document.getElementById("benz-search");
+
+  function getBrandBadge(brand) {
+    return '<span class="benz-badge badge-benz">' + brand + '</span>';
+  }
+
+  function getFuelBadge(fuel) {
+    let cls = "fuel-gasoline";
+    if (fuel.includes("디젤")) cls = "fuel-diesel";
+    else if (fuel.includes("플러그인") || fuel.includes("PHEV")) cls = "fuel-phev";
+    else if (fuel.includes("전기")) cls = "fuel-ev";
+    return '<span class="benz-badge ' + cls + '">' + fuel + '</span>';
+  }
+
+  function render() {
+    const searchVal = currentSearch.trim().toLowerCase();
+    
+    const filtered = rawData.filter(item => {
+      // 라인업 세그먼트 필터
+      if (currentSegment !== "ALL") {
+        const patterns = currentSegment.split("|");
+        const match = patterns.some(p => item.model.includes(p));
+        if (!match) return false;
       }
-    ];
-
-    let currentSegment = "ALL";
-    let currentFuel = "ALL";
-    let currentSearch = "";
-
-    const tbody = document.getElementById("benz-tbody");
-    const noResults = document.getElementById("benz-no-results");
-    const totalCountEl = document.getElementById("benz-total-count");
-    const searchInput = document.getElementById("benz-search");
-
-    function getBrandBadge(brand) {
-      return '<span class="benz-badge badge-benz">' + brand + '</span>';
-    }
-
-    function getFuelBadge(fuel) {
-      let cls = "fuel-gasoline";
-      if (fuel.includes("디젤")) cls = "fuel-diesel";
-      else if (fuel.includes("플러그인") || fuel.includes("PHEV")) cls = "fuel-phev";
-      else if (fuel.includes("전기")) cls = "fuel-ev";
-      return '<span class="benz-badge ' + cls + '">' + fuel + '</span>';
-    }
-
-    function render() {
-      const searchVal = currentSearch.trim().toLowerCase();
-
-      const filtered = rawData.filter(item => {
-        // 라인업 세그먼트 필터
-        if (currentSegment !== "ALL") {
-          const patterns = currentSegment.split("|");
-          const match = patterns.some(p => item.model.includes(p));
-          if (!match) return false;
-        }
-        // 연료 필터
-        if (currentFuel !== "ALL") {
-          if (currentFuel === "플러그인" && !(item.fuel.includes("플러그인") || item.fuel.includes("PHEV"))) return false;
-          else if (currentFuel === "전기" && !item.fuel.includes("전기")) return false;
-          else if (currentFuel === "가솔린" && (!item.fuel.includes("가솔린") || item.fuel.includes("플러그인"))) return false;
-          else if (currentFuel === "디젤" && !item.fuel.includes("디젤")) return false;
-        }
-        // 검색어 필터
-        if (searchVal) {
-          const targetStr = (item.brand + " " + item.model + " " + item.generation + " " + item.fuel + " " + item.displacement + " " + item.engine_code).toLowerCase();
-          if (!targetStr.includes(searchVal)) return false;
-        }
-        return true;
-      });
-
-      totalCountEl.textContent = filtered.length;
-
-      if (filtered.length === 0) {
-        tbody.innerHTML = "";
-        noResults.style.display = "block";
-        return;
+      // 연료 필터
+      if (currentFuel !== "ALL") {
+        if (currentFuel === "플러그인" && !(item.fuel.includes("플러그인") || item.fuel.includes("PHEV"))) return false;
+        else if (currentFuel === "전기" && !item.fuel.includes("전기")) return false;
+        else if (currentFuel === "가솔린" && (!item.fuel.includes("가솔린") || item.fuel.includes("플러그인"))) return false;
+        else if (currentFuel === "디젤" && !item.fuel.includes("디젤")) return false;
       }
-
-      noResults.style.display = "none";
-      let html = "";
-      filtered.forEach(item => {
-        html += '<tr>';
-        html += '<td data-label="브랜드">' + getBrandBadge(item.brand) + '</td>';
-        html += '<td data-label="차량명"><strong>' + item.model + '</strong></td>';
-        html += '<td data-label="세대">' + item.generation + '</td>';
-        html += '<td data-label="연료">' + getFuelBadge(item.fuel) + '</td>';
-        html += '<td data-label="배기량">' + item.displacement + '</td>';
-        html += '<td data-label="엔진코드"><span class="engine-code-text">' + item.engine_code + '</span></td>';
-        html += '</tr>';
-      });
-
-      tbody.innerHTML = html;
-    }
-
-    // 검색 이벤트
-    if (searchInput) {
-      searchInput.addEventListener("input", function (e) {
-        currentSearch = e.target.value;
-        render();
-      });
-    }
-
-    // 필터 버튼 이벤트
-    document.querySelectorAll("#benz-engine-wrap .benz-btn-chip").forEach(btn => {
-      btn.addEventListener("click", function () {
-        const type = this.getAttribute("data-filter-type");
-        const val = this.getAttribute("data-val");
-
-        const siblings = this.parentElement.querySelectorAll(".benz-btn-chip");
-        siblings.forEach(s => s.classList.remove("active"));
-        this.classList.add("active");
-
-        if (type === "segment") currentSegment = val;
-        if (type === "fuel") currentFuel = val;
-        render();
-      });
+      // 검색어 필터
+      if (searchVal) {
+        const targetStr = (item.brand + " " + item.model + " " + item.generation + " " + item.fuel + " " + item.displacement + " " + item.engine_code).toLowerCase();
+        if (!targetStr.includes(searchVal)) return false;
+      }
+      return true;
     });
 
-    // CSV 다운로드 기능
-    const csvBtn = document.getElementById("benz-btn-csv");
-    if (csvBtn) {
-      csvBtn.addEventListener("click", function () {
-        let csvContent = "\uFEFF제조사,차량명,세대,연료,배기량,엔진코드\n";
-        rawData.forEach(r => {
-          csvContent += `"${r.brand}","${r.model}","${r.generation}","${r.fuel}","${r.displacement}","${r.engine_code}"\n`;
-        });
-        const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.setAttribute("href", url);
-        link.setAttribute("download", "mercedes_benz_engine_specs.csv");
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      });
+    totalCountEl.textContent = filtered.length;
+
+    if (filtered.length === 0) {
+      tbody.innerHTML = "";
+      noResults.style.display = "block";
+      return;
     }
 
-    // 클립보드 복사 기능
-    const copyBtn = document.getElementById("benz-btn-copy");
-    if (copyBtn) {
-      copyBtn.addEventListener("click", function () {
-        let text = "제조사\t차량명\t세대\t연료\t배기량\t엔진코드\n";
-        rawData.forEach(r => {
-          text += `${r.brand}\t${r.model}\t${r.generation}\t${r.fuel}\t${r.displacement}\t${r.engine_code}\n`;
-        });
-        navigator.clipboard.writeText(text).then(() => {
-          alert("전체 데이터가 클립보드로 복사되었습니다. (엑셀/구글 시트에 바로 붙여넣기 가능)");
-        }).catch(() => {
-          alert("클립보드 복사 권한을 확인해주세요.");
-        });
-      });
-    }
+    noResults.style.display = "none";
+    let html = "";
+    filtered.forEach(item => {
+      html += '<tr>';
+      html += '<td data-label="브랜드">' + getBrandBadge(item.brand) + '</td>';
+      html += '<td data-label="차량명"><strong>' + item.model + '</strong></td>';
+      html += '<td data-label="세대">' + item.generation + '</td>';
+      html += '<td data-label="연료">' + getFuelBadge(item.fuel) + '</td>';
+      html += '<td data-label="배기량">' + item.displacement + '</td>';
+      html += '<td data-label="엔진코드"><span class="engine-code-text">' + item.engine_code + '</span></td>';
+      html += '</tr>';
+    });
 
-    // 초기 렌더링
-    render();
-  })();
+    tbody.innerHTML = html;
+  }
+
+  // 검색 이벤트
+  if (searchInput) {
+    searchInput.addEventListener("input", function(e) {
+      currentSearch = e.target.value;
+      render();
+    });
+  }
+
+  // 필터 버튼 이벤트
+  document.querySelectorAll("#benz-engine-wrap .benz-btn-chip").forEach(btn => {
+    btn.addEventListener("click", function() {
+      const type = this.getAttribute("data-filter-type");
+      const val = this.getAttribute("data-val");
+
+      const siblings = this.parentElement.querySelectorAll(".benz-btn-chip");
+      siblings.forEach(s => s.classList.remove("active"));
+      this.classList.add("active");
+
+      if (type === "segment") currentSegment = val;
+      if (type === "fuel") currentFuel = val;
+      render();
+    });
+  });
+
+  // CSV 다운로드 기능
+  const csvBtn = document.getElementById("benz-btn-csv");
+  if (csvBtn) {
+    csvBtn.addEventListener("click", function() {
+      let csvContent = "\uFEFF제조사,차량명,세대,연료,배기량,엔진코드\n";
+      rawData.forEach(r => {
+        csvContent += `"${r.brand}","${r.model}","${r.generation}","${r.fuel}","${r.displacement}","${r.engine_code}"\n`;
+      });
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", "mercedes_benz_engine_specs.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  }
+
+  // 클립보드 복사 기능
+  const copyBtn = document.getElementById("benz-btn-copy");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function() {
+      let text = "제조사\t차량명\t세대\t연료\t배기량\t엔진코드\n";
+      rawData.forEach(r => {
+        text += `${r.brand}\t${r.model}\t${r.generation}\t${r.fuel}\t${r.displacement}\t${r.engine_code}\n`;
+      });
+      navigator.clipboard.writeText(text).then(() => {
+        alert("전체 데이터가 클립보드로 복사되었습니다. (엑셀/구글 시트에 바로 붙여넣기 가능)");
+      }).catch(() => {
+        alert("클립보드 복사 권한을 확인해주세요.");
+      });
+    });
+  }
+
+  // 초기 렌더링
+  render();
+})();
 </script>
