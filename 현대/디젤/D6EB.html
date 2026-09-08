@@ -868,10 +868,10 @@
     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:1.2rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.8rem;">
         <div style="display:flex; align-items:center; gap:8px;">
             <i class="bi-chat-dots-fill" style="color:var(--accent-cyan); font-size:1.3rem;"></i>
-            <h3 style="font-size:1.15rem; font-weight:700; color:#ffffff; margin:0;">차주 & 정비사 한줄 메모장 · 오류 제보 & 문의</h3>
+            <h3 style="font-size:1.15rem; font-weight:700; color:#ffffff; margin:0;">차주 & 정비사 한줄 실전 메모장</h3>
             <span style="background:rgba(0,242,254,0.15); color:var(--accent-cyan); font-size:0.75rem; font-weight:700; padding:2px 8px; border-radius:12px;">익명 실시간</span>
         </div>
-        <span style="font-size:0.8rem; color:#94a3b8;">정비 꿀팁, 고질병 해결법뿐만 아니라 스펙 오류 제보나 궁금한 문의사항도 편하게 남겨주세요!</span>
+        <span style="font-size:0.8rem; color:#94a3b8;">오일 추천, 고질병 해결법, 정비 꿀팁을 자유롭게 남겨주세요</span>
     </div>
 
     <!-- Input Form -->
@@ -882,7 +882,7 @@
         <div style="display:grid; grid-template-columns: 160px 1fr 140px; gap:10px;" class="memo-form-inputs">
             <input type="text" id="commentAuthor" placeholder="닉네임 (예: 520d차주)" maxlength="15" required
                    style="background:rgba(11,15,25,0.8); border:1px solid rgba(255,255,255,0.12); color:#fff; padding:0.65rem 0.85rem; border-radius:8px; font-size:0.88rem; outline:none;">
-            <input type="text" id="commentText" placeholder="정비 팁, 고질병 경험담, 스펙 오류 제보, 문의사항 (최대 120자)" maxlength="120" required
+            <input type="text" id="commentText" placeholder="엔진 경험담, 오일 점도, 정비 주기 팁 (최대 120자)" maxlength="120" required
                    style="background:rgba(11,15,25,0.8); border:1px solid rgba(255,255,255,0.12); color:#fff; padding:0.65rem 0.85rem; border-radius:8px; font-size:0.88rem; outline:none;">
             <div style="display:flex; gap:6px; align-items:center;">
                 <span id="mathQuizLabel" style="font-size:0.82rem; color:var(--accent-cyan); font-weight:700; white-space:nowrap; font-family:'JetBrains Mono';">3 + 4 =</span>
@@ -919,6 +919,16 @@
         } catch(e) { return []; }
     }
 
+    function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
     function renderComments() {
         const listEl = document.getElementById('commentsList');
         if (!listEl) return;
@@ -930,10 +940,10 @@
         listEl.innerHTML = comments.slice().reverse().map(c => `
             <div style="background:rgba(11,15,25,0.5); border:1px solid rgba(255,255,255,0.06); padding:0.65rem 0.95rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center; gap:10px;">
                 <div style="display:flex; align-items:center; gap:10px; flex:1; min-width:0;">
-                    <strong style="color:var(--accent-cyan); font-size:0.85rem; white-space:nowrap;">${c.author}</strong>
-                    <span style="color:#e2e8f0; font-size:0.86rem; word-break:break-all;">${c.text}</span>
+                    <strong style="color:var(--accent-cyan); font-size:0.85rem; white-space:nowrap;">${escapeHtml(c.author)}</strong>
+                    <span style="color:#e2e8f0; font-size:0.86rem; word-break:break-all;">${escapeHtml(c.text)}</span>
                 </div>
-                <span style="font-size:0.75rem; color:#64748b; white-space:nowrap;">${c.time}</span>
+                <span style="font-size:0.75rem; color:#64748b; white-space:nowrap;">${escapeHtml(c.time)}</span>
             </div>
         `).join('');
     }
