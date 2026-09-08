@@ -1,4 +1,7 @@
-<!-- Google tag (gtag.js) -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K3PFHN6VW7"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -7,9 +10,1026 @@
 
   gtag('config', 'G-K3PFHN6VW7');
 </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KGM & 쌍용자동차 세대별 엔진코드 & 제원 종합 일람표 | ThePathLab</title>
+    <meta name="description" content="쌍용자동차 코란도, 무쏘, 렉스턴, 체어맨부터 토레스, 신형 액티언까지 전수 엔진코드 제원 데이터">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Translate Script -->
+<div id="google_translate_element" style="display:none;"></div>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'ko',
+            includedLanguages: 'ko,en,ru,es,ja,zh-CN,de,fr',
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+    function tplChangeLang(lang) {
+        var select = document.querySelector('.goog-te-combo');
+        if (select) {
+            select.value = lang;
+            select.dispatchEvent(new Event('change'));
+        } else {
+            document.cookie = 'googtrans=/ko/' + lang + '; path=/; SameSite=Lax; Secure';
+            location.reload();
+        }
+    }
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <style>
+        
+/* ==========================================================================
+   THEPATHLAB UNIFIED GLOBAL NAVIGATION & HAMBURGER DRAWER (Dark Tech UI)
+   ========================================================================== */
+:root {
+  --tpl-bg-nav: rgba(8, 12, 22, 0.94);
+  --tpl-bg-drawer: rgba(11, 15, 25, 0.98);
+  --tpl-border: rgba(255, 255, 255, 0.08);
+  --tpl-border-glow: rgba(0, 242, 254, 0.35);
+  --tpl-cyan: #00f2fe;
+  --tpl-blue: #38bdf8;
+  --tpl-gold: #ffb800;
+  --tpl-text-main: #f8fafc;
+  --tpl-text-sub: #94a3b8;
+  --tpl-text-dim: #64748b;
+}
 
-<!-- 블로그스팟 게시용: 쌍용자동차 & KG모빌리티(KGM) 역대 세대별 엔진코드 / 제원 일람표 (총 67개 모델) -->
-<div id="kgm-engine-wrap">
+.tpl-nav-bar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  background: var(--tpl-bg-nav);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--tpl-border);
+  padding: 0.65rem 1.25rem;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.tpl-nav-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tpl-nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.18rem;
+  letter-spacing: -0.4px;
+  flex-shrink: 0;
+}
+
+.tpl-nav-brand i {
+  color: var(--tpl-cyan);
+  font-size: 1.3rem;
+  filter: drop-shadow(0 0 6px rgba(0, 242, 254, 0.5));
+}
+
+.tpl-brand-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--tpl-gold);
+  background: rgba(255, 184, 0, 0.12);
+  border: 1px solid rgba(255, 184, 0, 0.25);
+  padding: 2px 7px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.tpl-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tpl-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--tpl-text-sub);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tpl-nav-link i {
+  font-size: 0.95rem;
+  color: var(--tpl-blue);
+}
+
+.tpl-nav-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.tpl-nav-link.active {
+  color: var(--tpl-cyan);
+  background: rgba(0, 242, 254, 0.12);
+  border: 1px solid rgba(0, 242, 254, 0.3);
+}
+
+.tpl-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.tpl-lang-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--tpl-border);
+  padding: 3px 6px;
+  border-radius: 8px;
+}
+
+.tpl-lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--tpl-text-sub);
+  cursor: pointer;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 3px 5px;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+
+.tpl-lang-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tpl-lang-sep {
+  color: #334155;
+  font-size: 0.7rem;
+}
+
+.tpl-hamburger-btn {
+  background: rgba(0, 242, 254, 0.08);
+  border: 1px solid var(--tpl-border-glow);
+  color: var(--tpl-cyan);
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  transition: all 0.2s ease;
+}
+
+.tpl-hamburger-btn:hover {
+  background: rgba(0, 242, 254, 0.2);
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0 0 14px rgba(0, 242, 254, 0.35);
+}
+
+/* Off-Canvas Drawer */
+.tpl-drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 10001;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.tpl-drawer-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tpl-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 380px;
+  max-width: 90vw;
+  background: var(--tpl-bg-drawer);
+  border-left: 1px solid var(--tpl-border);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
+  z-index: 10002;
+  transform: translateX(100%);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.tpl-drawer.open {
+  transform: translateX(0);
+}
+
+.tpl-drawer-header {
+  padding: 1.25rem 1.4rem;
+  border-bottom: 1px solid var(--tpl-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(18, 26, 43, 0.9);
+}
+
+.tpl-drawer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tpl-drawer-brand i {
+  color: var(--tpl-cyan);
+  font-size: 1.5rem;
+}
+
+.tpl-drawer-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.tpl-drawer-sub {
+  font-size: 0.75rem;
+  color: var(--tpl-text-dim);
+}
+
+.tpl-drawer-close {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--tpl-border);
+  color: var(--tpl-text-sub);
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.15s;
+}
+
+.tpl-drawer-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.tpl-drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tpl-drawer-body::-webkit-scrollbar {
+  width: 6px;
+}
+.tpl-drawer-body::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+
+.tpl-drawer-group-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--tpl-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tpl-drawer-group-title i {
+  color: var(--tpl-cyan);
+}
+
+.tpl-drawer-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 0.75rem 0.85rem;
+  border-radius: 12px;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--tpl-border);
+  margin-bottom: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.tpl-drawer-item:hover {
+  background: rgba(0, 242, 254, 0.08);
+  border-color: var(--tpl-border-glow);
+  transform: translateX(3px);
+}
+
+.tpl-drawer-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.icon-portal { background: rgba(0, 242, 254, 0.15); color: var(--tpl-cyan); }
+.icon-metals { background: rgba(255, 184, 0, 0.15); color: var(--tpl-gold); }
+.icon-engines { background: rgba(56, 189, 248, 0.15); color: var(--tpl-blue); }
+
+.tpl-drawer-item-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 2px;
+}
+
+.tpl-drawer-item-desc {
+  font-size: 0.76rem;
+  color: var(--tpl-text-dim);
+  line-height: 1.35;
+}
+
+.tpl-drawer-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tpl-chip-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--tpl-text-sub);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--tpl-border);
+  padding: 6px 11px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.tpl-chip-link:hover {
+  color: #ffffff;
+  background: rgba(0, 242, 254, 0.15);
+  border-color: var(--tpl-border-glow);
+}
+
+.tpl-drawer-langs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.tpl-drawer-lang-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--tpl-border);
+  color: var(--tpl-text-sub);
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+}
+
+.tpl-drawer-lang-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.tpl-drawer-sublinks {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tpl-drawer-sublinks a {
+  color: var(--tpl-text-sub);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: color 0.15s;
+}
+
+.tpl-drawer-sublinks a:hover {
+  color: var(--tpl-cyan);
+}
+
+.tpl-drawer-footer {
+  padding: 1rem 1.4rem;
+  border-top: 1px solid var(--tpl-border);
+  font-size: 0.78rem;
+  color: var(--tpl-text-dim);
+  background: rgba(8, 12, 22, 0.95);
+  text-align: center;
+}
+
+@media (max-width: 920px) {
+  .tpl-nav-links {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .tpl-lang-wrap {
+    display: none;
+  }
+}
+
+        
+/* Dark Tech Theme for #kgm-engine-wrap */
+body {
+  background-color: #0b0f19;
+  color: #f1f5f9;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  word-break: keep-all;
+  background-image: 
+    radial-gradient(circle at 10% 10%, rgba(0, 242, 254, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 90% 90%, rgba(255, 184, 0, 0.05) 0%, transparent 45%);
+  background-attachment: fixed;
+}
+
+.mfg-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+/* 6-Manufacturer Quick Switcher Bar */
+.mfg-quick-nav {
+  margin-bottom: 1.5rem;
+  background: rgba(18, 26, 43, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 0.85rem 1.2rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.mfg-quick-label {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-right: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.mfg-quick-chip {
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 5px 12px;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+
+.mfg-quick-chip:hover {
+  color: #ffffff;
+  background: rgba(0, 242, 254, 0.15);
+  border-color: rgba(0, 242, 254, 0.35);
+  transform: translateY(-1px);
+}
+
+.mfg-quick-chip.active {
+  color: #00f2fe;
+  background: rgba(0, 242, 254, 0.15);
+  border-color: #00f2fe;
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.25);
+  font-weight: 700;
+}
+
+/* Main Wrap */
+#kgm-engine-wrap {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #f1f5f9;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+#kgm-engine-wrap * {
+  box-sizing: border-box;
+}
+
+#kgm-engine-wrap .kgm-header {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+  color: #ffffff;
+  padding: 24px 22px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+#kgm-engine-wrap .kgm-title {
+  margin: 0 0 8px 0;
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  color: #ffffff;
+}
+
+#kgm-engine-wrap .kgm-desc {
+  margin: 0;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+}
+
+#kgm-engine-wrap .kgm-controls {
+  background: rgba(18, 26, 43, 0.85);
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  margin-bottom: 18px;
+  backdrop-filter: blur(10px);
+}
+
+#kgm-engine-wrap .kgm-search-box {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+#kgm-engine-wrap .kgm-search-input {
+  width: 100%;
+  padding: 12px 16px 12px 42px;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  outline: none;
+  background: rgba(11, 15, 25, 0.85);
+  color: #ffffff;
+  transition: all 0.2s;
+}
+
+#kgm-engine-wrap .kgm-search-input:focus {
+  background: rgba(11, 15, 25, 0.95);
+  border-color: #00f2fe;
+  box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.2);
+}
+
+#kgm-engine-wrap .kgm-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 1.05rem;
+  pointer-events: none;
+}
+
+#kgm-engine-wrap .kgm-filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#kgm-engine-wrap .kgm-filter-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-right: 4px;
+  min-width: 52px;
+}
+
+#kgm-engine-wrap .kgm-btn-chip {
+  background: rgba(255, 255, 255, 0.05);
+  color: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+#kgm-engine-wrap .kgm-btn-chip:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+#kgm-engine-wrap .kgm-btn-chip.active {
+  background: rgba(0, 242, 254, 0.15);
+  color: #00f2fe;
+  border-color: #00f2fe;
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.25);
+  font-weight: 700;
+}
+
+#kgm-engine-wrap .kgm-meta-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 4px 14px 4px;
+  font-size: 0.88rem;
+  color: #94a3b8;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#kgm-engine-wrap .kgm-count-highlight {
+  color: #00f2fe;
+  font-weight: 700;
+}
+
+#kgm-engine-wrap .kgm-action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+#kgm-engine-wrap .kgm-tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#kgm-engine-wrap .kgm-tool-btn:hover {
+  background: rgba(0, 242, 254, 0.15);
+  border-color: #00f2fe;
+  color: #ffffff;
+}
+
+/* Desktop Table View */
+#kgm-engine-wrap .kgm-table-container {
+  background: rgba(18, 26, 43, 0.85);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+#kgm-engine-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+#kgm-engine-wrap th {
+  background: #172554;
+  color: #93c5fd;
+  font-weight: 700;
+  padding: 13px 15px;
+  border-bottom: 2px solid rgba(59, 130, 246, 0.3);
+  white-space: nowrap;
+}
+
+#kgm-engine-wrap td {
+  padding: 12px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  vertical-align: middle;
+  color: #cbd5e1;
+}
+
+#kgm-engine-wrap tr:last-child td {
+  border-bottom: none;
+}
+
+#kgm-engine-wrap tr:hover td {
+  background-color: rgba(30, 41, 59, 0.6);
+}
+
+/* Badges & Text Styling */
+#kgm-engine-wrap .kgm-badge, #kgm-engine-wrap [class*="badge-"] {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  background: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+#kgm-engine-wrap .fuel-gasoline { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+#kgm-engine-wrap .fuel-diesel { background: rgba(148, 163, 184, 0.15); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.3); }
+#kgm-engine-wrap .fuel-hybrid { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+#kgm-engine-wrap .fuel-ev { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+#kgm-engine-wrap .fuel-lpg { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+
+#kgm-engine-wrap .engine-code-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: #00f2fe;
+  background: rgba(0, 242, 254, 0.1);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  padding: 2px 7px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+/* Mobile Responsive Card View (700px) */
+@media (max-width: 700px) {
+  .mfg-page-container {
+    padding: 1rem 0.5rem 2rem;
+  }
+  #kgm-engine-wrap .kgm-header {
+    padding: 18px 14px;
+    border-radius: 12px;
+  }
+  #kgm-engine-wrap .kgm-title {
+    font-size: 1.2rem;
+  }
+  #kgm-engine-wrap .kgm-controls {
+    padding: 12px;
+  }
+  #kgm-engine-wrap .kgm-table-container {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+  #kgm-engine-wrap table, 
+  #kgm-engine-wrap thead, 
+  #kgm-engine-wrap tbody, 
+  #kgm-engine-wrap th, 
+  #kgm-engine-wrap tr {
+    display: block;
+  }
+  #kgm-engine-wrap thead {
+    display: none;
+  }
+  #kgm-engine-wrap tr {
+    background: rgba(18, 26, 43, 0.9);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 12px;
+    padding: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+  }
+  #kgm-engine-wrap td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+    font-size: 0.86rem;
+  }
+  #kgm-engine-wrap td:last-child {
+    border-bottom: none;
+    padding-top: 10px;
+  }
+  #kgm-engine-wrap td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+}
+
+#kgm-engine-wrap .no-results {
+  text-align: center;
+  padding: 40px 20px;
+  color: #64748b;
+  font-size: 0.95rem;
+  background: rgba(18, 26, 43, 0.8);
+  border-radius: 12px;
+}
+
+    </style>
+</head>
+<body>
+
+<!-- ThePathLab Global Unified Navigation Bar -->
+<nav class="tpl-nav-bar" id="tplNavBar">
+  <div class="tpl-nav-inner">
+    <a href="https://chicstory.github.io/" class="tpl-nav-brand">
+      <i class="bi-bounding-box-circles"></i>
+      <span>ThePathLab</span>
+      <span class="tpl-brand-badge" id="tplNavBadge">SPECS ARCHIVE</span>
+    </a>
+
+    <div class="tpl-nav-links">
+      <a href="https://chicstory.github.io/" class="tpl-nav-link "><i class="bi-house-door"></i> 포털 홈</a>
+      <a href="https://chicstory.github.io/metals/" class="tpl-nav-link "><i class="bi-graph-up-arrow"></i> 금속 원자재·스크랩</a>
+      <a href="https://chicstory.github.io/engines/" class="tpl-nav-link "><i class="bi-cpu"></i> 엔진 전수 백과</a>
+      <a href="https://chicstory.github.io/engines/hyundai_kia_engine_table.html" class="tpl-nav-link active"><i class="bi-table"></i> 제조사별 스펙표</a>
+    </div>
+
+    <div class="tpl-nav-actions">
+      <div class="tpl-lang-wrap">
+        <button type="button" class="tpl-lang-btn" onclick="tplChangeLang('ko')">KO</button>
+        <span class="tpl-lang-sep">|</span>
+        <button type="button" class="tpl-lang-btn" onclick="tplChangeLang('en')">EN</button>
+        <span class="tpl-lang-sep">|</span>
+        <button type="button" class="tpl-lang-btn" onclick="tplChangeLang('ru')">RU</button>
+        <span class="tpl-lang-sep">|</span>
+        <button type="button" class="tpl-lang-btn" onclick="tplChangeLang('es')">ES</button>
+      </div>
+      <button type="button" class="tpl-hamburger-btn" id="tplHamburgerBtn" aria-label="전체 메뉴 열기">
+        <i class="bi-list"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Backdrop Overlay -->
+<div class="tpl-drawer-overlay" id="tplDrawerOverlay"></div>
+
+<!-- Off-Canvas Drawer (Slide from Right) -->
+<aside class="tpl-drawer" id="tplDrawer" aria-hidden="true">
+  <div class="tpl-drawer-header">
+    <div class="tpl-drawer-brand">
+      <i class="bi-bounding-box-circles"></i>
+      <div>
+        <div class="tpl-drawer-title">ThePathLab Network</div>
+        <div class="tpl-drawer-sub">산업 원자재 & 모빌리티 테크 인텔리전스</div>
+      </div>
+    </div>
+    <button type="button" class="tpl-drawer-close" id="tplDrawerClose" aria-label="메뉴 닫기">
+      <i class="bi-x-lg"></i>
+    </button>
+  </div>
+
+  <div class="tpl-drawer-body">
+    <!-- Section 1: Core Hubs -->
+    <div class="tpl-drawer-group">
+      <div class="tpl-drawer-group-title"><i class="bi-stars"></i> 핵심 서비스 포털</div>
+      <a href="https://chicstory.github.io/" class="tpl-drawer-item">
+        <div class="tpl-drawer-icon icon-portal"><i class="bi-house-door"></i></div>
+        <div class="tpl-drawer-item-text">
+          <div class="tpl-drawer-item-title">ThePathLab 포털 메인</div>
+          <div class="tpl-drawer-item-desc">통합 인텔리전스 허브 대시보드</div>
+        </div>
+      </a>
+      <a href="https://chicstory.github.io/metals/" class="tpl-drawer-item">
+        <div class="tpl-drawer-icon icon-metals"><i class="bi-graph-up-arrow"></i></div>
+        <div class="tpl-drawer-item-text">
+          <div class="tpl-drawer-item-title">7대 금속 원자재 & 스크랩 허브</div>
+          <div class="tpl-drawer-item-desc">일일 시세 분석 · 1초 즉시 계산기 · 캘린더 아카이브</div>
+        </div>
+      </a>
+      <a href="https://chicstory.github.io/engines/" class="tpl-drawer-item">
+        <div class="tpl-drawer-icon icon-engines"><i class="bi-cpu"></i></div>
+        <div class="tpl-drawer-item-text">
+          <div class="tpl-drawer-item-title">자동차 엔진 전수 백과사전</div>
+          <div class="tpl-drawer-item-desc">260개 파워트레인 실측 제원 & 다이노 그래프</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Section 2: Manufacturer Tables Quick Jump -->
+    <div class="tpl-drawer-group">
+      <div class="tpl-drawer-group-title"><i class="bi-table"></i> 제조사별 전수 스펙 종합비교표</div>
+      <div class="tpl-drawer-chips">
+        <a href="https://chicstory.github.io/engines/hyundai_kia_engine_table.html" class="tpl-chip-link">현대·기아 (87종)</a>
+        <a href="https://chicstory.github.io/engines/bmw_engine_table.html" class="tpl-chip-link">BMW (45종)</a>
+        <a href="https://chicstory.github.io/engines/mercedes_benz_engine_table.html" class="tpl-chip-link">메르세데스-벤츠 (40종)</a>
+        <a href="https://chicstory.github.io/engines/audi_engine_table.html" class="tpl-chip-link">아우디 (32종)</a>
+        <a href="https://chicstory.github.io/engines/volkswagen_engine_table.html" class="tpl-chip-link">폭스바겐 (20종)</a>
+        <a href="https://chicstory.github.io/engines/kgm_ssangyong_engine_table.html" class="tpl-chip-link">KGM·쌍용 (20종)</a>
+      </div>
+    </div>
+
+    <!-- Section 3: Multi-Language Switcher -->
+    <div class="tpl-drawer-group">
+      <div class="tpl-drawer-group-title"><i class="bi-globe"></i> 언어 선택 (Language)</div>
+      <div class="tpl-drawer-langs">
+        <button type="button" class="tpl-drawer-lang-btn" onclick="tplChangeLang('ko')">🇰🇷 한국어</button>
+        <button type="button" class="tpl-drawer-lang-btn" onclick="tplChangeLang('en')">🇺🇸 English</button>
+        <button type="button" class="tpl-drawer-lang-btn" onclick="tplChangeLang('ru')">🇷🇺 Русский</button>
+        <button type="button" class="tpl-drawer-lang-btn" onclick="tplChangeLang('es')">🇪🇸 Español</button>
+      </div>
+    </div>
+
+    <!-- Section 4: Site Info & Links -->
+    <div class="tpl-drawer-group">
+      <div class="tpl-drawer-group-title"><i class="bi-info-circle"></i> 서비스 정보 & 채널</div>
+      <div class="tpl-drawer-sublinks">
+        <a href="https://blog.naver.com/thepathlab" target="_blank" rel="noopener"><i class="bi-box-arrow-up-right"></i> 네이버 공식 블로그</a>
+        <a href="https://chicstory.github.io/about.html"><i class="bi-shield-check"></i> 소개 (About)</a>
+        <a href="https://chicstory.github.io/privacy.html"><i class="bi-lock"></i> 개인정보처리방침</a>
+        <a href="https://chicstory.github.io/contact.html"><i class="bi-envelope"></i> 문의하기</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="tpl-drawer-footer">
+    <div>ThePathLab Data Intelligence Network</div>
+    <div style="font-size: 0.72rem; color: #64748b; margin-top: 4px;">© 2026 ThePathLab. All Rights Reserved.</div>
+  </div>
+</aside>
+
+<script>
+(function() {
+  var btn = document.getElementById('tplHamburgerBtn');
+  var drawer = document.getElementById('tplDrawer');
+  var overlay = document.getElementById('tplDrawerOverlay');
+  var closeBtn = document.getElementById('tplDrawerClose');
+
+  function openDrawer() {
+    if (drawer && overlay) {
+      drawer.classList.add('open');
+      overlay.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeDrawer() {
+    if (drawer && overlay) {
+      drawer.classList.remove('open');
+      overlay.classList.remove('open');
+      drawer.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (btn) btn.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (overlay) overlay.addEventListener('click', closeDrawer);
+
+  var links = drawer ? drawer.querySelectorAll('a') : [];
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener('click', closeDrawer);
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDrawer();
+  });
+})();
+</script>
+
+
+<main class="mfg-page-container">
+    <div class="mfg-quick-nav">
+  <span class="mfg-quick-label"><i class="bi-table"></i> 제조사별 전수 스펙표:</span>
+  <a href="hyundai_kia_engine_table.html" class="mfg-quick-chip ">현대·기아 (87종)</a>
+  <a href="bmw_engine_table.html" class="mfg-quick-chip ">BMW (45종)</a>
+  <a href="mercedes_benz_engine_table.html" class="mfg-quick-chip ">메르세데스-벤츠 (40종)</a>
+  <a href="audi_engine_table.html" class="mfg-quick-chip ">아우디 (32종)</a>
+  <a href="volkswagen_engine_table.html" class="mfg-quick-chip ">폭스바겐 (20종)</a>
+  <a href="kgm_ssangyong_engine_table.html" class="mfg-quick-chip active">KGM·쌍용 (20종)</a>
+</div>
+    <div id="kgm-engine-wrap">
   <!-- 헤더 영역 -->
   <div class="kgm-header">
     <h2 class="kgm-title">🚙 쌍용자동차 · KGM 세대별 엔진코드 · 제원 일람표</h2>
@@ -86,283 +1106,7 @@
     </div>
   </div>
 </div>
-
-<style>
-  /* 블로그스팟 독립형 스타일 네임스페이스 (#kgm-engine-wrap) */
-  #kgm-engine-wrap {
-    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
-    max-width: 980px;
-    margin: 16px auto;
-    padding: 16px 12px;
-    color: #1e293b;
-    line-height: 1.5;
-    box-sizing: border-box;
-  }
-  #kgm-engine-wrap * {
-    box-sizing: border-box;
-  }
-  #kgm-engine-wrap .kgm-header {
-    background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0284c7 100%);
-    color: #ffffff;
-    padding: 24px 20px;
-    border-radius: 16px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 20px rgba(12, 74, 110, 0.2);
-  }
-  #kgm-engine-wrap .kgm-title {
-    margin: 0 0 8px 0;
-    font-size: 1.35rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.3;
-    color: #ffffff;
-  }
-  #kgm-engine-wrap .kgm-desc {
-    margin: 0;
-    font-size: 0.88rem;
-    color: #e0f2fe;
-  }
-  #kgm-engine-wrap .kgm-controls {
-    background: #ffffff;
-    padding: 16px;
-    border-radius: 12px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    margin-bottom: 16px;
-  }
-  #kgm-engine-wrap .kgm-search-box {
-    position: relative;
-    margin-bottom: 12px;
-  }
-  #kgm-engine-wrap .kgm-search-input {
-    width: 100%;
-    padding: 12px 16px 12px 40px;
-    font-size: 0.92rem;
-    border: 1.5px solid #cbd5e1;
-    border-radius: 10px;
-    outline: none;
-    background: #f8fafc;
-    color: #0f172a;
-    transition: all 0.2s;
-  }
-  #kgm-engine-wrap .kgm-search-input:focus {
-    background: #ffffff;
-    border-color: #0284c7;
-    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
-  }
-  #kgm-engine-wrap .kgm-search-icon {
-    position: absolute;
-    left: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #94a3b8;
-    font-size: 1.05rem;
-    pointer-events: none;
-  }
-  #kgm-engine-wrap .kgm-filter-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-  #kgm-engine-wrap .kgm-filter-label {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: #64748b;
-    margin-right: 4px;
-    min-width: 44px;
-  }
-  #kgm-engine-wrap .kgm-btn-chip {
-    background: #f1f5f9;
-    color: #475569;
-    border: 1px solid #e2e8f0;
-    padding: 5px 11px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    user-select: none;
-  }
-  #kgm-engine-wrap .kgm-btn-chip:hover {
-    background: #e2e8f0;
-    color: #1e293b;
-  }
-  #kgm-engine-wrap .kgm-btn-chip.active {
-    background: #0284c7;
-    color: #ffffff;
-    border-color: #0284c7;
-  }
-  #kgm-engine-wrap .kgm-meta-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 4px 4px 12px 4px;
-    font-size: 0.85rem;
-    color: #64748b;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  #kgm-engine-wrap .kgm-count-highlight {
-    color: #0284c7;
-    font-weight: 700;
-  }
-  #kgm-engine-wrap .kgm-action-buttons {
-    display: flex;
-    gap: 8px;
-  }
-  #kgm-engine-wrap .kgm-tool-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background: #ffffff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    padding: 5px 10px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: #334155;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  #kgm-engine-wrap .kgm-tool-btn:hover {
-    background: #f1f5f9;
-    border-color: #94a3b8;
-  }
-
-  /* 데스크톱 테이블 뷰 */
-  #kgm-engine-wrap .kgm-table-container {
-    background: #ffffff;
-    border-radius: 12px;
-    border: 1px solid #e2e8f0;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-  }
-  #kgm-engine-wrap table {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: left;
-    font-size: 0.88rem;
-  }
-  #kgm-engine-wrap th {
-    background: #f8fafc;
-    color: #475569;
-    font-weight: 700;
-    padding: 12px 14px;
-    border-bottom: 2px solid #e2e8f0;
-    white-space: nowrap;
-  }
-  #kgm-engine-wrap td {
-    padding: 12px 14px;
-    border-bottom: 1px solid #f1f5f9;
-    vertical-align: middle;
-  }
-  #kgm-engine-wrap tr:last-child td {
-    border-bottom: none;
-  }
-  #kgm-engine-wrap tr:hover td {
-    background-color: #f8fafc;
-  }
-
-  /* 배지 스타일 */
-  #kgm-engine-wrap .kgm-badge {
-    display: inline-block;
-    padding: 3px 7px;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    white-space: nowrap;
-  }
-  #kgm-engine-wrap .badge-ssangyong { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
-  #kgm-engine-wrap .badge-kgm { background: #f0f9ff; color: #0369a1; border: 1px solid #bae6fd; }
-  
-  #kgm-engine-wrap .fuel-diesel { background: #f1f5f9; color: #334155; }
-  #kgm-engine-wrap .fuel-gasoline { background: #f0fdf4; color: #15803d; }
-  #kgm-engine-wrap .fuel-lpg { background: #fff7ed; color: #c2410c; }
-  #kgm-engine-wrap .fuel-ev { background: #faf5ff; color: #7e22ce; }
-
-  #kgm-engine-wrap .engine-code-text {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-weight: 700;
-    color: #0f172a;
-    background: #f1f5f9;
-    padding: 2px 6px;
-    border-radius: 4px;
-    display: inline-block;
-  }
-
-  /* 모바일 반응형 카드 뷰 (700px 이하) */
-  @media (max-width: 700px) {
-    #kgm-engine-wrap {
-      padding: 10px 4px;
-    }
-    #kgm-engine-wrap .kgm-header {
-      padding: 18px 14px;
-      border-radius: 12px;
-    }
-    #kgm-engine-wrap .kgm-title {
-      font-size: 1.15rem;
-    }
-    #kgm-engine-wrap .kgm-controls {
-      padding: 12px;
-    }
-    #kgm-engine-wrap .kgm-table-container {
-      background: transparent;
-      border: none;
-      box-shadow: none;
-    }
-    #kgm-engine-wrap table, 
-    #kgm-engine-wrap thead, 
-    #kgm-engine-wrap tbody, 
-    #kgm-engine-wrap th, 
-    #kgm-engine-wrap tr {
-      display: block;
-    }
-    #kgm-engine-wrap thead {
-      display: none;
-    }
-    #kgm-engine-wrap tr {
-      background: #ffffff;
-      border-radius: 12px;
-      border: 1px solid #e2e8f0;
-      margin-bottom: 12px;
-      padding: 12px 14px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-    }
-    #kgm-engine-wrap td {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 6px 0;
-      border-bottom: 1px dashed #f1f5f9;
-      font-size: 0.85rem;
-    }
-    #kgm-engine-wrap td:last-child {
-      border-bottom: none;
-      padding-top: 8px;
-    }
-    #kgm-engine-wrap td::before {
-      content: attr(data-label);
-      font-weight: 700;
-      color: #64748b;
-      font-size: 0.78rem;
-      margin-right: 12px;
-      flex-shrink: 0;
-    }
-  }
-
-  #kgm-engine-wrap .no-results {
-    text-align: center;
-    padding: 40px 20px;
-    color: #94a3b8;
-    font-size: 0.92rem;
-    background: #ffffff;
-    border-radius: 12px;
-    border: 1px dashed #cbd5e1;
-  }
-</style>
+</main>
 
 <script>
 (function() {
@@ -1043,3 +1787,6 @@
   render();
 })();
 </script>
+
+</body>
+</html>
