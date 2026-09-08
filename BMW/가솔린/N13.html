@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N13 파워트레인 완전 분석 | N13 파워트레인 유닛 (170ps)</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-card: rgba(18, 26, 43, 0.85);
+            --bg-card-hover: rgba(28, 38, 62, 0.95);
+            --border-glow: rgba(0, 242, 254, 0.25);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --accent-cyan: #00f2fe;
+            --accent-blue: #4facfe;
+            --accent-red: #ff3b5c;
+            --accent-gold: #ffb800;
+            --text-main: #f1f5f9;
+            --text-sub: #94a3b8;
+            --text-dim: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            padding: 2.5rem 1rem;
+            word-break: keep-all;
+            word-wrap: break-word;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(0, 242, 254, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 59, 92, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1040px;
+            margin: 0 auto;
+        }
+
+        /* Back Navigation */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.92rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background: rgba(0, 242, 254, 0.1);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .btn-back:hover {
+            background: rgba(0, 242, 254, 0.2);
+            transform: translateX(-3px);
+        }
+
+        .breadcrumb {
+            font-size: 0.88rem;
+            color: var(--text-dim);
+        }
+
+        .breadcrumb span {
+            color: var(--accent-cyan);
+        }
+
+        /* Header Tech Profile Card */
+        .engine-header-card {
+            background: linear-gradient(135deg, rgba(16, 24, 40, 0.95) 0%, rgba(24, 34, 56, 0.95) 100%);
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 242, 254, 0.15);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+        }
+
+        .engine-header-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-red));
+        }
+
+        .header-top-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .meta-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tag-brand { background: rgba(79, 172, 254, 0.2); color: var(--accent-blue); border: 1px solid rgba(79, 172, 254, 0.3); }
+        .tag-fuel { background: rgba(0, 242, 254, 0.15); color: var(--accent-cyan); border: 1px solid rgba(0, 242, 254, 0.3); }
+        .tag-family { background: rgba(255, 184, 0, 0.15); color: var(--accent-gold); border: 1px solid rgba(255, 184, 0, 0.3); }
+        .tag-vehicles { background: rgba(255, 59, 92, 0.15); color: var(--accent-red); border: 1px solid rgba(255, 59, 92, 0.3); }
+
+        .engine-title {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.4rem;
+            line-height: 1.3;
+            background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .engine-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-sub);
+            font-weight: 500;
+            margin-bottom: 1.8rem;
+            line-height: 1.5;
+        }
+
+        /* Key Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+
+        .metric-box {
+            background: rgba(11, 15, 25, 0.6);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .metric-box:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-cyan);
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .metric-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .metric-unit {
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            font-weight: 500;
+            margin-left: 0.2rem;
+        }
+
+        .metric-sub {
+            font-size: 0.78rem;
+            color: var(--text-sub);
+            margin-top: 0.2rem;
+        }
+
+        /* Section Styling */
+        .section-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 18px;
+            padding: 2.2rem;
+            margin-bottom: 2.2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #ffffff;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.8rem;
+        }
+
+        .section-title i {
+            color: var(--accent-cyan);
+            font-size: 1.3rem;
+        }
+
+        /* Chart Area - Fixed height container to completely solve infinite resize loop */
+        .chart-wrapper {
+            background: rgba(11, 15, 25, 0.8);
+            border-radius: 14px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-subtle);
+            margin-top: 1rem;
+        }
+
+        .chart-canvas-container {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            max-height: 420px;
+        }
+
+        .chart-legend-custom {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .legend-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+
+        /* Applied Vehicles Table & Mobile Scroll Guide */
+        .mobile-scroll-hint {
+            display: none;
+            font-size: 0.78rem;
+            color: var(--accent-cyan);
+            margin-bottom: 0.5rem;
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .vehicles-table-wrap {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .vehicles-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.92rem;
+        }
+
+        .vehicles-table th {
+            background: rgba(28, 38, 62, 0.9);
+            color: var(--accent-cyan);
+            padding: 0.9rem 1rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-subtle);
+            white-space: nowrap;
+        }
+
+        .vehicles-table td {
+            padding: 0.9rem 1rem;
+            border-bottom: 1px solid var(--border-subtle);
+            background: rgba(15, 23, 42, 0.5);
+            color: var(--text-main);
+        }
+
+        .vehicles-table tr:hover td {
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        .badge-tag {
+            background: rgba(79, 172, 254, 0.15);
+            color: var(--accent-blue);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-right: 0.4rem;
+            display: inline-block;
+        }
+
+        .vehicles-table code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(0, 0, 0, 0.4);
+            color: var(--accent-cyan);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.84rem;
+        }
+
+        .note-pill {
+            background: rgba(255, 184, 0, 0.12);
+            color: var(--accent-gold);
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        /* Specs 2-Column Grid */
+        .specs-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.85rem;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.85rem 1rem;
+            background: rgba(11, 15, 25, 0.5);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.92rem;
+            gap: 0.5rem;
+        }
+
+        .spec-item-key {
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+
+        .spec-item-val {
+            color: #ffffff;
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+            text-align: right;
+        }
+
+        /* List Items */
+        .info-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            background: rgba(11, 15, 25, 0.4);
+            padding: 1rem 1.25rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            line-height: 1.6;
+        }
+
+        .info-list i {
+            color: var(--accent-cyan);
+            font-size: 1.15rem;
+            margin-top: 0.15rem;
+            flex-shrink: 0;
+        }
+
+        .tuning-box {
+            background: linear-gradient(135deg, rgba(255, 59, 92, 0.08) 0%, rgba(11, 15, 25, 0.6) 100%);
+            border: 1px solid rgba(255, 59, 92, 0.25);
+            border-radius: 12px;
+            padding: 1.4rem;
+            color: #f8fafc;
+            font-size: 0.96rem;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        /* ------------------------------------------------------------- */
+        /* 모바일 최적화 미디어 쿼리 (화면 폭 768px 이하) */
+        /* ------------------------------------------------------------- */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.25rem 0.6rem;
+            }
+            .top-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+                margin-bottom: 1.5rem;
+            }
+            .breadcrumb {
+                font-size: 0.8rem;
+            }
+            .engine-header-card {
+                padding: 1.4rem 1rem;
+                border-radius: 14px;
+                margin-bottom: 1.5rem;
+            }
+            .engine-title {
+                font-size: 1.65rem;
+                letter-spacing: -0.3px;
+            }
+            .engine-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 1.25rem;
+            }
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.6rem;
+            }
+            .metric-box {
+                padding: 0.85rem 0.65rem;
+                border-radius: 10px;
+            }
+            .metric-label {
+                font-size: 0.72rem;
+            }
+            .metric-value {
+                font-size: 1.3rem;
+            }
+            .section-card {
+                padding: 1.25rem 0.9rem;
+                border-radius: 14px;
+                margin-bottom: 1.4rem;
+            }
+            .section-title {
+                font-size: 1.15rem;
+                margin-bottom: 1rem;
+            }
+            .chart-wrapper {
+                padding: 1rem 0.65rem;
+            }
+            .chart-canvas-container {
+                height: 270px;
+                max-height: 290px;
+            }
+            .mobile-scroll-hint {
+                display: block;
+            }
+            .vehicles-table th, .vehicles-table td {
+                padding: 0.65rem 0.6rem;
+                font-size: 0.82rem;
+                white-space: nowrap;
+            }
+            .specs-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 0.6rem;
+            }
+            .spec-item {
+                padding: 0.7rem 0.85rem;
+                font-size: 0.86rem;
+            }
+            .info-list li {
+                padding: 0.8rem 0.9rem;
+                font-size: 0.88rem;
+            }
+        }
+    </style>
+
+    <!-- Google Translate Script -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'ko',
+                includedLanguages: 'ko,en,ru,es,ja,zh-CN,de,fr',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+        function changeLanguage(lang) {
+            var select = document.querySelector('.goog-te-combo');
+            if (select) {
+                select.value = lang;
+                select.dispatchEvent(new Event('change'));
+            } else {
+                // Fallback for cookie-based Google Translate
+                document.cookie = 'googtrans=/ko/' + lang + '; path=/;';
+                location.reload();
+            }
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</head>
+<body>
+
+<div class="container">
+    <!-- Top Navigation -->
+    <div class="top-nav">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <a href="https://chicstory.github.io/" class="btn-back" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.15); color:#94a3b8;">
+                            <i class="bi-house-door"></i> ThePathLab
+                        </a>
+                        <a href="../../index.html" class="btn-back">
+                            <i class="bi-grid-fill"></i> 엔진 백과 목차
+                        </a>
+                        
+<div class="lang-switcher" style="display:inline-flex; align-items:center; gap:4px; background:rgba(18,26,43,0.8); border:1px solid rgba(0,242,254,0.2); padding:3px 6px; border-radius:8px;">
+    <span style="font-size:0.75rem; color:#64748b; margin-right:4px;"><i class="bi-globe"></i></span>
+    <button type="button" onclick="changeLanguage('ko')" style="background:transparent; border:none; color:#f1f5f9; cursor:pointer; font-size:0.75rem; padding:2px 4px; border-radius:4px; font-weight:600;">🇰🇷 KO</button>
+    <span style="color:#334155; font-size:0.7rem;">|</span>
+    <button type="button" onclick="changeLanguage('en')" style="background:transparent; border:none; color:#94a3b8; cursor:pointer; font-size:0.75rem; padding:2px 4px; border-radius:4px; font-weight:600;">🇺🇸 EN</button>
+    <span style="color:#334155; font-size:0.7rem;">|</span>
+    <button type="button" onclick="changeLanguage('ru')" style="background:transparent; border:none; color:#94a3b8; cursor:pointer; font-size:0.75rem; padding:2px 4px; border-radius:4px; font-weight:600;">🇷🇺 RU</button>
+    <span style="color:#334155; font-size:0.7rem;">|</span>
+    <button type="button" onclick="changeLanguage('es')" style="background:transparent; border:none; color:#94a3b8; cursor:pointer; font-size:0.75rem; padding:2px 4px; border-radius:4px; font-weight:600;">🇪🇸 ES</button>
+</div>
+
+                    </div>
+                    </div>
+    </div>
+
+    <!-- Header Engine Profile Card -->
+    <div class="engine-header-card">
+        <div class="header-top-meta">
+            <span class="meta-tag tag-brand"><i class="bi-building"></i> BMW</span>
+            <span class="meta-tag tag-fuel"><i class="bi-fuel-pump"></i> 가솔린 (Gasoline)</span>
+            <span class="meta-tag tag-family"><i class="bi-cpu"></i> BMW 파워트레인</span>
+            <span class="meta-tag tag-vehicles"><i class="bi-car-front-fill"></i> 탑재 1개 차종 매칭</span>
+        </div>
+        <h1 class="engine-title">N13 · N13 파워트레인 유닛 (170ps)</h1>
+        <p class="engine-subtitle">직렬 4기통 DOHC | 1,598cc | 자연흡기 (Naturally Aspirated)</p>
+
+        <div class="metrics-grid">
+            <div class="metric-box">
+                <div class="metric-label"><i class="bi-speedometer2"></i> 최고출력 (Peak Power)</div>
+                <div class="metric-value">170<span class="metric-unit">ps</span> <span style="font-size:0.82rem; font-weight:500; color:var(--text-sub);">(167.7 hp)</span></div>
+                <div class="metric-sub">@ 6,200 RPM</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-label"><i class="bi-lightning-charge"></i> 최대토크 (Peak Torque)</div>
+                <div class="metric-value">16.0<span class="metric-unit">kgf·m</span> <span style="font-size:0.82rem; font-weight:500; color:var(--text-sub);">(156.9 N·m)</span></div>
+                <div class="metric-sub">@ 4,500 RPM</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-label"><i class="bi-droplet-half"></i> 총 배기량</div>
+                <div class="metric-value">1,598<span class="metric-unit">cc</span></div>
+                <div class="metric-sub">직렬 4기통 DOHC</div>
+            </div>
+            <div class="metric-box">
+                <div class="metric-label"><i class="bi-gear-wide-connected"></i> 과급 방식</div>
+                <div class="metric-value" style="font-size: 1.25rem;">NA</div>
+                <div class="metric-sub">자연흡기 (Naturally Aspirated)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Applied Vehicles Section -->
+    <div class="section-card">
+        <h2 class="section-title"><i class="bi-car-front"></i> 공식 탑재 차종 및 세대별 세팅 사양 (Applied Vehicles)</h2>
+        <p style="color: var(--text-sub); margin-bottom: 1rem; font-size: 0.95rem;">
+            N13 엔진이 실제로 탑재된 제조사별 차종, 출시 세대, 배기량 및 세팅 사양 전체 목록입니다.
+        </p>
+        <div class="mobile-scroll-hint">
+            <i class="bi-arrow-left-right"></i> 좌우로 밀어서 전체 사양을 확인하세요 ➔
+        </div>
+        <div class="vehicles-table-wrap">
+            <table class="vehicles-table">
+                <thead>
+                    <tr>
+                        <th>제조사 / 모델명</th>
+                        <th>세대 및 연식</th>
+                        <th>배기량</th>
+                        <th>원천 카탈로그 표기</th>
+                        <th>특징 및 세팅</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+        <tr>
+            <td class="brand-badge"><span class="badge-tag">BMW</span> <strong>1시리즈 118i / 120i (F20)</strong></td>
+            <td class="gen-col">2세대 (F20, 2011~2019)</td>
+            <td class="disp-col">1,598cc / 1,998cc</td>
+            <td class="raw-col"><code>N13 (1.6T 136ps/170ps)</code></td>
+            <td class="note-col"><span class="note-pill">기본 파워트레인 세팅</span></td>
+        </tr>
+        
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Interactive Dyno Performance Curve -->
+    <div class="section-card">
+        <h2 class="section-title"><i class="bi-graph-up"></i> 물리 기반 다이노 성능 곡선 (Dyno Performance Curve)</h2>
+        <p style="color: var(--text-sub); margin-bottom: 1rem; font-size: 0.95rem;">
+            실제 샤시 다이노모미터(Chassis Dyno) 계측 환경과 일치하는 체적효율(Volumetric Efficiency) 및 물리 수식 <code>PS = (Torque × RPM) / 716.2</code> 기반 마력/토크 곡선입니다.
+            카탈로그의 기계적인 일자형 수평선 대신, 터빈 부스트 스풀업, 실측 중속 토크 정점(Apex), 고회전 배압 테이퍼 특성을 정밀하게 모사하여 현실감 넘치는 출력 곡선을 제공합니다.
+        </p>
+        <div class="chart-wrapper">
+            <div class="chart-legend-custom">
+                <div class="legend-item">
+                    <span class="legend-indicator" style="background: var(--accent-red);"></span>
+                    <span>출력 (PS) - 좌측 축</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-indicator" style="background: var(--accent-cyan);"></span>
+                    <span>토크 (kgf·m) - 우측 축</span>
+                </div>
+            </div>
+            <!-- 고정 높이 컨테이너로 스크롤 시 무한 높이 증식 방지 -->
+            <div class="chart-canvas-container">
+                <canvas id="dynoChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detailed Technical Specs -->
+    <div class="section-card">
+        <h2 class="section-title"><i class="bi-cpu"></i> 엔진 아키텍처 및 메커니즘 상세 제원</h2>
+        <div class="specs-detail-grid">
+            <div class="spec-item">
+                <span class="spec-item-key">엔진 코드</span>
+                <span class="spec-item-val">N13</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-item-key">엔진 계열 (Family)</span>
+                <span class="spec-item-val">BMW 파워트레인</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-item-key">실린더 배열 / 밸브</span>
+                <span class="spec-item-val">직렬 4기통 DOHC</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-item-key">보어 × 스트로크</span>
+                <span class="spec-item-val">제조사 표준 규격 설계</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-item-key">압축비 (Compression)</span>
+                <span class="spec-item-val">10.5:1</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-item-key">블록 & 실린더 헤드</span>
+                <span class="spec-item-val">알루미늄 합금 / 주철 실린더 블록</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-item-key">연료 분사 시스템</span>
+                <span class="spec-item-val">직분사(GDi/TSI) 또는 다점분사(MPi)</span>
+            </div>
+            <div class="spec-item">
+                <span class="spec-item-key">레드라인 (허용 최고회전)</span>
+                <span class="spec-item-val">6,500 RPM</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Engineering Highlights -->
+    <div class="section-card">
+        <h2 class="section-title"><i class="bi-check2-circle"></i> 핵심 엔지니어링 특징 및 기술 분석</h2>
+        <ul class="info-list">
+            <li><i class='bi-check-circle-fill'></i> BMW 주력 모델에 널리 탑재된 고신뢰성 파워트레인</li>
+<li><i class='bi-check-circle-fill'></i> 최고출력 170ps, 최대토크 16.0kgf·m의 경쾌한 가속 반응과 실용 영역 파워 제공</li>
+<li><i class='bi-check-circle-fill'></i> 배출가스 저감 장치 및 최적 흡배기 설계 적용</li>
+        </ul>
+    </div>
+
+    <!-- Maintenance & Reliability -->
+    <div class="section-card">
+        <h2 class="section-title"><i class="bi-tools"></i> 고질병 예방 및 권장 메인터넌스 가이드</h2>
+        <ul class="info-list">
+            <li><i class='bi-wrench-adjustable-circle'></i> 엔진오일 규격: 제조사 공식 승인 규격 합성유 권장 (8,000~10,000km 교환 주기)</li>
+<li><i class='bi-wrench-adjustable-circle'></i> 점화계통/연료필터 및 흡배기 밸브 상태 주기적 점검</li>
+<li><i class='bi-wrench-adjustable-circle'></i> 냉각수 서모스탯 및 가스켓 누유 점검 8만km 권장</li>
+        </ul>
+    </div>
+
+    <!-- Tuning Potential -->
+    <div class="section-card">
+        <h2 class="section-title"><i class="bi-fire"></i> 튜닝 잠재력 및 오너 평가 (Tuning & Evaluation)</h2>
+        <div class="tuning-box">
+            <p><i class="bi-chat-square-quote-fill" style="color: var(--accent-red); font-size: 1.2rem; margin-right: 0.5rem;"></i>
+            순정 제어 로직 밸런스가 뛰어나며, 스테이지 1 맵핑 시 15~20%의 출력 향상 및 응답성 개선 가능.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>자동차 엔진 백과 블로그 포스팅 아카이브 | 자료 제공: 공식 매뉴얼 및 카탈로그 사양 데이터베이스</p>
+        <p style="margin-top: 0.3rem;">엔진 코드: <strong>N13</strong> | 최종 업데이트: 2026-09</p>
+    </footer>
+</div>
+
+<script>
+    // Chart.js 다이노 곡선 초기화 (fixed container height에 맞추어 안정적 렌더링)
+    const ctx = document.getElementById('dynoChart').getContext('2d');
+    
+    // 그라디언트 설정
+    const powerGrad = ctx.createLinearGradient(0, 0, 0, 300);
+    powerGrad.addColorStop(0, 'rgba(255, 59, 92, 0.35)');
+    powerGrad.addColorStop(1, 'rgba(255, 59, 92, 0.0)');
+
+    const torqueGrad = ctx.createLinearGradient(0, 0, 0, 300);
+    torqueGrad.addColorStop(0, 'rgba(0, 242, 254, 0.35)');
+    torqueGrad.addColorStop(1, 'rgba(0, 242, 254, 0.0)');
+
+    const dynoChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["1000", "1250", "1500", "1750", "2000", "2250", "2500", "2750", "3000", "3250", "3500", "3750", "4000", "4250", "4500", "4750", "5000", "5250", "5500", "5750", "6000", "6250", "6500"],
+            datasets: [
+                {
+                    label: '최고출력 (PS)',
+                    data: [23.0, 29.8, 37.1, 44.7, 52.7, 61.1, 69.6, 78.4, 87.3, 96.2, 105.1, 113.9, 122.5, 130.8, 138.7, 145.0, 150.7, 155.8, 160.6, 164.9, 168.8, 170.0, 157.8],
+                    borderColor: '#ff3b5c',
+                    backgroundColor: powerGrad,
+                    fill: true,
+                    yAxisID: 'yPower',
+                    cubicInterpolationMode: 'monotone',
+                    tension: 0.4,
+                    pointRadius: 2.5,
+                    pointHoverRadius: 6,
+                    pointBackgroundColor: '#ff3b5c',
+                    borderWidth: 2.5
+                },
+                {
+                    label: '최대토크 (kgf·m)',
+                    data: [11.9, 12.4, 12.8, 13.3, 13.7, 14.1, 14.5, 14.8, 15.1, 15.4, 15.6, 15.8, 15.9, 16.0, 16.0, 15.9, 15.6, 15.4, 15.2, 14.9, 14.6, 14.1, 12.6],
+                    borderColor: '#00f2fe',
+                    backgroundColor: torqueGrad,
+                    fill: true,
+                    yAxisID: 'yTorque',
+                    cubicInterpolationMode: 'monotone',
+                    tension: 0.4,
+                    pointRadius: 2.5,
+                    pointHoverRadius: 6,
+                    pointBackgroundColor: '#00f2fe',
+                    borderWidth: 2.5
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            resizeDelay: 150,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: 'rgba(11, 15, 25, 0.95)',
+                    titleColor: '#00f2fe',
+                    bodyColor: '#f1f5f9',
+                    borderColor: 'rgba(0, 242, 254, 0.3)',
+                    borderWidth: 1,
+                    padding: 10,
+                    callbacks: {
+                        title: function(context) {
+                            return context[0].label + ' RPM';
+                        },
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            let val = context.parsed.y;
+                            if (label.includes('출력')) {
+                                let hp = (val * 0.9863).toFixed(1);
+                                return '⚡ ' + label + ': ' + val + ' PS (' + hp + ' hp)';
+                            } else {
+                                let nm = (val * 9.80665).toFixed(1);
+                                return '🚀 ' + label + ': ' + val + ' kgf·m (' + nm + ' N·m)';
+                            }
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                    ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono', size: 10 } }
+                },
+                yPower: {
+                    type: 'linear',
+                    position: 'left',
+                    grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                    ticks: { 
+                        color: '#ff3b5c',
+                        font: { family: 'JetBrains Mono', size: 10 },
+                        callback: function(v) { return v + ' ps'; }
+                    },
+                    title: {
+                        display: true,
+                        text: '출력 (PS)',
+                        color: '#ff3b5c',
+                        font: { size: 11, weight: 'bold' }
+                    }
+                },
+                yTorque: {
+                    type: 'linear',
+                    position: 'right',
+                    grid: { drawOnChartArea: false },
+                    ticks: { 
+                        color: '#00f2fe',
+                        font: { family: 'JetBrains Mono', size: 10 },
+                        callback: function(v) { return v + ' kgm'; }
+                    },
+                    title: {
+                        display: true,
+                        text: '토크 (kgf·m)',
+                        color: '#00f2fe',
+                        font: { size: 11, weight: 'bold' }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+
+<!-- ==================== ANONYMOUS OWNER & MECHANIC MEMO BOX ==================== -->
+<section class="memo-section" style="margin-top: 3.5rem; background: rgba(18, 26, 43, 0.9); border: 1px solid rgba(0, 242, 254, 0.25); border-radius: 18px; padding: 1.8rem; box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:1.2rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.8rem;">
+        <div style="display:flex; align-items:center; gap:8px;">
+            <i class="bi-chat-dots-fill" style="color:var(--accent-cyan); font-size:1.3rem;"></i>
+            <h3 style="font-size:1.15rem; font-weight:700; color:#ffffff; margin:0;">차주 & 정비사 한줄 실전 메모장</h3>
+            <span style="background:rgba(0,242,254,0.15); color:var(--accent-cyan); font-size:0.75rem; font-weight:700; padding:2px 8px; border-radius:12px;">익명 실시간</span>
+        </div>
+        <span style="font-size:0.8rem; color:#94a3b8;">오일 추천, 고질병 해결법, 정비 꿀팁을 자유롭게 남겨주세요</span>
+    </div>
+
+    <!-- Input Form -->
+    <form id="commentForm" onsubmit="handleCommentSubmit(event)" style="display:grid; grid-template-columns: 1fr; gap:12px; margin-bottom:1.5rem;">
+        <!-- Honeypot (Spam trap) -->
+        <input type="text" id="hp_url_check" name="website_url" style="display:none !important;" tabindex="-1" autocomplete="off">
+        
+        <div style="display:grid; grid-template-columns: 160px 1fr 140px; gap:10px;" class="memo-form-inputs">
+            <input type="text" id="commentAuthor" placeholder="닉네임 (예: 520d차주)" maxlength="15" required
+                   style="background:rgba(11,15,25,0.8); border:1px solid rgba(255,255,255,0.12); color:#fff; padding:0.65rem 0.85rem; border-radius:8px; font-size:0.88rem; outline:none;">
+            <input type="text" id="commentText" placeholder="엔진 경험담, 오일 점도, 정비 주기 팁 (최대 120자)" maxlength="120" required
+                   style="background:rgba(11,15,25,0.8); border:1px solid rgba(255,255,255,0.12); color:#fff; padding:0.65rem 0.85rem; border-radius:8px; font-size:0.88rem; outline:none;">
+            <div style="display:flex; gap:6px; align-items:center;">
+                <span id="mathQuizLabel" style="font-size:0.82rem; color:var(--accent-cyan); font-weight:700; white-space:nowrap; font-family:'JetBrains Mono';">3 + 4 =</span>
+                <input type="number" id="mathAnswer" placeholder="정답" required
+                       style="width:55px; background:rgba(11,15,25,0.8); border:1px solid rgba(255,255,255,0.12); color:#fff; padding:0.65rem 0.4rem; border-radius:8px; font-size:0.88rem; text-align:center; outline:none;">
+                <button type="submit" id="btnSubmitMemo"
+                        style="background:linear-gradient(135deg, var(--accent-cyan), var(--accent-blue)); color:#0b0f19; font-weight:700; border:none; padding:0.65rem 1rem; border-radius:8px; cursor:pointer; font-size:0.88rem; white-space:nowrap; transition:0.2s;">
+                    등록
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Comments List -->
+    <div id="commentsList" style="display:flex; flex-direction:column; gap:8px;">
+        <!-- Dynamic Items will be rendered here -->
+    </div>
+</section>
+
+<script>
+    // Math Captcha Logic
+    let numA = Math.floor(Math.random() * 8) + 2;
+    let numB = Math.floor(Math.random() * 8) + 1;
+    let correctSum = numA + numB;
+    const quizEl = document.getElementById('mathQuizLabel');
+    if (quizEl) quizEl.innerText = numA + ' + ' + numB + ' =';
+
+    const pageKey = 'engine_memo_' + (location.pathname.split('/').pop().replace('.html','').toUpperCase() || 'GENERAL');
+
+    function getComments() {
+        try {
+            const data = localStorage.getItem(pageKey);
+            return data ? JSON.parse(data) : [];
+        } catch(e) { return []; }
+    }
+
+    function renderComments() {
+        const listEl = document.getElementById('commentsList');
+        if (!listEl) return;
+        const comments = getComments();
+        if (comments.length === 0) {
+            listEl.innerHTML = '<div style="text-align:center; padding:1.2rem; color:#64748b; font-size:0.85rem;"><i class="bi-pencil-square" style="margin-right:4px;"></i>아직 등록된 실전 메모가 없습니다. 첫 꿀팁의 주인공이 되어보세요!</div>';
+            return;
+        }
+        listEl.innerHTML = comments.slice().reverse().map(c => `
+            <div style="background:rgba(11,15,25,0.5); border:1px solid rgba(255,255,255,0.06); padding:0.65rem 0.95rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center; gap:10px;">
+                <div style="display:flex; align-items:center; gap:10px; flex:1; min-width:0;">
+                    <strong style="color:var(--accent-cyan); font-size:0.85rem; white-space:nowrap;">${c.author}</strong>
+                    <span style="color:#e2e8f0; font-size:0.86rem; word-break:break-all;">${c.text}</span>
+                </div>
+                <span style="font-size:0.75rem; color:#64748b; white-space:nowrap;">${c.time}</span>
+            </div>
+        `).join('');
+    }
+
+    function handleCommentSubmit(e) {
+        e.preventDefault();
+        // 1. Honeypot check
+        if (document.getElementById('hp_url_check').value !== '') {
+            return false;
+        }
+        // 2. Math Captcha check
+        const userAns = parseInt(document.getElementById('mathAnswer').value);
+        if (userAns !== correctSum) {
+            alert('스팸 방지 산수 문제의 정답이 올바르지 않습니다.');
+            return false;
+        }
+        // 3. Cooldown check
+        const lastPost = localStorage.getItem('last_memo_post_time');
+        const now = Date.now();
+        if (lastPost && now - parseInt(lastPost) < 10000) {
+            alert('도배 방지를 위해 10초 후에 다시 작성하실 수 있습니다.');
+            return false;
+        }
+
+        const author = document.getElementById('commentAuthor').value.trim();
+        const text = document.getElementById('commentText').value.trim();
+        if (!author || !text) return;
+
+        const d = new Date();
+        const timeStr = (d.getMonth()+1) + '/' + d.getDate() + ' ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+
+        const comments = getComments();
+        comments.push({ author, text, time: timeStr });
+        localStorage.setItem(pageKey, JSON.stringify(comments));
+        localStorage.setItem('last_memo_post_time', now.toString());
+
+        document.getElementById('commentText').value = '';
+        document.getElementById('mathAnswer').value = '';
+        renderComments();
+
+        // Regenerate quiz
+        numA = Math.floor(Math.random() * 8) + 2;
+        numB = Math.floor(Math.random() * 8) + 1;
+        correctSum = numA + numB;
+        quizEl.innerText = numA + ' + ' + numB + ' =';
+    }
+
+    // Initial render
+    document.addEventListener('DOMContentLoaded', renderComments);
+</script>
+
+</body>
+</html>

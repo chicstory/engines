@@ -1,0 +1,1207 @@
+<!-- 블로그스팟 게시용: 아우디(Audi) 세대별 엔진코드 / 제원 일람표 (총 91개 모델) -->
+<div id="audi-engine-wrap">
+  <!-- 헤더 영역 -->
+  <div class="audi-header">
+    <h2 class="audi-title">🔴 아우디(Audi) 세대별 엔진코드 · 제원 일람표</h2>
+    <p class="audi-desc">A3~A8 세단, Q2~Q8 SUV, 고성능 S/RS 시리즈(EA888/EA839/EA825), 5기통 RS3, V10 R8 및 e-tron 전기차 총정리</p>
+  </div>
+
+  <!-- 검색 및 필터 컨트롤 -->
+  <div class="audi-controls">
+    <!-- 검색창 -->
+    <div class="audi-search-box">
+      <span class="audi-search-icon">🔍</span>
+      <input type="text" id="audi-search" class="audi-search-input" placeholder="차량명, 코드명, 엔진코드, 배기량 등으로 검색... (예: A6, C8, 45 TFSI, EA888, 3.0 TDI, RS7, S4, R8, e-tron)" autocomplete="off">
+    </div>
+
+    <!-- 라인업/세그먼트 필터 -->
+    <div class="audi-filter-group">
+      <span class="audi-filter-label">라인업</span>
+      <button type="button" class="audi-btn-chip active" data-filter-type="segment" data-val="ALL">전체 모델</button>
+      <button type="button" class="audi-btn-chip" data-filter-type="segment" data-val="A3|A4|A5|A6|A7|A8">A 시리즈 (세단·쿠페)</button>
+      <button type="button" class="audi-btn-chip" data-filter-type="segment" data-val="Q2|Q3|Q5|Q7|Q8">Q 시리즈 (SUV)</button>
+      <button type="button" class="audi-btn-chip" data-filter-type="segment" data-val="S3|S4|S5|S6|S7|S8|SQ5|SQ7|SQ8|RS">S / RS 고성능</button>
+      <button type="button" class="audi-btn-chip" data-filter-type="segment" data-val="TT|R8">스포츠카 (TT / R8)</button>
+    </div>
+
+    <!-- 연료 필터 -->
+    <div class="audi-filter-group" style="margin-bottom:0;">
+      <span class="audi-filter-label">연료별</span>
+      <button type="button" class="audi-btn-chip active" data-filter-type="fuel" data-val="ALL">전체</button>
+      <button type="button" class="audi-btn-chip" data-filter-type="fuel" data-val="가솔린">가솔린 (TFSI / FSI)</button>
+      <button type="button" class="audi-btn-chip" data-filter-type="fuel" data-val="디젤">디젤 (TDI)</button>
+      <button type="button" class="audi-btn-chip" data-filter-type="fuel" data-val="전기">순수 전기 (e-tron EV)</button>
+    </div>
+  </div>
+
+  <!-- 메타 정보 및 액션 버튼 -->
+  <div class="audi-meta-bar">
+    <div>
+      총 <span id="audi-total-count" class="audi-count-highlight">91</span>개 세부 모델 제원 수록
+    </div>
+    <div class="audi-action-buttons">
+      <button type="button" class="audi-tool-btn" id="audi-btn-copy">📋 표 복사</button>
+      <button type="button" class="audi-tool-btn" id="audi-btn-csv">💾 CSV 다운로드</button>
+    </div>
+  </div>
+
+  <!-- 데이터 테이블 (반응형 모바일 카드 자동 전환) -->
+  <div class="audi-table-container">
+    <table id="audi-table">
+      <thead>
+        <tr>
+          <th style="width: 70px;">브랜드</th>
+          <th style="width: 190px;">차량명 / 모델트림</th>
+          <th>세대 (바디코드 / 연식)</th>
+          <th style="width: 110px;">연료</th>
+          <th style="width: 120px;">배기량</th>
+          <th>엔진코드 (형식 / 최고출력 / 사양)</th>
+        </tr>
+      </thead>
+      <tbody id="audi-tbody">
+        <!-- Javascript로 동적 렌더링 -->
+      </tbody>
+    </table>
+    <div id="audi-no-results" class="no-results" style="display:none;">
+      검색 조건에 해당하는 아우디 차량 제원 정보가 없습니다.
+    </div>
+  </div>
+</div>
+
+<style>
+  /* 블로그스팟 독립형 스타일 네임스페이스 (#audi-engine-wrap) */
+  #audi-engine-wrap {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
+    max-width: 980px;
+    margin: 16px auto;
+    padding: 16px 12px;
+    color: #1e293b;
+    line-height: 1.5;
+    box-sizing: border-box;
+  }
+  #audi-engine-wrap * {
+    box-sizing: border-box;
+  }
+  #audi-engine-wrap .audi-header {
+    background: linear-gradient(135deg, #881337 0%, #be123c 50%, #e11d48 100%);
+    color: #ffffff;
+    padding: 24px 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(190, 18, 60, 0.25);
+  }
+  #audi-engine-wrap .audi-title {
+    margin: 0 0 8px 0;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    color: #ffffff;
+  }
+  #audi-engine-wrap .audi-desc {
+    margin: 0;
+    font-size: 0.88rem;
+    color: #ffe4e6;
+  }
+  #audi-engine-wrap .audi-controls {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    margin-bottom: 16px;
+  }
+  #audi-engine-wrap .audi-search-box {
+    position: relative;
+    margin-bottom: 12px;
+  }
+  #audi-engine-wrap .audi-search-input {
+    width: 100%;
+    padding: 12px 16px 12px 40px;
+    font-size: 0.92rem;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    outline: none;
+    background: #f8fafc;
+    color: #0f172a;
+    transition: all 0.2s;
+  }
+  #audi-engine-wrap .audi-search-input:focus {
+    background: #ffffff;
+    border-color: #e11d48;
+    box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
+  }
+  #audi-engine-wrap .audi-search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 1.05rem;
+    pointer-events: none;
+  }
+  #audi-engine-wrap .audi-filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  #audi-engine-wrap .audi-filter-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #64748b;
+    margin-right: 4px;
+    min-width: 48px;
+  }
+  #audi-engine-wrap .audi-btn-chip {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    padding: 5px 11px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+  #audi-engine-wrap .audi-btn-chip:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+  }
+  #audi-engine-wrap .audi-btn-chip.active {
+    background: #e11d48;
+    color: #ffffff;
+    border-color: #e11d48;
+  }
+  #audi-engine-wrap .audi-meta-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 4px 12px 4px;
+    font-size: 0.85rem;
+    color: #64748b;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  #audi-engine-wrap .audi-count-highlight {
+    color: #e11d48;
+    font-weight: 700;
+  }
+  #audi-engine-wrap .audi-action-buttons {
+    display: flex;
+    gap: 8px;
+  }
+  #audi-engine-wrap .audi-tool-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  #audi-engine-wrap .audi-tool-btn:hover {
+    background: #f1f5f9;
+    border-color: #94a3b8;
+  }
+
+  /* 데스크톱 테이블 뷰 */
+  #audi-engine-wrap .audi-table-container {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  }
+  #audi-engine-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.88rem;
+  }
+  #audi-engine-wrap th {
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 700;
+    padding: 12px 14px;
+    border-bottom: 2px solid #e2e8f0;
+    white-space: nowrap;
+  }
+  #audi-engine-wrap td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+  }
+  #audi-engine-wrap tr:last-child td {
+    border-bottom: none;
+  }
+  #audi-engine-wrap tr:hover td {
+    background-color: #f8fafc;
+  }
+
+  /* 배지 스타일 */
+  #audi-engine-wrap .audi-badge {
+    display: inline-block;
+    padding: 3px 7px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+  #audi-engine-wrap .badge-audi { background: #fff1f2; color: #be123c; border: 1px solid #fecdd3; }
+  
+  #audi-engine-wrap .fuel-gasoline { background: #f0fdf4; color: #15803d; }
+  #audi-engine-wrap .fuel-diesel { background: #f1f5f9; color: #334155; }
+  #audi-engine-wrap .fuel-ev { background: #faf5ff; color: #7e22ce; }
+
+  #audi-engine-wrap .engine-code-text {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-weight: 700;
+    color: #0f172a;
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  /* 모바일 반응형 카드 뷰 (700px 이하) */
+  @media (max-width: 700px) {
+    #audi-engine-wrap {
+      padding: 10px 4px;
+    }
+    #audi-engine-wrap .audi-header {
+      padding: 18px 14px;
+      border-radius: 12px;
+    }
+    #audi-engine-wrap .audi-title {
+      font-size: 1.15rem;
+    }
+    #audi-engine-wrap .audi-controls {
+      padding: 12px;
+    }
+    #audi-engine-wrap .audi-table-container {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+    #audi-engine-wrap table, 
+    #audi-engine-wrap thead, 
+    #audi-engine-wrap tbody, 
+    #audi-engine-wrap th, 
+    #audi-engine-wrap tr {
+      display: block;
+    }
+    #audi-engine-wrap thead {
+      display: none;
+    }
+    #audi-engine-wrap tr {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 12px;
+      padding: 12px 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    #audi-engine-wrap td {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px dashed #f1f5f9;
+      font-size: 0.85rem;
+    }
+    #audi-engine-wrap td:last-child {
+      border-bottom: none;
+      padding-top: 8px;
+    }
+    #audi-engine-wrap td::before {
+      content: attr(data-label);
+      font-weight: 700;
+      color: #64748b;
+      font-size: 0.78rem;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+  }
+
+  #audi-engine-wrap .no-results {
+    text-align: center;
+    padding: 40px 20px;
+    color: #94a3b8;
+    font-size: 0.92rem;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px dashed #cbd5e1;
+  }
+</style>
+
+<script>
+(function() {
+  const rawData = [
+  {
+    "brand": "아우디",
+    "model": "A3 2.0 TFSI (8P)",
+    "generation": "2세대 (8P, 2008~2013)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen1 (2.0 TFSI 직분사 터보 200ps / 6단 S-Tronic)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A3 25 TDI / 35 TDI (8V)",
+    "generation": "3세대 (8V, 2014~2020)",
+    "fuel": "디젤",
+    "displacement": "1,598cc / 1,968cc",
+    "engine_code": "EA288 (1.6 TDI 110ps / 2.0 TDI 150ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A3 35 TFSI / 40 TFSI (8V)",
+    "generation": "3세대 (8V, 2014~2020)",
+    "fuel": "가솔린",
+    "displacement": "1,395cc / 1,984cc",
+    "engine_code": "EA211 (1.4 TFSI 150ps) / EA888 Gen3 (2.0 TFSI 186ps/190ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "S3 세단 (8V)",
+    "generation": "3세대 (8V S, 2014~2020)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen3 (2.0 TFSI 고출력 터보 293ps / quattro)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A3 40 TFSI (8Y)",
+    "generation": "4세대 (8Y, 2022~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen4 (2.0 TFSI 48V 마일드하이브리드 204ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "S3 세단 (8Y)",
+    "generation": "4세대 (8Y S, 2022~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen4 (2.0 TFSI 310ps / quattro)"
+  },
+  {
+    "brand": "아우디",
+    "model": "RS3 세단 (8Y 5기통 터보)",
+    "generation": "4세대 (8Y RS, 2023~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,480cc",
+    "engine_code": "EA855 evo (2.5 직렬 5기통 TFSI 터보 407ps / 토크스플리터)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A4 1.8T / 2.0 TFSI (B7)",
+    "generation": "7세대 (B7, 2004~2008)",
+    "fuel": "가솔린",
+    "displacement": "1,781cc / 1,984cc",
+    "engine_code": "EA113 (1.8T 163ps / 2.0 TFSI 200ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A4 2.0 TDI (B7)",
+    "generation": "7세대 (B7, 2004~2008)",
+    "fuel": "디젤",
+    "displacement": "1,968cc",
+    "engine_code": "EA188 (2.0 TDI PD 140ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "RS4 (B7 V8 고회전 자연흡기)",
+    "generation": "7세대 (B7 RS, 2006~2008)",
+    "fuel": "가솔린",
+    "displacement": "4,163cc",
+    "engine_code": "4.2 V8 FSI (8,250rpm 고회전 420ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A4 2.0 TFSI / 40 TFSI (B8)",
+    "generation": "8세대 (B8, 2008~2015)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen2 (2.0 TFSI 가변밸브리프트 211ps / 220ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A4 2.0 TDI / 30/35 TDI (B8)",
+    "generation": "8세대 (B8, 2008~2015)",
+    "fuel": "디젤",
+    "displacement": "1,968cc",
+    "engine_code": "EA189 (2.0 TDI 커먼레일 143ps / 177ps / 190ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "S4 (B8 V6 수퍼차저)",
+    "generation": "8세대 (B8 S, 2009~2015)",
+    "fuel": "가솔린",
+    "displacement": "2,995cc",
+    "engine_code": "EA837 (3.0 V6 수퍼차저 333ps / quattro)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A4 40 TFSI / 45 TFSI (B9)",
+    "generation": "9세대 (B9, 2016~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen3/Gen4 (2.0 TFSI 190ps / 204ps / 252ps / 265ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A4 30 TDI / 35 TDI / 40 TDI (B9)",
+    "generation": "9세대 (B9, 2016~현재)",
+    "fuel": "디젤",
+    "displacement": "1,968cc",
+    "engine_code": "EA288 (2.0 TDI 150ps / 190ps / 204ps MHEV)"
+  },
+  {
+    "brand": "아우디",
+    "model": "S4 TFSI (B9)",
+    "generation": "9세대 (B9 S, 2016~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,995cc",
+    "engine_code": "EA839 (3.0 V6 트윈스크롤 싱글터보 354ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "RS4 아반트 (B9 V6 바이터보)",
+    "generation": "9세대 (B9 RS, 2018~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,894cc",
+    "engine_code": "EA839 (2.9 V6 트윈터보 바이터보 450ps / 600Nm)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A5 쿠페 / 카브리올레 / 스포트백 2.0 TFSI (8T)",
+    "generation": "1세대 (8T, 2007~2016)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen2 (2.0 TFSI 211ps / 220ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A5 2.0 TDI / 3.0 TDI (8T)",
+    "generation": "1세대 (8T, 2009~2016)",
+    "fuel": "디젤",
+    "displacement": "1,968cc / 2,967cc",
+    "engine_code": "EA189 (2.0 TDI 177ps) / EA897 (3.0 V6 TDI 245ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "S5 쿠페 / 카브리올레 (8T V8/V6)",
+    "generation": "1세대 (8T S, 2007~2016)",
+    "fuel": "가솔린",
+    "displacement": "4,163cc / 2,995cc",
+    "engine_code": "4.2 V8 FSI (354ps) / EA837 (3.0 V6 수퍼차저 333ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "RS5 쿠페 (8T V8 고회전)",
+    "generation": "1세대 (8T RS, 2010~2015)",
+    "fuel": "가솔린",
+    "displacement": "4,163cc",
+    "engine_code": "4.2 V8 FSI (8,250rpm 자연흡기 450ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A5 40 TFSI / 45 TFSI 쿠페/스포트백 (F5)",
+    "generation": "2세대 (F5, 2017~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen3/Gen4 (2.0 TFSI 190ps / 204ps / 252ps / 265ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A5 40 TDI 쿠페/스포트백 (F5)",
+    "generation": "2세대 (F5, 2017~현재)",
+    "fuel": "디젤",
+    "displacement": "1,968cc",
+    "engine_code": "EA288 (2.0 TDI 190ps / 204ps 12V MHEV)"
+  },
+  {
+    "brand": "아우디",
+    "model": "S5 TFSI 쿠페 / 스포트백 (F5)",
+    "generation": "2세대 (F5 S, 2017~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,995cc",
+    "engine_code": "EA839 (3.0 V6 싱글터보 354ps / 500Nm)"
+  },
+  {
+    "brand": "아우디",
+    "model": "RS5 쿠페 / 스포트백 (F5 V6 바이터보)",
+    "generation": "2세대 (F5 RS, 2018~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,894cc",
+    "engine_code": "EA839 (2.9 V6 바이터보 450ps / 600Nm)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A6 2.0 TFSI / 2.4 / 3.0 / 3.2 FSI (C6)",
+    "generation": "6세대 (C6, 2004~2011)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc / 2,393cc / 3,123cc",
+    "engine_code": "EA113 (2.0T 170ps) / 2.4 V6 (177ps) / 3.2 V6 FSI (255ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A6 3.0 TFSI (C6 후기 V6 수퍼차저)",
+    "generation": "6세대 (C6, 2008~2011)",
+    "fuel": "가솔린",
+    "displacement": "2,995cc",
+    "engine_code": "EA837 (3.0 V6 수퍼차저 300ps / quattro)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A6 2.0 TDI / 2.7 TDI / 3.0 TDI (C6)",
+    "generation": "6세대 (C6, 2004~2011)",
+    "fuel": "디젤",
+    "displacement": "1,968cc / 2,698cc / 2,967cc",
+    "engine_code": "EA189 (2.0 TDI 140ps/170ps) / 2.7 V6 (190ps) / EA896 (3.0 V6 TDI 225ps/240ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "S6 (C6 V10 자연흡기)",
+    "generation": "6세대 (C6 S, 2006~2011)",
+    "fuel": "가솔린",
+    "displacement": "5,204cc",
+    "engine_code": "5.2 V10 FSI (람보르기니 파생 V10 435ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "RS6 아반트 (C6 V10 트윈터보 괴물)",
+    "generation": "6세대 (C6 RS, 2008~2011)",
+    "fuel": "가솔린",
+    "displacement": "4,991cc",
+    "engine_code": "5.0 V10 바이터보 TFSI (580ps / 650Nm)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A6 2.0 TFSI / 40 TFSI (C7)",
+    "generation": "7세대 (C7, 2011~2018)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen2/Gen3 (2.0 TFSI 211ps / 220ps / 252ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A6 3.0 TFSI / 50 TFSI (C7 V6 수퍼차저)",
+    "generation": "7세대 (C7, 2011~2018)",
+    "fuel": "가솔린",
+    "displacement": "2,995cc",
+    "engine_code": "EA837 (3.0 V6 기계식 수퍼차저 310ps / 333ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A6 2.0 TDI / 35 TDI (C7)",
+    "generation": "7세대 (C7, 2011~2018)",
+    "fuel": "디젤",
+    "displacement": "1,968cc",
+    "engine_code": "EA189 / EA288 (2.0 TDI 177ps / 190ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A6 3.0 TDI / 40/45/50 TDI / 55 TDI BiTDI (C7)",
+    "generation": "7세대 (C7, 2011~2018)",
+    "fuel": "디젤",
+    "displacement": "2,967cc",
+    "engine_code": "EA897 (3.0 V6 TDI 204ps/218ps/245ps/272ps / BiTDI 313ps/320ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "S6 (C7 V8 트윈터보)",
+    "generation": "7세대 (C7 S, 2012~2018)",
+    "fuel": "가솔린",
+    "displacement": "3,993cc",
+    "engine_code": "EA824 (4.0 V8 트윈터보 TFSI 420ps / F/L 450ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "RS6 아반트 (C7 V8 바이터보)",
+    "generation": "7세대 (C7 RS, 2013~2018)",
+    "fuel": "가솔린",
+    "displacement": "3,993cc",
+    "engine_code": "EA824 (4.0 V8 바이터보 560ps / Performance 605ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A6 45 TFSI (C8)",
+    "generation": "8세대 (C8, 2019~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen4 (2.0 TFSI 12V MHEV 252ps / 265ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A6 40 TDI (C8)",
+    "generation": "8세대 (C8, 2019~현재)",
+    "fuel": "디젤",
+    "displacement": "1,968cc",
+    "engine_code": "EA288 evo (2.0 TDI 12V MHEV 204ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A6 45 TDI / 50 TDI quattro (C8)",
+    "generation": "8세대 (C8, 2019~현재)",
+    "fuel": "디젤",
+    "displacement": "2,967cc",
+    "engine_code": "EA897 evo2 (3.0 V6 TDI 48V MHEV 231ps / 286ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "S6 TDI (C8 48V e-터보 디젤)",
+    "generation": "8세대 (C8 S, 2020~현재)",
+    "fuel": "디젤",
+    "displacement": "2,967cc",
+    "engine_code": "EA897 evo2 (3.0 V6 TDI + 전동컴프레서 EPC 48V 344ps / 700Nm)"
+  },
+  {
+    "brand": "아우디",
+    "model": "RS6 아반트 (C8 4.0 V8 트윈터보)",
+    "generation": "8세대 (C8 RS, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,996cc",
+    "engine_code": "EA825 (4.0 V8 바이터보 48V MHEV 600ps / Performance 630ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A7 3.0 TFSI / 50 TFSI (4G)",
+    "generation": "1세대 (4G, 2011~2018)",
+    "fuel": "가솔린",
+    "displacement": "2,995cc",
+    "engine_code": "EA837 (3.0 V6 수퍼차저 310ps / 333ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A7 3.0 TDI / 45/50/55 TDI BiTDI (4G)",
+    "generation": "1세대 (4G, 2011~2018)",
+    "fuel": "디젤",
+    "displacement": "2,967cc",
+    "engine_code": "EA897 (3.0 V6 TDI 245ps/272ps / BiTDI 바이터보 313ps/320ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "S7 (4G V8)",
+    "generation": "1세대 (4G S, 2012~2018)",
+    "fuel": "가솔린",
+    "displacement": "3,993cc",
+    "engine_code": "EA824 (4.0 V8 트윈터보 420ps / F/L 450ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "RS7 스포트백 (4G V8)",
+    "generation": "1세대 (4G RS, 2013~2018)",
+    "fuel": "가솔린",
+    "displacement": "3,993cc",
+    "engine_code": "EA824 (4.0 V8 바이터보 560ps / Performance 605ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A7 45 TFSI / 55 TFSI quattro (4K8)",
+    "generation": "2세대 (4K8, 2019~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc / 2,995cc",
+    "engine_code": "EA888 Gen4 (2.0T 265ps) / EA839 (3.0 V6 싱글터보 48V MHEV 340ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A7 40 TDI / 45 TDI / 50 TDI (4K8)",
+    "generation": "2세대 (4K8, 2019~현재)",
+    "fuel": "디젤",
+    "displacement": "1,968cc / 2,967cc",
+    "engine_code": "EA288 (2.0 TDI 204ps) / EA897 (3.0 V6 TDI 231ps / 286ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "S7 TDI (4K8 48V e-터보 디젤)",
+    "generation": "2세대 (4K8 S, 2020~현재)",
+    "fuel": "디젤",
+    "displacement": "2,967cc",
+    "engine_code": "EA897 evo2 (3.0 V6 TDI + 전동슈퍼차저 EPC 48V 344ps / 700Nm)"
+  },
+  {
+    "brand": "아우디",
+    "model": "RS7 스포트백 (4K8 V8 바이터보)",
+    "generation": "2세대 (4K8 RS, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,996cc",
+    "engine_code": "EA825 (4.0 V8 바이터보 48V MHEV 600ps / Performance 630ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A8 3.2 FSI / 4.2 FSI / 6.0 W12 (D3)",
+    "generation": "2세대 (D3, 2002~2010)",
+    "fuel": "가솔린",
+    "displacement": "3,123cc / 4,163cc / 5,998cc",
+    "engine_code": "3.2 V6 (260ps) / 4.2 V8 (335ps/350ps) / 6.0 W12 자연흡기 (450ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A8 3.0 TDI / 4.2 TDI (D3)",
+    "generation": "2세대 (D3, 2003~2010)",
+    "fuel": "디젤",
+    "displacement": "2,967cc / 4,134cc",
+    "engine_code": "EA896 (3.0 V6 TDI 233ps) / 4.2 V8 TDI 바이터보 (326ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "S8 (D3 V10 람보르기니 엔진)",
+    "generation": "2세대 (D3 S, 2006~2010)",
+    "fuel": "가솔린",
+    "displacement": "5,204cc",
+    "engine_code": "5.2 V10 FSI 자연흡기 (450ps / 540Nm)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A8 3.0 TFSI / 4.0 TFSI / 6.3 W12 (D4)",
+    "generation": "3세대 (D4, 2010~2018)",
+    "fuel": "가솔린",
+    "displacement": "2,995cc / 3,993cc / 6,299cc",
+    "engine_code": "EA837 (3.0 V6 333ps) / EA824 (4.0 V8 435ps) / 6.3 W12 FSI (500ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A8 3.0 TDI / 4.2 TDI (D4)",
+    "generation": "3세대 (D4, 2010~2018)",
+    "fuel": "디젤",
+    "displacement": "2,967cc / 4,134cc",
+    "engine_code": "EA897 (3.0 V6 TDI 250ps/258ps) / 4.2 V8 TDI 바이터보 (350ps/385ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "S8 / S8 플러스 (D4 V8)",
+    "generation": "3세대 (D4 S, 2012~2018)",
+    "fuel": "가솔린",
+    "displacement": "3,993cc",
+    "engine_code": "EA824 (4.0 V8 바이터보 520ps / S8 Plus 605ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A8 55 TFSI / 60 TFSI L quattro (D5)",
+    "generation": "4세대 (D5, 2018~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,995cc / 3,996cc",
+    "engine_code": "EA839 (3.0 V6 340ps) / EA825 (4.0 V8 바이터보 48V MHEV 460ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "A8 50 TDI quattro (D5)",
+    "generation": "4세대 (D5, 2018~현재)",
+    "fuel": "디젤",
+    "displacement": "2,967cc",
+    "engine_code": "EA897 evo2 (3.0 V6 TDI 48V MHEV 286ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "S8 / S8 L TFSI (D5 4.0 V8)",
+    "generation": "4세대 (D5 S, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,996cc",
+    "engine_code": "EA825 (4.0 V8 바이터보 48V MHEV 571ps / 800Nm)"
+  },
+  {
+    "brand": "아우디",
+    "model": "Q2 35 TDI (GA)",
+    "generation": "1세대 (GA, 2020~현재)",
+    "fuel": "디젤",
+    "displacement": "1,968cc",
+    "engine_code": "EA288 (2.0 TDI 150ps / 7단 S-Tronic)"
+  },
+  {
+    "brand": "아우디",
+    "model": "Q3 30/35 TDI / 35 TFSI (8U)",
+    "generation": "1세대 (8U, 2011~2018)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "1,968cc / 1,984cc",
+    "engine_code": "EA189/EA288 (2.0 TDI 140ps/150ps/177ps) / EA888 (2.0 TFSI 170ps/211ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "RS Q3 (8U 5기통 터보)",
+    "generation": "1세대 (8U RS, 2013~2018)",
+    "fuel": "가솔린",
+    "displacement": "2,480cc",
+    "engine_code": "EA855 (2.5 직렬 5기통 터보 310ps / 340ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "Q3 35 TDI / 35 TFSI / 40 TFSI (F3)",
+    "generation": "2세대 (F3, 2020~현재)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "1,968cc / 1,984cc",
+    "engine_code": "EA288 (2.0 TDI 150ps) / EA888 Gen3 (2.0 TFSI 186ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "Q5 2.0 TFSI / 3.0 TFSI (8R)",
+    "generation": "1세대 (8R, 2008~2017)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc / 2,995cc",
+    "engine_code": "EA888 Gen2 (2.0T 211ps/225ps) / EA837 (3.0 V6 수퍼차저 272ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "Q5 2.0 TDI / 3.0 TDI / 45 TDI (8R)",
+    "generation": "1세대 (8R, 2008~2017)",
+    "fuel": "디젤",
+    "displacement": "1,968cc / 2,967cc",
+    "engine_code": "EA189 (2.0 TDI 177ps/190ps) / EA897 (3.0 V6 TDI 240ps/245ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "SQ5 TDI / SQ5 TFSI (8R)",
+    "generation": "1세대 (8R S, 2013~2017)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "2,967cc / 2,995cc",
+    "engine_code": "EA897 (3.0 V6 BiTDI 바이터보 디젤 313ps/326ps) / EA837 (3.0 V6 수퍼차저 354ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "Q5 45 TFSI quattro (FY)",
+    "generation": "2세대 (FY, 2017~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen3/Gen4 (2.0 TFSI 252ps / 265ps 12V MHEV)"
+  },
+  {
+    "brand": "아우디",
+    "model": "Q5 40 TDI / 45 TDI (FY)",
+    "generation": "2세대 (FY, 2017~현재)",
+    "fuel": "디젤",
+    "displacement": "1,968cc / 2,967cc",
+    "engine_code": "EA288 (2.0 TDI 190ps/204ps) / EA897 (3.0 V6 TDI 231ps/286ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "SQ5 TFSI / SQ5 TDI (FY)",
+    "generation": "2세대 (FY S, 2017~현재)",
+    "fuel": "가솔린 / 디젤",
+    "displacement": "2,995cc / 2,967cc",
+    "engine_code": "EA839 (3.0 V6 싱글터보 354ps) / EA897 (3.0 V6 e-터보 디젤 347ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "Q7 3.0 TFSI / 4.2 FSI (4L)",
+    "generation": "1세대 (4L, 2005~2015)",
+    "fuel": "가솔린",
+    "displacement": "2,995cc / 4,163cc",
+    "engine_code": "EA837 (3.0 V6 수퍼차저 333ps) / 4.2 V8 FSI (350ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "Q7 3.0 TDI / 4.2 TDI / 6.0 V12 TDI (4L)",
+    "generation": "1세대 (4L, 2005~2015)",
+    "fuel": "디젤",
+    "displacement": "2,967cc / 4,134cc / 5,934cc",
+    "engine_code": "EA896/897 (3.0 V6 240ps/245ps) / 4.2 V8 (340ps) / 6.0 V12 TDI 세계유일 500ps (1,000Nm)"
+  },
+  {
+    "brand": "아우디",
+    "model": "Q7 45 TFSI / 55 TFSI quattro (4M)",
+    "generation": "2세대 (4M, 2016~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc / 2,995cc",
+    "engine_code": "EA888 Gen3 (2.0T 252ps) / EA839 (3.0 V6 340ps 48V MHEV)"
+  },
+  {
+    "brand": "아우디",
+    "model": "Q7 35/45 TDI / 50 TDI (4M)",
+    "generation": "2세대 (4M, 2016~현재)",
+    "fuel": "디젤",
+    "displacement": "2,967cc",
+    "engine_code": "EA897 evo (3.0 V6 TDI 218ps/231ps/272ps/286ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "SQ7 TDI / SQ7 TFSI (4M V8)",
+    "generation": "2세대 (4M S, 2016~현재)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "3,956cc / 3,996cc",
+    "engine_code": "EA898 (4.0 V8 트리플터보 48V EPC 435ps / 900Nm) / EA825 (4.0 V8 바이터보 507ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "Q8 55 TFSI quattro (4MN)",
+    "generation": "1세대 (4MN, 2019~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,995cc",
+    "engine_code": "EA839 (3.0 V6 터보 48V MHEV 340ps / 500Nm)"
+  },
+  {
+    "brand": "아우디",
+    "model": "Q8 45 TDI / 50 TDI quattro (4MN)",
+    "generation": "1세대 (4MN, 2019~현재)",
+    "fuel": "디젤",
+    "displacement": "2,967cc",
+    "engine_code": "EA897 evo2 (3.0 V6 TDI 48V MHEV 231ps / 286ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "SQ8 TDI / SQ8 TFSI (4MN V8)",
+    "generation": "1세대 (4MN S, 2019~현재)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "3,956cc / 3,996cc",
+    "engine_code": "EA898 (4.0 V8 e-터보 디젤 435ps) / EA825 (4.0 V8 바이터보 507ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "RS Q8 (4MN 4.0 V8 최고성능)",
+    "generation": "1세대 (4MN RS, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,996cc",
+    "engine_code": "EA825 (4.0 V8 바이터보 48V MHEV 600ps / 800Nm)"
+  },
+  {
+    "brand": "아우디",
+    "model": "TT 쿠페 / 로드스터 1.8T / 3.2 (8N)",
+    "generation": "1세대 (8N, 1998~2006)",
+    "fuel": "가솔린",
+    "displacement": "1,781cc / 3,189cc",
+    "engine_code": "EA113 (1.8T 180ps/225ps) / VR6 (3.2 6기통 250ps / 최초의 DSG)"
+  },
+  {
+    "brand": "아우디",
+    "model": "TT 2.0 TFSI / TTS (8J)",
+    "generation": "2세대 (8J, 2006~2014)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen2 (2.0 TFSI 200ps/211ps) / EA113 (TTS 2.0T 265ps/272ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "TT 45 TFSI / TTS (8S)",
+    "generation": "3세대 (8S, 2014~2023단종)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen3 (2.0 TFSI 220ps/230ps/245ps) / EA888 Gen3 (TTS 293ps/306ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "TT RS (8S 5기통 터보)",
+    "generation": "3세대 (8S RS, 2016~2023단종)",
+    "fuel": "가솔린",
+    "displacement": "2,480cc",
+    "engine_code": "EA855 evo (2.5 직렬 5기통 TFSI 알루미늄 400ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "R8 4.2 FSI 쿠페 / 스파이더 (Type 42 V8)",
+    "generation": "1세대 (Type 42, 2007~2015)",
+    "fuel": "가솔린",
+    "displacement": "4,163cc",
+    "engine_code": "4.2 V8 FSI 미드십 자연흡기 (420ps / 430ps / 8,250rpm)"
+  },
+  {
+    "brand": "아우디",
+    "model": "R8 5.2 FSI V10 / V10 플러스 (Type 42)",
+    "generation": "1세대 (Type 42 V10, 2009~2015)",
+    "fuel": "가솔린",
+    "displacement": "5,204cc",
+    "engine_code": "5.2 V10 FSI 자연흡기 (525ps / Plus 550ps / 8,700rpm)"
+  },
+  {
+    "brand": "아우디",
+    "model": "R8 V10 플러스 / V10 퍼포먼스 (Type 4S)",
+    "generation": "2세대 (Type 4S, 2015~2024단종)",
+    "fuel": "가솔린",
+    "displacement": "5,204cc",
+    "engine_code": "5.2 V10 FSI 자연흡기 (610ps / Performance 620ps / 580Nm)"
+  },
+  {
+    "brand": "아우디",
+    "model": "e-tron 50 / 55 quattro (GE)",
+    "generation": "1세대 (GE EV, 2019~2023)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "71kWh / 95kWh 배터리 / 230kW(313ps) / 300kW(408ps 부스트) 듀얼모터 AWD"
+  },
+  {
+    "brand": "아우디",
+    "model": "e-tron S / e-tron S 스포트백 (3모터)",
+    "generation": "1세대 (GE S EV, 2021~2023)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "95kWh 배터리 / 370kW (503ps, 토크 973Nm) 전륜1+후륜2 3모터 AWD"
+  },
+  {
+    "brand": "아우디",
+    "model": "Q4 e-tron 40 / 45 quattro",
+    "generation": "1세대 (F4 EV, 2022~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "82kWh 배터리 / 150kW (204ps) 후륜 / 210kW (286ps) quattro"
+  },
+  {
+    "brand": "아우디",
+    "model": "Q8 50 / 55 e-tron quattro",
+    "generation": "1세대 F/L (GE EV, 2023~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "95kWh / 114kWh 대용량 배터리 / 250kW(340ps) / 300kW(408ps)"
+  },
+  {
+    "brand": "아우디",
+    "model": "SQ8 e-tron (트리플 모터)",
+    "generation": "1세대 F/L (GE S EV, 2023~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "114kWh 배터리 / 370kW (503ps, 토크 973Nm) 3모터 전기 플래그십 SUV"
+  },
+  {
+    "brand": "아우디",
+    "model": "e-tron GT quattro (800V 초급속충전)",
+    "generation": "1세대 (FW EV, 2021~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "93.4kWh 배터리 / 390kW (530ps 부스트) 듀얼모터 / 리어 2단 변속기"
+  },
+  {
+    "brand": "아우디",
+    "model": "RS e-tron GT (고성능 전기 GT)",
+    "generation": "1세대 (FW RS EV, 2021~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "93.4kWh 배터리 / 475kW (646ps 부스트, 830Nm) 0-100km/h 3.3초"
+  }
+];
+
+  let currentSegment = "ALL";
+  let currentFuel = "ALL";
+  let currentSearch = "";
+
+  const tbody = document.getElementById("audi-tbody");
+  const noResults = document.getElementById("audi-no-results");
+  const totalCountEl = document.getElementById("audi-total-count");
+  const searchInput = document.getElementById("audi-search");
+
+  function getBrandBadge(brand) {
+    return '<span class="audi-badge badge-audi">' + brand + '</span>';
+  }
+
+  function getFuelBadge(fuel) {
+    let cls = "fuel-gasoline";
+    if (fuel.includes("디젤")) cls = "fuel-diesel";
+    else if (fuel.includes("전기")) cls = "fuel-ev";
+    return '<span class="audi-badge ' + cls + '">' + fuel + '</span>';
+  }
+
+  function render() {
+    const searchVal = currentSearch.trim().toLowerCase();
+    
+    const filtered = rawData.filter(item => {
+      // 라인업 세그먼트 필터
+      if (currentSegment !== "ALL") {
+        const patterns = currentSegment.split("|");
+        const match = patterns.some(p => item.model.includes(p));
+        if (!match) return false;
+      }
+      // 연료 필터
+      if (currentFuel !== "ALL") {
+        if (!item.fuel.includes(currentFuel)) return false;
+      }
+      // 검색어 필터
+      if (searchVal) {
+        const targetStr = (item.brand + " " + item.model + " " + item.generation + " " + item.fuel + " " + item.displacement + " " + item.engine_code).toLowerCase();
+        if (!targetStr.includes(searchVal)) return false;
+      }
+      return true;
+    });
+
+    totalCountEl.textContent = filtered.length;
+
+    if (filtered.length === 0) {
+      tbody.innerHTML = "";
+      noResults.style.display = "block";
+      return;
+    }
+
+    noResults.style.display = "none";
+    let html = "";
+    filtered.forEach(item => {
+      html += '<tr>';
+      html += '<td data-label="브랜드">' + getBrandBadge(item.brand) + '</td>';
+      html += '<td data-label="차량명"><strong>' + item.model + '</strong></td>';
+      html += '<td data-label="세대">' + item.generation + '</td>';
+      html += '<td data-label="연료">' + getFuelBadge(item.fuel) + '</td>';
+      html += '<td data-label="배기량">' + item.displacement + '</td>';
+      html += '<td data-label="엔진코드"><span class="engine-code-text">' + item.engine_code + '</span></td>';
+      html += '</tr>';
+    });
+
+    tbody.innerHTML = html;
+  }
+
+  // 검색 이벤트
+  if (searchInput) {
+    searchInput.addEventListener("input", function(e) {
+      currentSearch = e.target.value;
+      render();
+    });
+  }
+
+  // 필터 버튼 이벤트
+  document.querySelectorAll("#audi-engine-wrap .audi-btn-chip").forEach(btn => {
+    btn.addEventListener("click", function() {
+      const type = this.getAttribute("data-filter-type");
+      const val = this.getAttribute("data-val");
+
+      const siblings = this.parentElement.querySelectorAll(".audi-btn-chip");
+      siblings.forEach(s => s.classList.remove("active"));
+      this.classList.add("active");
+
+      if (type === "segment") currentSegment = val;
+      if (type === "fuel") currentFuel = val;
+      render();
+    });
+  });
+
+  // CSV 다운로드 기능
+  const csvBtn = document.getElementById("audi-btn-csv");
+  if (csvBtn) {
+    csvBtn.addEventListener("click", function() {
+      let csvContent = "\uFEFF제조사,차량명,세대,연료,배기량,엔진코드\n";
+      rawData.forEach(r => {
+        csvContent += `"${r.brand}","${r.model}","${r.generation}","${r.fuel}","${r.displacement}","${r.engine_code}"\n`;
+      });
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", "audi_engine_specs.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  }
+
+  // 클립보드 복사 기능
+  const copyBtn = document.getElementById("audi-btn-copy");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function() {
+      let text = "제조사\t차량명\t세대\t연료\t배기량\t엔진코드\n";
+      rawData.forEach(r => {
+        text += `${r.brand}\t${r.model}\t${r.generation}\t${r.fuel}\t${r.displacement}\t${r.engine_code}\n`;
+      });
+      navigator.clipboard.writeText(text).then(() => {
+        alert("전체 데이터가 클립보드로 복사되었습니다. (엑셀/구글 시트에 바로 붙여넣기 가능)");
+      }).catch(() => {
+        alert("클립보드 복사 권한을 확인해주세요.");
+      });
+    });
+  }
+
+  // 초기 렌더링
+  render();
+})();
+</script>

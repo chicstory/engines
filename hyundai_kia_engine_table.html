@@ -1,0 +1,3346 @@
+<!-- 블로그스팟 게시용: 현대 & 기아 자동차 세대별 엔진코드 / 제원 일람표 (총 355개 모델) -->
+<div id="hk-engine-wrap">
+  <!-- 헤더 영역 -->
+  <div class="hk-header">
+    <h2 class="hk-title">🚗 현대 & 기아 자동차 세대별 엔진코드 · 제원 일람표</h2>
+    <p class="hk-desc">포터·봉고(1톤/디젤/LPG/EV)부터 승용·SUV·상용·클래식 명차, 최신 G4KS 하이브리드 및 G6DT까지 총망라</p>
+  </div>
+
+  <!-- 검색 및 필터 컨트롤 -->
+  <div class="hk-controls">
+    <!-- 검색창 -->
+    <div class="hk-search-box">
+      <span class="hk-search-icon">🔍</span>
+      <input type="text" id="hk-search" class="hk-search-input" placeholder="차량명, 코드명, 엔진코드, 배기량 등으로 검색... (예: 포터, 봉고, D4CB, G4KS, G6DT, 갤로퍼, 카렌스)" autocomplete="off">
+    </div>
+
+    <!-- 제조사 필터 -->
+    <div class="hk-filter-group">
+      <span class="hk-filter-label">제조사</span>
+      <button type="button" class="hk-btn-chip active" data-filter-type="brand" data-val="ALL">전체</button>
+      <button type="button" class="hk-btn-chip" data-filter-type="brand" data-val="현대">현대</button>
+      <button type="button" class="hk-btn-chip" data-filter-type="brand" data-val="기아">기아</button>
+      <button type="button" class="hk-btn-chip" data-filter-type="brand" data-val="제네시스">제네시스</button>
+    </div>
+
+    <!-- 차종/분류 필터 -->
+    <div class="hk-filter-group">
+      <span class="hk-filter-label">분류별</span>
+      <button type="button" class="hk-btn-chip active" data-filter-type="category" data-val="ALL">전체 차종</button>
+      <button type="button" class="hk-btn-chip" data-filter-type="category" data-val="포터|봉고|스타렉스|스타리아|그레이스|프레지오|쏠라티|타우너">트럭·상용·승합</button>
+      <button type="button" class="hk-btn-chip" data-filter-type="category" data-val="싼타페|투싼|스포티지|쏘렌토|팰리세이드|모하비|카니발|카렌스|갤로퍼|테라칸|베라크루즈|GV|셀토스|코나|니로|타스만|텔루라이드">SUV · RV</button>
+      <button type="button" class="hk-btn-chip" data-filter-type="category" data-val="그랜저|쏘나타|아반떼|K5|K7|K8|K3|G80|G70|G90|에쿠스|오피러스|제네시스|모닝|레이">승용 · 세단</button>
+    </div>
+
+    <!-- 연료 필터 -->
+    <div class="hk-filter-group" style="margin-bottom:0;">
+      <span class="hk-filter-label">연료별</span>
+      <button type="button" class="hk-btn-chip active" data-filter-type="fuel" data-val="ALL">전체</button>
+      <button type="button" class="hk-btn-chip" data-filter-type="fuel" data-val="가솔린">가솔린</button>
+      <button type="button" class="hk-btn-chip" data-filter-type="fuel" data-val="디젤">디젤</button>
+      <button type="button" class="hk-btn-chip" data-filter-type="fuel" data-val="하이브리드">하이브리드</button>
+      <button type="button" class="hk-btn-chip" data-filter-type="fuel" data-val="LPG">LPG</button>
+      <button type="button" class="hk-btn-chip" data-filter-type="fuel" data-val="전기">전기(EV)/수소</button>
+    </div>
+  </div>
+
+  <!-- 메타 정보 및 액션 버튼 -->
+  <div class="hk-meta-bar">
+    <div>
+      총 <span id="hk-total-count" class="hk-count-highlight">355</span>개 모델 제원 수록
+    </div>
+    <div class="hk-action-buttons">
+      <button type="button" class="hk-tool-btn" id="hk-btn-copy">📋 표 복사</button>
+      <button type="button" class="hk-tool-btn" id="hk-btn-csv">💾 CSV 다운로드</button>
+    </div>
+  </div>
+
+  <!-- 데이터 테이블 (반응형 모바일 카드 자동 전환) -->
+  <div class="hk-table-container">
+    <table id="hk-table">
+      <thead>
+        <tr>
+          <th style="width: 75px;">제조사</th>
+          <th style="width: 155px;">차량명</th>
+          <th>세대 (코드명/연식)</th>
+          <th style="width: 110px;">연료</th>
+          <th style="width: 115px;">배기량</th>
+          <th>엔진코드 (형식 / 최고출력 / 환경규제)</th>
+        </tr>
+      </thead>
+      <tbody id="hk-tbody">
+        <!-- Javascript로 동적 렌더링 -->
+      </tbody>
+    </table>
+    <div id="hk-no-results" class="no-results" style="display:none;">
+      검색 조건에 해당하는 차량 제원 정보가 없습니다.
+    </div>
+  </div>
+</div>
+
+<style>
+  /* 블로그스팟 독립형 스타일 네임스페이스 (#hk-engine-wrap) */
+  #hk-engine-wrap {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
+    max-width: 980px;
+    margin: 16px auto;
+    padding: 16px 12px;
+    color: #1e293b;
+    line-height: 1.5;
+    box-sizing: border-box;
+  }
+  #hk-engine-wrap * {
+    box-sizing: border-box;
+  }
+  #hk-engine-wrap .hk-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    color: #ffffff;
+    padding: 24px 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.15);
+  }
+  #hk-engine-wrap .hk-title {
+    margin: 0 0 8px 0;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    color: #ffffff;
+  }
+  #hk-engine-wrap .hk-desc {
+    margin: 0;
+    font-size: 0.88rem;
+    color: #cbd5e1;
+  }
+  #hk-engine-wrap .hk-controls {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    margin-bottom: 16px;
+  }
+  #hk-engine-wrap .hk-search-box {
+    position: relative;
+    margin-bottom: 12px;
+  }
+  #hk-engine-wrap .hk-search-input {
+    width: 100%;
+    padding: 12px 16px 12px 40px;
+    font-size: 0.92rem;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    outline: none;
+    background: #f8fafc;
+    color: #0f172a;
+    transition: all 0.2s;
+  }
+  #hk-engine-wrap .hk-search-input:focus {
+    background: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  }
+  #hk-engine-wrap .hk-search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 1.05rem;
+    pointer-events: none;
+  }
+  #hk-engine-wrap .hk-filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  #hk-engine-wrap .hk-filter-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #64748b;
+    margin-right: 4px;
+    min-width: 44px;
+  }
+  #hk-engine-wrap .hk-btn-chip {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    padding: 5px 11px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+  #hk-engine-wrap .hk-btn-chip:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+  }
+  #hk-engine-wrap .hk-btn-chip.active {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #2563eb;
+  }
+  #hk-engine-wrap .hk-meta-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 4px 12px 4px;
+    font-size: 0.85rem;
+    color: #64748b;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  #hk-engine-wrap .hk-count-highlight {
+    color: #2563eb;
+    font-weight: 700;
+  }
+  #hk-engine-wrap .hk-action-buttons {
+    display: flex;
+    gap: 8px;
+  }
+  #hk-engine-wrap .hk-tool-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  #hk-engine-wrap .hk-tool-btn:hover {
+    background: #f1f5f9;
+    border-color: #94a3b8;
+  }
+
+  /* 데스크톱 테이블 뷰 */
+  #hk-engine-wrap .hk-table-container {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  }
+  #hk-engine-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.88rem;
+  }
+  #hk-engine-wrap th {
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 700;
+    padding: 12px 14px;
+    border-bottom: 2px solid #e2e8f0;
+    white-space: nowrap;
+  }
+  #hk-engine-wrap td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+  }
+  #hk-engine-wrap tr:last-child td {
+    border-bottom: none;
+  }
+  #hk-engine-wrap tr:hover td {
+    background-color: #f8fafc;
+  }
+
+  /* 배지 스타일 */
+  #hk-engine-wrap .hk-badge {
+    display: inline-block;
+    padding: 3px 7px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+  #hk-engine-wrap .badge-hyundai { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+  #hk-engine-wrap .badge-kia { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+  #hk-engine-wrap .badge-genesis { background: #f4f4f5; color: #27272a; border: 1px solid #e4e4e7; }
+  
+  #hk-engine-wrap .fuel-gasoline { background: #f0fdf4; color: #15803d; }
+  #hk-engine-wrap .fuel-diesel { background: #f1f5f9; color: #334155; }
+  #hk-engine-wrap .fuel-hybrid { background: #ecfeff; color: #0e7490; }
+  #hk-engine-wrap .fuel-lpg { background: #fff7ed; color: #c2410c; }
+  #hk-engine-wrap .fuel-ev { background: #faf5ff; color: #7e22ce; }
+
+  #hk-engine-wrap .engine-code-text {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-weight: 700;
+    color: #0f172a;
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  /* 모바일 반응형 카드 뷰 (700px 이하) */
+  @media (max-width: 700px) {
+    #hk-engine-wrap {
+      padding: 10px 4px;
+    }
+    #hk-engine-wrap .hk-header {
+      padding: 18px 14px;
+      border-radius: 12px;
+    }
+    #hk-engine-wrap .hk-title {
+      font-size: 1.15rem;
+    }
+    #hk-engine-wrap .hk-controls {
+      padding: 12px;
+    }
+    #hk-engine-wrap .hk-table-container {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+    #hk-engine-wrap table, 
+    #hk-engine-wrap thead, 
+    #hk-engine-wrap tbody, 
+    #hk-engine-wrap th, 
+    #hk-engine-wrap tr {
+      display: block;
+    }
+    #hk-engine-wrap thead {
+      display: none;
+    }
+    #hk-engine-wrap tr {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 12px;
+      padding: 12px 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    #hk-engine-wrap td {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px dashed #f1f5f9;
+      font-size: 0.85rem;
+    }
+    #hk-engine-wrap td:last-child {
+      border-bottom: none;
+      padding-top: 8px;
+    }
+    #hk-engine-wrap td::before {
+      content: attr(data-label);
+      font-weight: 700;
+      color: #64748b;
+      font-size: 0.78rem;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+  }
+
+  #hk-engine-wrap .no-results {
+    text-align: center;
+    padding: 40px 20px;
+    color: #94a3b8;
+    font-size: 0.92rem;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px dashed #cbd5e1;
+  }
+</style>
+
+<script>
+(function() {
+  const rawData = [
+  {
+    "brand": "현대",
+    "model": "포터 HD1000",
+    "generation": "1세대 (HD1000, 1977~1981)",
+    "fuel": "디젤",
+    "displacement": "2,000cc",
+    "engine_code": "퍼킨스 4.203 디젤"
+  },
+  {
+    "brand": "현대",
+    "model": "포터 (각포터)",
+    "generation": "2세대 (AH, 1986~1996)",
+    "fuel": "디젤",
+    "displacement": "2,476cc",
+    "engine_code": "D4BX (2.5 싸이클론 디젤 84ps) / D4BA"
+  },
+  {
+    "brand": "현대",
+    "model": "뉴 포터",
+    "generation": "3세대 (AH, 1996~2004)",
+    "fuel": "디젤",
+    "displacement": "2,476cc / 2,607cc",
+    "engine_code": "D4BF (2.5 싸이클론 터보 TCI 85ps) / D4BB (2.6 T2 83ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "뉴 포터 LPG",
+    "generation": "3세대 (AH, 1996~2004)",
+    "fuel": "LPG",
+    "displacement": "2,351cc",
+    "engine_code": "L4CS (2.4 시리우스 LPG 82ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "포터 II (TCI / CRDi 초기형)",
+    "generation": "4세대 (HR 초기, 2004~2011)",
+    "fuel": "디젤",
+    "displacement": "2,476cc / 2,497cc",
+    "engine_code": "D4BH (2.5 TCI 94ps) / D4CB (2.5 A CRDi 유로4 123ps/126ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "포터 II (유로5 / 유로6 LNT)",
+    "generation": "4세대 (HR 중기, 2012~2019)",
+    "fuel": "디젤",
+    "displacement": "2,497cc",
+    "engine_code": "D4CB (2.5 A-II CRDi 유로5 133ps / 유로6 LNT 133ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "포터 II (유로6d SCR 요소수)",
+    "generation": "4세대 (HR 후기, 2019~2023)",
+    "fuel": "디젤",
+    "displacement": "2,497cc",
+    "engine_code": "D4CB (2.5 A-II CRDi 유로6d SCR 요소수 133ps/135ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "포터 II 일렉트릭",
+    "generation": "4세대 (HR EV, 2019~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "58.8kWh 리튬이온 배터리 / 135kW (184ps) 구동모터"
+  },
+  {
+    "brand": "현대",
+    "model": "포터 II LPDi (터보 LPG)",
+    "generation": "4세대 (HR LPG, 2024~현재)",
+    "fuel": "LPG",
+    "displacement": "2,469cc",
+    "engine_code": "L4KC (스마트스트림 2.5 T-LPDi 터보 159ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "봉고 트럭 / 봉고 코치·나인",
+    "generation": "1세대 (BA2, 1980~1993)",
+    "fuel": "디젤",
+    "displacement": "2,209cc / 2,392cc",
+    "engine_code": "마쓰다 S2 (2.2 디젤 70ps) / SF (2.4 디젤)"
+  },
+  {
+    "brand": "기아",
+    "model": "와이드 봉고 / 봉고 J2",
+    "generation": "2세대 (1989~1997)",
+    "fuel": "디젤",
+    "displacement": "2,665cc",
+    "engine_code": "J2 (2.7 디젤 80ps/83ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "봉고 프런티어",
+    "generation": "3세대 (1997~2004)",
+    "fuel": "디젤",
+    "displacement": "2,665cc / 2,957cc",
+    "engine_code": "J2 (2.7 디젤 83ps) / JT (3.0 디젤 90ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "봉고 프런티어 LPG",
+    "generation": "3세대 (1998~2004)",
+    "fuel": "LPG",
+    "displacement": "2,665cc",
+    "engine_code": "L27 (2.7 LPi/LPG 86ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "봉고 III (초기형 1톤/1.2톤)",
+    "generation": "4세대 (PU 초기, 2004~2011)",
+    "fuel": "디젤",
+    "displacement": "2,902cc / 2,957cc",
+    "engine_code": "J3 (2.9 CRDi 123ps/126ps) / JT (1.2톤 3.0 디젤 94ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "봉고 III LPi",
+    "generation": "4세대 (PU LPi, 2007~2023)",
+    "fuel": "LPG",
+    "displacement": "2,359cc",
+    "engine_code": "L4KB (2.4 세타 LPi 159ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "봉고 III (유로5 / 유로6 LNT)",
+    "generation": "4세대 (PU 중기, 2012~2019)",
+    "fuel": "디젤",
+    "displacement": "2,497cc",
+    "engine_code": "D4CB (2.5 A-II CRDi 유로5 133ps / 유로6 LNT 133ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "봉고 III (유로6d SCR 요소수)",
+    "generation": "4세대 (PU 후기, 2019~2023)",
+    "fuel": "디젤",
+    "displacement": "2,497cc",
+    "engine_code": "D4CB (2.5 A-II CRDi 유로6d SCR 133ps/135ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "봉고 III EV",
+    "generation": "4세대 (PU EV, 2020~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "58.8kWh 리튬이온 배터리 / 135kW (184ps) 구동모터"
+  },
+  {
+    "brand": "기아",
+    "model": "봉고 III LPDi (터보 LPG)",
+    "generation": "4세대 (PU LPG, 2024~현재)",
+    "fuel": "LPG",
+    "displacement": "2,469cc",
+    "engine_code": "L4KC (스마트스트림 2.5 T-LPDi 터보 159ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "봉고 III 미니버스 / 코치",
+    "generation": "4세대 (PU 코치, 2004~2005)",
+    "fuel": "디젤",
+    "displacement": "2,902cc",
+    "engine_code": "J3 (2.9 CRDi 123ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "포니 / 포니 2",
+    "generation": "1세대 (1975~1990)",
+    "fuel": "가솔린",
+    "displacement": "1,238cc / 1,439cc",
+    "engine_code": "미쓰비시 새턴 4G33 (1.2) / 4G36 (1.4)"
+  },
+  {
+    "brand": "현대",
+    "model": "스텔라",
+    "generation": "1세대 (1983~1997)",
+    "fuel": "가솔린",
+    "displacement": "1,439cc / 1,597cc",
+    "engine_code": "새턴 4G33 (1.4) / 4G32 (1.6) / G4CM (1.8 시리우스)"
+  },
+  {
+    "brand": "현대",
+    "model": "포니엑셀 / 프레스토 / 엑셀",
+    "generation": "1세대 (1985~1994)",
+    "fuel": "가솔린",
+    "displacement": "1,298cc / 1,468cc",
+    "engine_code": "G4AJ (1.3 오리온) / G4DJ (1.5 오리온)"
+  },
+  {
+    "brand": "현대",
+    "model": "스쿠프",
+    "generation": "1세대 (1990~1995)",
+    "fuel": "가솔린",
+    "displacement": "1,468cc / 1,495cc",
+    "engine_code": "G4DJ (1.5 오리온) / G4EK (1.5 알파 SOHC 102ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "스쿠프 터보",
+    "generation": "1세대 (1991~1995)",
+    "fuel": "가솔린",
+    "displacement": "1,495cc",
+    "engine_code": "G4EK Turbo (1.5 알파 가솔린 터보 129ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "엘란트라",
+    "generation": "1세대 (J1, 1990~1995)",
+    "fuel": "가솔린",
+    "displacement": "1,468cc / 1,596cc",
+    "engine_code": "G4DJ (1.5 오리온) / G4CR (1.6 시리우스 DOHC 126ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "엘란트라 1.8",
+    "generation": "1세대 (J1, 1993~1995)",
+    "fuel": "가솔린",
+    "displacement": "1,836cc",
+    "engine_code": "G4CN (1.8 시리우스 DOHC 135ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "엑센트 (구형)",
+    "generation": "1세대 (X3, 1994~1999)",
+    "fuel": "가솔린",
+    "displacement": "1,341cc / 1,495cc",
+    "engine_code": "G4EH (1.3 알파 SOHC) / G4EK (1.5 알파 SOHC/DOHC)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 (구아방)",
+    "generation": "1세대 (J2, 1995~1998)",
+    "fuel": "가솔린",
+    "displacement": "1,495cc / 1,795cc",
+    "engine_code": "G4FK (1.5 알파 DOHC 107ps) / G4GM (1.8 베타 DOHC 138ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "올 뉴 아반떼",
+    "generation": "1세대 F/L (1998~2000)",
+    "fuel": "가솔린",
+    "displacement": "1,495cc",
+    "engine_code": "G4FK (1.5 알파 린번 / DOHC)"
+  },
+  {
+    "brand": "현대",
+    "model": "티뷰론 / 터뷸런스",
+    "generation": "1세대 (RD, 1996~2001)",
+    "fuel": "가솔린",
+    "displacement": "1,795cc / 1,975cc",
+    "engine_code": "G4GM (1.8 베타 DOHC) / G4GF (2.0 베타 DOHC 153ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "마르샤",
+    "generation": "1세대 (1995~1998)",
+    "fuel": "가솔린",
+    "displacement": "1,997cc / 2,493cc",
+    "engine_code": "G4CP (2.0 시리우스 DOHC) / G6BV (2.5 델타 V6 173ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "다이너스티",
+    "generation": "1세대 (1996~2005)",
+    "fuel": "가솔린",
+    "displacement": "2,497cc / 2,972cc",
+    "engine_code": "G6AV (2.5 시그마 V6) / G6AT (3.0 시그마 V6 205ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "다이너스티 리무진",
+    "generation": "1세대 (1997~2005)",
+    "fuel": "가솔린",
+    "displacement": "3,497cc",
+    "engine_code": "G6AU (3.5 시그마 V6 225ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "아토스 (Atoz)",
+    "generation": "1세대 (MX, 1997~2002)",
+    "fuel": "가솔린",
+    "displacement": "798cc",
+    "engine_code": "G4HA (0.8 입실론 SOHC 54ps) / G4HA Turbo (터보 70ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "베르나 LC",
+    "generation": "1세대 (LC, 1999~2005)",
+    "fuel": "가솔린",
+    "displacement": "1,341cc / 1,495cc",
+    "engine_code": "G4EA (1.3 알파) / G4EB (1.5 알파) / G4ED (1.6 알파 II)"
+  },
+  {
+    "brand": "현대",
+    "model": "베르나 디젤 LC",
+    "generation": "1세대 (LC, 2003~2005)",
+    "fuel": "디젤",
+    "displacement": "1,493cc",
+    "engine_code": "D4FA (1.5 U CRDi 유로3)"
+  },
+  {
+    "brand": "현대",
+    "model": "베르나 MC / 트랜스폼",
+    "generation": "2세대 (MC, 2005~2010)",
+    "fuel": "가솔린",
+    "displacement": "1,399cc / 1,599cc",
+    "engine_code": "G4EE (1.4 알파 II) / G4ED (1.6 알파 II DOHC)"
+  },
+  {
+    "brand": "현대",
+    "model": "베르나 디젤 MC",
+    "generation": "2세대 (MC, 2005~2010)",
+    "fuel": "디젤",
+    "displacement": "1,493cc",
+    "engine_code": "D4FA (1.5 U VGT 유로4)"
+  },
+  {
+    "brand": "현대",
+    "model": "베르나 하이브리드 MC",
+    "generation": "2세대 (MC HEV, 2005~2010)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,399cc",
+    "engine_code": "G4EE (1.4 알파 마일드 HEV)"
+  },
+  {
+    "brand": "현대",
+    "model": "엑센트 RB",
+    "generation": "4세대 (RB, 2010~2019)",
+    "fuel": "가솔린",
+    "displacement": "1,368cc / 1,591cc",
+    "engine_code": "G4LC (1.4 카파) / G4FA (1.4 감마) / G4FD (1.6 감마 GDi)"
+  },
+  {
+    "brand": "현대",
+    "model": "엑센트 디젤 RB",
+    "generation": "4세대 (RB, 2010~2019)",
+    "fuel": "디젤",
+    "displacement": "1,582cc",
+    "engine_code": "D4FB (1.6 U2 VGT/e-VGT 유로5/유로6 LNT 136ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "클릭 (Getz)",
+    "generation": "1세대 (TB, 2002~2011)",
+    "fuel": "가솔린",
+    "displacement": "1,341cc / 1,495cc",
+    "engine_code": "G4EA (1.3 알파) / G4EE (1.4 알파 II) / G4ED (1.6 알파 II)"
+  },
+  {
+    "brand": "현대",
+    "model": "클릭 디젤 (Getz)",
+    "generation": "1세대 (TB, 2005~2011)",
+    "fuel": "디젤",
+    "displacement": "1,493cc",
+    "engine_code": "D4FA (1.5 U CRDi/VGT 유로4)"
+  },
+  {
+    "brand": "현대",
+    "model": "라비타 (Matrix)",
+    "generation": "1세대 (FC, 2001~2007)",
+    "fuel": "가솔린",
+    "displacement": "1,495cc / 1,795cc",
+    "engine_code": "G4ED (1.5/1.6 알파 II) / G4GM (1.8 베타 DOHC)"
+  },
+  {
+    "brand": "현대",
+    "model": "라비타 디젤",
+    "generation": "1세대 (FC, 2005~2007)",
+    "fuel": "디젤",
+    "displacement": "1,493cc",
+    "engine_code": "D4FA (1.5 U CRDi 유로4)"
+  },
+  {
+    "brand": "현대",
+    "model": "i30 FD",
+    "generation": "1세대 (FD/CW, 2007~2011)",
+    "fuel": "가솔린",
+    "displacement": "1,591cc / 1,975cc",
+    "engine_code": "G4FC (1.6 감마 MPI) / G4GC (2.0 베타 II)"
+  },
+  {
+    "brand": "현대",
+    "model": "i30 디젤 FD",
+    "generation": "1세대 (FD, 2007~2011)",
+    "fuel": "디젤",
+    "displacement": "1,582cc / 1,991cc",
+    "engine_code": "D4FB (1.6 U VGT 유로4) / D4EA (2.0 D CRDi 유로4)"
+  },
+  {
+    "brand": "현대",
+    "model": "i30 GD",
+    "generation": "2세대 (GD, 2011~2016)",
+    "fuel": "가솔린",
+    "displacement": "1,591cc / 1,999cc",
+    "engine_code": "G4FD (1.6 감마 GDi) / G4NC (2.0 누우 GDi)"
+  },
+  {
+    "brand": "현대",
+    "model": "i30 디젤 GD",
+    "generation": "2세대 (GD, 2011~2016)",
+    "fuel": "디젤",
+    "displacement": "1,582cc",
+    "engine_code": "D4FB (1.6 U2 e-VGT 유로5/6 LNT)"
+  },
+  {
+    "brand": "현대",
+    "model": "i30 PD",
+    "generation": "3세대 (PD, 2016~2020)",
+    "fuel": "가솔린",
+    "displacement": "1,353cc / 1,591cc",
+    "engine_code": "G4LD (1.4 카파 T-GDi) / G4FJ (1.6 감마 T-GDi 204ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "i30 N / N 라인 PD",
+    "generation": "3세대 (PD N, 2017~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc",
+    "engine_code": "G4KH (2.0 세타 II T-GDi N 250ps/280ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "i30 디젤 PD",
+    "generation": "3세대 (PD, 2016~2019)",
+    "fuel": "디젤",
+    "displacement": "1,598cc",
+    "engine_code": "D4FE (스마트스트림 D1.6 유로6d 136ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "i40 / 살룬 VF",
+    "generation": "1세대 (VF, 2011~2019)",
+    "fuel": "가솔린",
+    "displacement": "1,999cc",
+    "engine_code": "G4NC (2.0 누우 GDi 178ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "i40 디젤 VF",
+    "generation": "1세대 (VF, 2011~2019)",
+    "fuel": "디젤",
+    "displacement": "1,685cc",
+    "engine_code": "D4FD (1.7 U2 e-VGT 유로5/유로6 LNT/SCR 140ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "벨로스터 FS",
+    "generation": "1세대 (FS, 2011~2018)",
+    "fuel": "가솔린",
+    "displacement": "1,591cc",
+    "engine_code": "G4FD (1.6 감마 GDi 140ps) / G4FJ (1.6 감마 T-GDi 204ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "벨로스터 JS",
+    "generation": "2세대 (JS, 2018~2022)",
+    "fuel": "가솔린",
+    "displacement": "1,353cc / 1,591cc",
+    "engine_code": "G4LD (1.4 카파 T-GDi) / G4FJ (1.6 감마 T-GDi 204ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "벨로스터 N",
+    "generation": "2세대 (JS N, 2018~2022)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc",
+    "engine_code": "G4KH (2.0 세타 II T-GDi N 275ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "베뉴 (Venue)",
+    "generation": "1세대 (QX, 2019~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,598cc",
+    "engine_code": "G4FM (스마트스트림 G1.6 MPi 123ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "투스카니 GK",
+    "generation": "1세대 (GK, 2001~2008)",
+    "fuel": "가솔린",
+    "displacement": "1,975cc",
+    "engine_code": "G4GC (2.0 베타 II VVT 143ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "투스카니 엘리사 GK",
+    "generation": "1세대 (GK Elisa, 2001~2008)",
+    "fuel": "가솔린",
+    "displacement": "2,656cc",
+    "engine_code": "G6BA (2.7 델타 V6 175ps / 6단 수동)"
+  },
+  {
+    "brand": "현대",
+    "model": "제네시스 쿠페 (젠쿱 구형)",
+    "generation": "1세대 (BK 전기, 2008~2011)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc",
+    "engine_code": "G4KF (2.0 세타 T-GDi 후륜 터보 210ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "제네시스 쿠페 380 GT",
+    "generation": "1세대 (BK 전기, 2008~2011)",
+    "fuel": "가솔린",
+    "displacement": "3,778cc",
+    "engine_code": "G6DA (3.8 람다 RS MPI 303ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "더 뉴 제네시스 쿠페 (신쿱)",
+    "generation": "1세대 (BK 후기, 2011~2016)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc",
+    "engine_code": "G4KF (2.0 세타 T-GDi 트윈스크롤 275ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "더 뉴 제네시스 쿠페 380 GT",
+    "generation": "1세대 (BK 후기, 2011~2016)",
+    "fuel": "가솔린",
+    "displacement": "3,778cc",
+    "engine_code": "G6DJ (3.8 람다 RS GDi 350ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "아슬란 AG",
+    "generation": "1세대 (AG, 2014~2018)",
+    "fuel": "가솔린",
+    "displacement": "2,999cc",
+    "engine_code": "G6DG (3.0 람다 II GDi 270ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "아슬란 3.3 AG",
+    "generation": "1세대 (AG, 2014~2018)",
+    "fuel": "가솔린",
+    "displacement": "3,342cc",
+    "engine_code": "G6DH (3.3 람다 II GDi 294ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 XD",
+    "generation": "3세대 (XD, 2000~2006)",
+    "fuel": "가솔린",
+    "displacement": "1,495cc",
+    "engine_code": "G4EK (1.5 알파 SOHC/DOHC)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 XD",
+    "generation": "3세대 (XD, 2000~2006)",
+    "fuel": "가솔린",
+    "displacement": "1,599cc",
+    "engine_code": "G4ED (1.6 알파 II DOHC)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 XD",
+    "generation": "3세대 (XD, 2000~2006)",
+    "fuel": "가솔린",
+    "displacement": "1,975cc",
+    "engine_code": "G4GC (2.0 베타 II VVT)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 XD 디젤",
+    "generation": "3세대 (XD, 2005~2006)",
+    "fuel": "디젤",
+    "displacement": "1,493cc",
+    "engine_code": "D4FA (1.5 U CRDi 유로3/4)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 HD",
+    "generation": "4세대 (HD, 2006~2010)",
+    "fuel": "가솔린",
+    "displacement": "1,591cc",
+    "engine_code": "G4FC (1.6 감마 MPI)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 HD",
+    "generation": "4세대 (HD, 2006~2010)",
+    "fuel": "가솔린",
+    "displacement": "1,975cc",
+    "engine_code": "G4GC (2.0 베타 II)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 HD 디젤",
+    "generation": "4세대 (HD, 2006~2010)",
+    "fuel": "디젤",
+    "displacement": "1,582cc",
+    "engine_code": "D4FB (1.6 U VGT 유로4)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 HD 하이브리드",
+    "generation": "4세대 (HD LPi HEV, 2009~2013)",
+    "fuel": "LPG 하이브리드",
+    "displacement": "1,591cc",
+    "engine_code": "L4FC (1.6 감마 LPi HEV)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 MD",
+    "generation": "5세대 (MD/JK, 2010~2015)",
+    "fuel": "가솔린",
+    "displacement": "1,591cc",
+    "engine_code": "G4FD (1.6 감마 GDi 140ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 쿠페 JK",
+    "generation": "5세대 (JK, 2013~2015)",
+    "fuel": "가솔린",
+    "displacement": "1,999cc",
+    "engine_code": "G4NC (2.0 누우 GDi 175ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 MD 디젤",
+    "generation": "5세대 (MD, 2013~2015)",
+    "fuel": "디젤",
+    "displacement": "1,582cc",
+    "engine_code": "D4FB (1.6 U2 VGT 유로5)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 MD LPi",
+    "generation": "5세대 (MD, 2010~2015)",
+    "fuel": "LPG",
+    "displacement": "1,591cc",
+    "engine_code": "L4FA (1.6 감마 LPi)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 AD",
+    "generation": "6세대 (AD, 2015~2020)",
+    "fuel": "가솔린",
+    "displacement": "1,591cc",
+    "engine_code": "G4FD (1.6 감마 GDi 132ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 AD (페이스리프트)",
+    "generation": "6세대 (삼각떼, 2018~2020)",
+    "fuel": "가솔린",
+    "displacement": "1,598cc",
+    "engine_code": "G4FM (스마트스트림 G1.6 MPi 123ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 스포츠 AD",
+    "generation": "6세대 (AD Sport, 2016~2020)",
+    "fuel": "가솔린",
+    "displacement": "1,591cc",
+    "engine_code": "G4FJ (1.6 감마 T-GDi 204ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 AD 2.0",
+    "generation": "6세대 (AD, 2015~2018)",
+    "fuel": "가솔린",
+    "displacement": "1,999cc",
+    "engine_code": "G4NH (2.0 누우 아킨슨 MPI)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 AD 디젤",
+    "generation": "6세대 (AD, 2015~2019)",
+    "fuel": "디젤",
+    "displacement": "1,582cc",
+    "engine_code": "D4FB (1.6 U2 e-VGT 유로6 LNT 136ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 AD LPi",
+    "generation": "6세대 (AD, 2015~2020)",
+    "fuel": "LPG",
+    "displacement": "1,591cc",
+    "engine_code": "L4FA (1.6 감마 LPi)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 CN7 / 더 뉴 아반떼",
+    "generation": "7세대 (CN7, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,598cc",
+    "engine_code": "G4FM (스마트스트림 G1.6 123ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 N 라인 CN7",
+    "generation": "7세대 (CN7, 2020~2023)",
+    "fuel": "가솔린",
+    "displacement": "1,598cc",
+    "engine_code": "G4FP (스마트스트림 G1.6 T-GDi 204ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 N CN7",
+    "generation": "7세대 (CN7 N, 2021~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc",
+    "engine_code": "G4KH (2.0 세타 II 플랫파워 T-GDi 280ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 하이브리드 CN7",
+    "generation": "7세대 (CN7 HEV, 2020~현재)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,580cc",
+    "engine_code": "G4LE (스마트스트림 G1.6 HEV)"
+  },
+  {
+    "brand": "현대",
+    "model": "아반떼 LPi CN7",
+    "generation": "7세대 (CN7 LPi, 2020~현재)",
+    "fuel": "LPG",
+    "displacement": "1,591cc",
+    "engine_code": "L4FA (1.6 감마 LPi 120ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "쏘나타 Y2 / Y3 (초기 쏘나타)",
+    "generation": "2/3세대 (Y2/Y3, 1988~1998)",
+    "fuel": "가솔린",
+    "displacement": "1,795cc / 1,997cc",
+    "engine_code": "G4CM (1.8 시리우스) / G4CP (2.0 시리우스 SOHC/DOHC)"
+  },
+  {
+    "brand": "현대",
+    "model": "쏘나타 III 3.0",
+    "generation": "3세대 (Y3, 1996~1998)",
+    "fuel": "가솔린",
+    "displacement": "2,972cc",
+    "engine_code": "G6AT (3.0 시그마 V6)"
+  },
+  {
+    "brand": "현대",
+    "model": "EF 쏘나타 / 뉴 EF",
+    "generation": "4세대 (EF, 1998~2004)",
+    "fuel": "가솔린",
+    "displacement": "1,795cc / 1,997cc",
+    "engine_code": "G4CM (1.8 시리우스 II) / G4JP (2.0 시리우스 II)"
+  },
+  {
+    "brand": "현대",
+    "model": "뉴 EF 쏘나타",
+    "generation": "4세대 (EF 후기, 2001~2004)",
+    "fuel": "가솔린",
+    "displacement": "1,975cc",
+    "engine_code": "G4GC (2.0 베타 II)"
+  },
+  {
+    "brand": "현대",
+    "model": "EF 쏘나타 / 뉴 EF 2.5/2.7",
+    "generation": "4세대 (EF, 1998~2004)",
+    "fuel": "가솔린",
+    "displacement": "2,493cc / 2,656cc",
+    "engine_code": "G6BV (2.5 델타 V6) / G6BA (2.7 델타 V6)"
+  },
+  {
+    "brand": "현대",
+    "model": "EF 쏘나타 / 뉴 EF LPG",
+    "generation": "4세대 (EF, 1998~2004)",
+    "fuel": "LPG",
+    "displacement": "1,997cc",
+    "engine_code": "L4JP (2.0 시리우스 II LPG)"
+  },
+  {
+    "brand": "현대",
+    "model": "NF 쏘나타 / 트랜스폼",
+    "generation": "5세대 (NF, 2004~2009)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc / 2,359cc",
+    "engine_code": "G4KA / G4KD (2.0 세타 I/II) / G4KC / G4KE (2.4 세타 I/II)"
+  },
+  {
+    "brand": "현대",
+    "model": "NF 쏘나타 3.3 V6",
+    "generation": "5세대 (NF, 2005~2008)",
+    "fuel": "가솔린",
+    "displacement": "3,342cc",
+    "engine_code": "G6DB (3.3 람다 V6 233ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "NF 쏘나타 디젤",
+    "generation": "5세대 (NF, 2006~2009)",
+    "fuel": "디젤",
+    "displacement": "1,991cc",
+    "engine_code": "D4EA (2.0 D CRDi/VGT 유로4)"
+  },
+  {
+    "brand": "현대",
+    "model": "NF 쏘나타 LPi",
+    "generation": "5세대 (NF, 2004~2009)",
+    "fuel": "LPG",
+    "displacement": "1,998cc",
+    "engine_code": "L4KA / L4KB (2.0 세타 LPi)"
+  },
+  {
+    "brand": "현대",
+    "model": "YF 쏘나타",
+    "generation": "6세대 (YF, 2009~2014)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc",
+    "engine_code": "G4KD (2.0 세타 II MPI) / G4ND (2.0 누우 CVVL 172ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "YF 쏘나타 2.4 GDi",
+    "generation": "6세대 (YF, 2010~2012)",
+    "fuel": "가솔린",
+    "displacement": "2,359cc",
+    "engine_code": "G4KJ (2.4 세타 II GDi 201ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "YF 쏘나타 터보",
+    "generation": "6세대 (YF Turbo, 2011~2014)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc",
+    "engine_code": "G4KH (2.0 세타 II T-GDi 271ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "YF 쏘나타 하이브리드",
+    "generation": "6세대 (YF HEV, 2011~2014)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,999cc",
+    "engine_code": "G4NE (2.0 누우 MPI HEV)"
+  },
+  {
+    "brand": "현대",
+    "model": "YF 쏘나타 LPi",
+    "generation": "6세대 (YF, 2009~2014)",
+    "fuel": "LPG",
+    "displacement": "1,998cc / 1,999cc",
+    "engine_code": "L4KD (2.0 세타 LPi) / L4NA (2.0 누우 LPi)"
+  },
+  {
+    "brand": "현대",
+    "model": "LF 쏘나타 / 뉴 라이즈",
+    "generation": "7세대 (LF, 2014~2019)",
+    "fuel": "가솔린",
+    "displacement": "1,999cc",
+    "engine_code": "G4ND (2.0 누우 CVVL 168ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "LF 쏘나타 1.6T / 2.0T",
+    "generation": "7세대 (LF, 2014~2019)",
+    "fuel": "가솔린",
+    "displacement": "1,591cc / 1,998cc",
+    "engine_code": "G4FJ (1.6 감마 T-GDi 180ps) / G4KH (2.0 세타 II T-GDi 245ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "LF 쏘나타 디젤",
+    "generation": "7세대 (LF, 2015~2018)",
+    "fuel": "디젤",
+    "displacement": "1,685cc",
+    "engine_code": "D4FD (1.7 U2 e-VGT 유로6 LNT 141ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "LF 쏘나타 하이브리드 / PHEV",
+    "generation": "7세대 (LF HEV/PHEV, 2014~2019)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,999cc",
+    "engine_code": "G4NG (2.0 누우 GDi HEV/PHEV)"
+  },
+  {
+    "brand": "현대",
+    "model": "LF 쏘나타 LPi",
+    "generation": "7세대 (LF, 2014~2019)",
+    "fuel": "LPG",
+    "displacement": "1,999cc",
+    "engine_code": "L4NA (2.0 누우 LPi 151ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "쏘나타 DN8 / 디 엣지",
+    "generation": "8세대 (DN8, 2019~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,999cc",
+    "engine_code": "G4NM (스마트스트림 G2.0 MPi 160ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "쏘나타 센슈어스 1.6T",
+    "generation": "8세대 (DN8, 2019~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,598cc",
+    "engine_code": "G4FP (스마트스트림 G1.6 T-GDi 180ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "쏘나타 N 라인 2.5T",
+    "generation": "8세대 (DN8 N Line, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,497cc",
+    "engine_code": "G4KP (스마트스트림 G2.5 T-GDi 290ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "쏘나타 하이브리드 DN8",
+    "generation": "8세대 (DN8 HEV, 2019~현재)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,999cc",
+    "engine_code": "G4NR (스마트스트림 G2.0 HEV)"
+  },
+  {
+    "brand": "현대",
+    "model": "쏘나타 LPi DN8",
+    "generation": "8세대 (DN8 LPi, 2019~현재)",
+    "fuel": "LPG",
+    "displacement": "1,999cc",
+    "engine_code": "L4NB (스마트스트림 L2.0 LPi 146ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "그랜저 (각그랜저)",
+    "generation": "1세대 (L, 1986~1992)",
+    "fuel": "가솔린",
+    "displacement": "1,997cc / 2,351cc / 2,972cc",
+    "engine_code": "G4CP (2.0 시리우스) / G4CS (2.4 시리우스) / G6AT (3.0 시그마 V6)"
+  },
+  {
+    "brand": "현대",
+    "model": "뉴 그랜저",
+    "generation": "2세대 (LX, 1992~1998)",
+    "fuel": "가솔린",
+    "displacement": "1,997cc / 2,497cc / 2,972cc / 3,497cc",
+    "engine_code": "G4CP (2.0) / G6AV (2.5) / G6AT (3.0) / G6AU (3.5 싸이클론 V6)"
+  },
+  {
+    "brand": "현대",
+    "model": "그랜저 XG",
+    "generation": "3세대 (XG, 1998~2005)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc / 2,493cc / 2,972cc",
+    "engine_code": "G6AV (2.0 델타) / G6BV (2.5 델타 V6) / G6AT (3.0 시그마 V6)"
+  },
+  {
+    "brand": "현대",
+    "model": "그랜저 XG LPi",
+    "generation": "3세대 (XG, 2003~2005)",
+    "fuel": "LPG",
+    "displacement": "2,656cc",
+    "engine_code": "L6BA (2.7 델타 V6 LPG/LPi)"
+  },
+  {
+    "brand": "현대",
+    "model": "그랜저 TG / 뉴 럭셔리",
+    "generation": "4세대 (TG, 2005~2011)",
+    "fuel": "가솔린",
+    "displacement": "2,359cc / 2,656cc / 3,342cc / 3,778cc",
+    "engine_code": "G4KC/G4KE (2.4 세타) / G6EA (2.7 뮤) / G6DB (3.3 람다) / G6DA (3.8 람다)"
+  },
+  {
+    "brand": "현대",
+    "model": "그랜저 TG 디젤",
+    "generation": "4세대 (TG, 2007~2009)",
+    "fuel": "디젤",
+    "displacement": "2,188cc",
+    "engine_code": "D4EB (2.2 D VGT 유로4 151ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "그랜저 TG LPi",
+    "generation": "4세대 (TG, 2005~2011)",
+    "fuel": "LPG",
+    "displacement": "2,656cc",
+    "engine_code": "L6EA (2.7 뮤 LPi 165ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "그랜저 HG",
+    "generation": "5세대 (HG, 2011~2016)",
+    "fuel": "가솔린",
+    "displacement": "2,359cc / 2,999cc / 3,342cc",
+    "engine_code": "G4KJ (2.4 세타 II GDi) / G6DG (3.0 람다 II GDi) / G6DH (3.3 람다 II GDi)"
+  },
+  {
+    "brand": "현대",
+    "model": "그랜저 HG 디젤",
+    "generation": "5세대 (HG, 2014~2016)",
+    "fuel": "디젤",
+    "displacement": "2,199cc",
+    "engine_code": "D4HB (2.2 R e-VGT 유로5 / 유로6 LNT 202ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "그랜저 HG 하이브리드",
+    "generation": "5세대 (HG HEV, 2013~2017)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "2,359cc",
+    "engine_code": "G4KK (2.4 세타 II MPI HEV)"
+  },
+  {
+    "brand": "현대",
+    "model": "그랜저 HG LPi",
+    "generation": "5세대 (HG, 2011~2016)",
+    "fuel": "LPG",
+    "displacement": "2,999cc",
+    "engine_code": "L6DC (3.0 람다 II LPi 235ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "그랜저 IG / 더 뉴 그랜저",
+    "generation": "6세대 (IG, 2016~2022)",
+    "fuel": "가솔린",
+    "displacement": "2,359cc / 2,497cc / 2,999cc / 3,342cc",
+    "engine_code": "G4KJ (2.4 GDi) / G4KN (2.5 스마트스트림) / G6DG (3.0 GDi) / G6DH (3.3 GDi)"
+  },
+  {
+    "brand": "현대",
+    "model": "그랜저 IG 디젤",
+    "generation": "6세대 (IG, 2016~2018)",
+    "fuel": "디젤",
+    "displacement": "2,199cc",
+    "engine_code": "D4HB (2.2 R e-VGT 유로6b LNT 202ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "그랜저 IG 하이브리드",
+    "generation": "6세대 (IG HEV, 2017~2022)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "2,359cc",
+    "engine_code": "G4KK (2.4 세타 II MPI HEV)"
+  },
+  {
+    "brand": "현대",
+    "model": "그랜저 IG LPi",
+    "generation": "6세대 (IG, 2016~2022)",
+    "fuel": "LPG",
+    "displacement": "2,999cc",
+    "engine_code": "L6DC (3.0 람다 II LPi 235ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "디 올 뉴 그랜저 GN7 2.5",
+    "generation": "7세대 (GN7, 2022~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,497cc",
+    "engine_code": "G4KN (스마트스트림 G2.5 GDi 198ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "디 올 뉴 그랜저 GN7 3.5",
+    "generation": "7세대 (GN7, 2022~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,470cc",
+    "engine_code": "G6DU (스마트스트림 G3.5 GDi 300ps) / G6DT (스마트스트림 G3.5 MPi)"
+  },
+  {
+    "brand": "현대",
+    "model": "디 올 뉴 그랜저 하이브리드 GN7",
+    "generation": "7세대 (GN7 HEV, 2022~현재)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,598cc",
+    "engine_code": "G4FT (스마트스트림 1.6 Turbo HEV 180ps/합산 230ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "디 올 뉴 그랜저 LPi GN7",
+    "generation": "7세대 (GN7 LPi, 2022~현재)",
+    "fuel": "LPG",
+    "displacement": "3,470cc",
+    "engine_code": "L6DV (스마트스트림 L3.5 LPi 240ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "갤로퍼 / 갤로퍼 II",
+    "generation": "1/2세대 (1991~2003)",
+    "fuel": "디젤",
+    "displacement": "2,476cc",
+    "engine_code": "D4BA (2.5 자연흡기 73ps) / D4BF (터보 85ps) / D4BH (인터쿨러 105ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "갤로퍼 가솔린 / LPG",
+    "generation": "1/2세대 (1991~2003)",
+    "fuel": "가솔린 / LPG",
+    "displacement": "2,972cc",
+    "engine_code": "G6AT (3.0 V6 가솔린 161ps) / L6AT (3.0 V6 LPG 135ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "싼타모 (Santamo)",
+    "generation": "1세대 (1995~2002)",
+    "fuel": "가솔린 / LPG",
+    "displacement": "1,997cc",
+    "engine_code": "G4CP (2.0 시리우스 가솔린) / L4CP (2.0 시리우스 LPG 86ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "테라칸 (Terracan)",
+    "generation": "1세대 (HP, 2001~2006)",
+    "fuel": "디젤",
+    "displacement": "2,476cc / 2,902cc",
+    "engine_code": "D4BH (2.5 TCI 103ps) / J3 (2.9 CRDi 150ps~165ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "테라칸 3.5 V6",
+    "generation": "1세대 (HP, 2001~2004)",
+    "fuel": "가솔린",
+    "displacement": "3,497cc",
+    "engine_code": "G6AU (3.5 시그마 V6 207ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "트라제 XG",
+    "generation": "1세대 (FO, 1999~2007)",
+    "fuel": "디젤",
+    "displacement": "1,991cc",
+    "engine_code": "D4EA (2.0 D CRDi/VGT 유로3/4 115ps/126ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "트라제 XG 가솔린",
+    "generation": "1세대 (FO, 1999~2007)",
+    "fuel": "가솔린",
+    "displacement": "1,997cc / 1,975cc",
+    "engine_code": "G4JP (2.0 시리우스 II) / G4GC (2.0 베타 II)"
+  },
+  {
+    "brand": "현대",
+    "model": "트라제 XG LPG",
+    "generation": "1세대 (FO, 1999~2007)",
+    "fuel": "LPG",
+    "displacement": "2,656cc",
+    "engine_code": "L6BA (2.7 델타 V6 LPG 160ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "그레이스",
+    "generation": "1세대 (1986~2003)",
+    "fuel": "디젤",
+    "displacement": "2,476cc / 2,607cc",
+    "engine_code": "D4BX / D4BA / D4BF (2.5 싸이클론 TCI) / D4BB (2.6 T2)"
+  },
+  {
+    "brand": "현대",
+    "model": "스타렉스 A1",
+    "generation": "1세대 (A1, 1997~2007)",
+    "fuel": "디젤",
+    "displacement": "2,476cc / 2,497cc",
+    "engine_code": "D4BF/D4BH (4D56 TCI) / D4CB (2.5 A CRDi 유로3 145ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "스타렉스 A1 LPG",
+    "generation": "1세대 (A1, 2000~2007)",
+    "fuel": "LPG",
+    "displacement": "2,972cc",
+    "engine_code": "L6AT (3.0 시그마 V6 LPG 135ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "그랜드 스타렉스 TQ",
+    "generation": "2세대 (TQ, 2007~2021)",
+    "fuel": "디젤",
+    "displacement": "2,497cc",
+    "engine_code": "D4CB (2.5 A-II VGT/WGT 유로4/5/6 LNT/SCR 175ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "그랜드 스타렉스 LPi",
+    "generation": "2세대 (TQ, 2008~2021)",
+    "fuel": "LPG",
+    "displacement": "2,359cc",
+    "engine_code": "L4KB (2.4 세타 LPi 159ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "스타리아 US4 디젤",
+    "generation": "1세대 (US4, 2021~현재)",
+    "fuel": "디젤",
+    "displacement": "2,199cc",
+    "engine_code": "D4HB (2.2 R e-VGT 유로6d SCR 177ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "스타리아 LPi",
+    "generation": "1세대 (US4, 2021~현재)",
+    "fuel": "LPG",
+    "displacement": "3,470cc",
+    "engine_code": "L6DV (스마트스트림 L3.5 LPi 240ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "스타리아 하이브리드",
+    "generation": "1세대 (US4 HEV, 2024~현재)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,598cc",
+    "engine_code": "G4FT (스마트스트림 1.6 Turbo HEV 180ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "쏠라티 (Solati / H350)",
+    "generation": "1세대 (EU, 2015~현재)",
+    "fuel": "디젤",
+    "displacement": "2,497cc",
+    "engine_code": "D4CB (2.5 A-II CRDi 유로6 SCR 170ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "싼타페 SM",
+    "generation": "1세대 (SM, 2000~2005)",
+    "fuel": "디젤",
+    "displacement": "1,991cc",
+    "engine_code": "D4EA (2.0 D CRDi/VGT 유로3 115ps/126ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "싼타페 SM 가솔린/LPG",
+    "generation": "1세대 (SM, 2000~2005)",
+    "fuel": "가솔린 / LPG",
+    "displacement": "2,656cc",
+    "engine_code": "G6BA (2.7 델타 V6) / L6BA (2.7 델타 V6 LPG)"
+  },
+  {
+    "brand": "현대",
+    "model": "싼타페 CM (전기형)",
+    "generation": "2세대 (CM, 2005~2009)",
+    "fuel": "디젤",
+    "displacement": "1,991cc / 2,188cc",
+    "engine_code": "D4EA / D4EB (2.0/2.2 D-VGT 유로4 151ps/175ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "싼타페 CM 더 스타일 (후기형)",
+    "generation": "2세대 (CM, 2009~2012)",
+    "fuel": "디젤",
+    "displacement": "1,995cc / 2,199cc",
+    "engine_code": "D4HA (2.0 R e-VGT 유로4/5 184ps) / D4HB (2.2 R 200ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "싼타페 CM 가솔린 / LPi",
+    "generation": "2세대 (CM, 2005~2011)",
+    "fuel": "가솔린 / LPG",
+    "displacement": "2,656cc",
+    "engine_code": "G6EA (2.7 뮤 V6) / L6EA (2.7 뮤 LPi 162ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "싼타페 DM / 더 프라임",
+    "generation": "3세대 (DM, 2012~2018)",
+    "fuel": "디젤",
+    "displacement": "1,995cc / 2,199cc",
+    "engine_code": "D4HA (2.0 R e-VGT 유로5/6 LNT 186ps) / D4HB (2.2 R 200ps/202ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "싼타페 DM 가솔린",
+    "generation": "3세대 (DM, 2017~2018)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc",
+    "engine_code": "G4KH (2.0 세타 II T-GDi 240ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "싼타페 TM",
+    "generation": "4세대 (TM 전기, 2018~2020)",
+    "fuel": "디젤",
+    "displacement": "1,995cc / 2,199cc",
+    "engine_code": "D4HA (2.0 R 186ps) / D4HB (2.2 R e-VGT 유로6 SCR 202ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "더 뉴 싼타페 TM (페이스리프트)",
+    "generation": "4세대 (TM F/L, 2020~2023)",
+    "fuel": "디젤",
+    "displacement": "2,151cc",
+    "engine_code": "D4HE (스마트스트림 D2.2 유로6d 202ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "더 뉴 싼타페 TM 가솔린",
+    "generation": "4세대 (TM F/L, 2020~2023)",
+    "fuel": "가솔린",
+    "displacement": "2,497cc",
+    "engine_code": "G4KP (스마트스트림 G2.5 T-GDi 281ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "더 뉴 싼타페 하이브리드 TM",
+    "generation": "4세대 (TM HEV, 2021~2023)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,598cc",
+    "engine_code": "G4FT (스마트스트림 1.6 Turbo HEV)"
+  },
+  {
+    "brand": "현대",
+    "model": "디 올 뉴 싼타페 MX5",
+    "generation": "5세대 (MX5, 2023~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,497cc",
+    "engine_code": "G4KP (스마트스트림 G2.5 T-GDi 281ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "디 올 뉴 싼타페 MX5 (북미/수출형)",
+    "generation": "5세대 (MX5 수출용, 2024~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,497cc",
+    "engine_code": "G4KN (스마트스트림 G2.5 GDi 194ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "디 올 뉴 싼타페 하이브리드 MX5",
+    "generation": "5세대 (MX5 HEV, 2023~현재)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,598cc",
+    "engine_code": "G4FT (스마트스트림 1.6 Turbo HEV 180ps/합산 235ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "싼타크루즈 (Santa Cruz)",
+    "generation": "1세대 (RC 북미형 픽업, 2021~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,497cc",
+    "engine_code": "G4KN (2.5 자연흡기 194ps) / G4KP (스마트스트림 2.5 T-GDi 285ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "투싼 JM",
+    "generation": "1세대 (JM, 2004~2009)",
+    "fuel": "디젤",
+    "displacement": "1,991cc",
+    "engine_code": "D4EA (2.0 D CRDi/VGT 유로3/4)"
+  },
+  {
+    "brand": "현대",
+    "model": "투싼 JM 가솔린",
+    "generation": "1세대 (JM, 2004~2009)",
+    "fuel": "가솔린",
+    "displacement": "1,975cc / 2,656cc",
+    "engine_code": "G4GC (2.0 베타 II) / G6BA (2.7 델타 V6)"
+  },
+  {
+    "brand": "현대",
+    "model": "투싼 ix",
+    "generation": "2세대 (LM, 2009~2015)",
+    "fuel": "디젤",
+    "displacement": "1,995cc",
+    "engine_code": "D4HA (2.0 R e-VGT 유로5 184ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "투싼 ix 가솔린",
+    "generation": "2세대 (LM, 2009~2015)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc / 1,999cc",
+    "engine_code": "G4KD (2.0 세타 II) / G4NC (2.0 누우 GDi 166ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "올 뉴 투싼 TL 디젤",
+    "generation": "3세대 (TL, 2015~2020)",
+    "fuel": "디젤",
+    "displacement": "1,685cc / 1,598cc / 1,995cc",
+    "engine_code": "D4FD (1.7 U2) / D4FE (1.6) / D4HA (2.0 R e-VGT 186ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "올 뉴 투싼 TL 가솔린",
+    "generation": "3세대 (TL, 2015~2020)",
+    "fuel": "가솔린",
+    "displacement": "1,591cc / 1,999cc",
+    "engine_code": "G4FJ (1.6 감마 T-GDi 177ps) / G4NA (2.0 누우 MPI)"
+  },
+  {
+    "brand": "현대",
+    "model": "디 올 뉴 투싼 NX4 / 더 뉴 투싼",
+    "generation": "4세대 (NX4, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,598cc",
+    "engine_code": "G4FP (스마트스트림 G1.6 T-GDi 180ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "디 올 뉴 투싼 NX4 디젤",
+    "generation": "4세대 (NX4, 2020~현재)",
+    "fuel": "디젤",
+    "displacement": "1,998cc",
+    "engine_code": "D4HD (스마트스트림 D2.0 유로6d 186ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "디 올 뉴 투싼 하이브리드 NX4",
+    "generation": "4세대 (NX4 HEV, 2020~현재)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,598cc",
+    "engine_code": "G4FT (스마트스트림 1.6 Turbo HEV 180ps/합산 230ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "베라크루즈 EN",
+    "generation": "1세대 (EN, 2006~2015)",
+    "fuel": "디젤",
+    "displacement": "2,959cc",
+    "engine_code": "D6EA (3.0 S V6 유로4 240ps) / D6EB (3.0 S-II V6 유로5 255ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "베라크루즈 3.8 V6",
+    "generation": "1세대 (EN, 2006~2011)",
+    "fuel": "가솔린",
+    "displacement": "3,778cc",
+    "engine_code": "G6DA (3.8 람다 V6 264ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "맥스크루즈 NC",
+    "generation": "1세대 (NC, 2013~2018)",
+    "fuel": "디젤",
+    "displacement": "2,199cc",
+    "engine_code": "D4HB (2.2 R e-VGT 유로5 / 유로6 LNT 202ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "맥스크루즈 3.3 GDi",
+    "generation": "1세대 (NC, 2013~2018)",
+    "fuel": "가솔린",
+    "displacement": "3,342cc",
+    "engine_code": "G6DH (3.3 람다 II GDi 290ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "팰리세이드 LX2 디젤",
+    "generation": "1세대 (LX2, 2018~현재)",
+    "fuel": "디젤",
+    "displacement": "2,199cc",
+    "engine_code": "D4HB (2.2 R e-VGT 유로6d SCR 202ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "팰리세이드 LX2 3.8 가솔린",
+    "generation": "1세대 (LX2 내수/북미, 2018~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,778cc",
+    "engine_code": "G6DN (3.8 람다 II 아킨슨 GDi 295ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "팰리세이드 LX2 3.5 가솔린",
+    "generation": "1세대 (LX2 국내/글로벌, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,470cc",
+    "engine_code": "G6DT (스마트스트림 G3.5 MPi 277ps) / G6DU (스마트스트림 G3.5 GDi)"
+  },
+  {
+    "brand": "현대",
+    "model": "디 올 뉴 팰리세이드 LX3 가솔린",
+    "generation": "2세대 (LX3, 2024말/2025~출시)",
+    "fuel": "가솔린",
+    "displacement": "3,470cc",
+    "engine_code": "G6DU (스마트스트림 G3.5 GDi 295~300ps) / G6DT (스마트스트림 G3.5 MPi 277ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "디 올 뉴 팰리세이드 하이브리드 LX3",
+    "generation": "2세대 (LX3 HEV 차세대, 2025~출시)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "2,497cc",
+    "engine_code": "G4KS (스마트스트림 G2.5 T-GDi HEV 차세대 하이브리드 TMED-II 335ps급)"
+  },
+  {
+    "brand": "현대",
+    "model": "캐스퍼 AX1",
+    "generation": "1세대 (AX1, 2021~현재)",
+    "fuel": "가솔린",
+    "displacement": "998cc",
+    "engine_code": "G3LD (스마트스트림 G1.0 MPi 76ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "캐스퍼 액티브 AX1",
+    "generation": "1세대 (AX1, 2021~현재)",
+    "fuel": "가솔린",
+    "displacement": "998cc",
+    "engine_code": "G3LC (카파 1.0 T-GDi 터보 100ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "캐스퍼 일렉트릭 / 인스터",
+    "generation": "1세대 (AX EV, 2024~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "49kWh NCM 배터리 / 84.5kW (115ps) 구동모터"
+  },
+  {
+    "brand": "현대",
+    "model": "코나 OS",
+    "generation": "1세대 (OS, 2017~2023)",
+    "fuel": "가솔린",
+    "displacement": "1,591cc / 1,598cc",
+    "engine_code": "G4FJ (1.6 감마 T-GDi 177ps) / G4FP (1.6 스마트스트림T 198ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "코나 디젤 OS",
+    "generation": "1세대 (OS, 2017~2020)",
+    "fuel": "디젤",
+    "displacement": "1,598cc",
+    "engine_code": "D4FE (스마트스트림 D1.6 유로6d 136ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "코나 하이브리드 OS",
+    "generation": "1세대 (OS HEV, 2019~2023)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,580cc",
+    "engine_code": "G4LE (카파 1.6 GDi HEV 105ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "코나 일렉트릭 OS",
+    "generation": "1세대 (OS EV, 2018~2023)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "39.2kWh / 64kWh 배터리 / 150kW (204ps) 모터"
+  },
+  {
+    "brand": "현대",
+    "model": "디 올 뉴 코나 SX2",
+    "generation": "2세대 (SX2, 2023~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,598cc / 1,999cc",
+    "engine_code": "G4FP (1.6 스마트스트림T 198ps) / G4NM (2.0 자연흡기 149ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "디 올 뉴 코나 하이브리드 SX2",
+    "generation": "2세대 (SX2 HEV, 2023~현재)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,580cc",
+    "engine_code": "G4LL (스마트스트림 G1.6 하이브리드 105ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "디 올 뉴 코나 일렉트릭 SX2",
+    "generation": "2세대 (SX2 EV, 2023~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "48.6kWh / 64.8kWh 배터리 / 150kW (204ps) 모터"
+  },
+  {
+    "brand": "현대",
+    "model": "아이오닉 AE 하이브리드",
+    "generation": "1세대 (AE HEV/PHEV, 2016~2022)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,580cc",
+    "engine_code": "G4LE (카파 1.6 GDi HEV 아킨슨 105ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "아이오닉 일렉트릭 AE",
+    "generation": "1세대 (AE EV, 2016~2020)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "28kWh / 38.3kWh 리튬이온폴리머 배터리 / 88kW~100kW 모터"
+  },
+  {
+    "brand": "현대",
+    "model": "넥쏘 (NEXO)",
+    "generation": "1세대 (FE FCEV, 2018~현재)",
+    "fuel": "수소전기",
+    "displacement": "-",
+    "engine_code": "95kW 수소연료전지스택 + 6.33kg 수소탱크 / 120kW (163ps) 모터"
+  },
+  {
+    "brand": "현대",
+    "model": "아이오닉 5 / 더 뉴 아이오닉 5",
+    "generation": "1세대 (NE, 2021~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "EM07/EM17 (58kWh / 77.4kWh / 84kWh, 125kW~239kW)"
+  },
+  {
+    "brand": "현대",
+    "model": "아이오닉 5 N",
+    "generation": "1세대 (NE N 고성능, 2023~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "84kWh 배터리 / 478kW (650ps) 고성능 듀얼모터 AWD"
+  },
+  {
+    "brand": "현대",
+    "model": "아이오닉 6",
+    "generation": "1세대 (CE, 2022~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "EM07/EM17 (53kWh / 77.4kWh / 84kWh)"
+  },
+  {
+    "brand": "현대",
+    "model": "아이오닉 9 (IONIQ 9)",
+    "generation": "1세대 (ME, 2025~출시)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "99.8kWh / 110.3kWh 배터리 / E-GMP 대형 플래그십 SUV"
+  },
+  {
+    "brand": "현대",
+    "model": "에쿠스 LZ",
+    "generation": "1세대 (LZ, 1999~2009)",
+    "fuel": "가솔린",
+    "displacement": "2,972cc / 3,497cc / 3,778cc / 4,498cc",
+    "engine_code": "G6AT (3.0) / G6AU (3.5) / G6DA (3.8 람다) / G8AA (4.5 오메가 V8 260ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "에쿠스 VI",
+    "generation": "2세대 (VI, 2009~2015)",
+    "fuel": "가솔린",
+    "displacement": "3,778cc / 4,627cc / 5,038cc",
+    "engine_code": "G6DA (3.8 람다) / G6DJ (3.8 GDi) / G8BA (4.6 타우) / G8BE (5.0 타우 GDi 430ps)"
+  },
+  {
+    "brand": "현대",
+    "model": "제네시스 BH / 프라다",
+    "generation": "1세대 (BH, 2008~2013)",
+    "fuel": "가솔린",
+    "displacement": "3,342cc / 3,778cc / 5,038cc",
+    "engine_code": "G6DB (3.3 MPI) / G6DH (3.3 GDi) / G6DA (3.8 MPI) / G6DJ (3.8 GDi) / G8BE (5.0 프라다)"
+  },
+  {
+    "brand": "현대/제네시스",
+    "model": "제네시스 DH / G80 (1세대 G80)",
+    "generation": "2세대 (DH, 2013~2020)",
+    "fuel": "가솔린",
+    "displacement": "3,342cc / 3,778cc",
+    "engine_code": "G6DH (3.3 GDi 282ps) / G6DJ (3.8 GDi 315ps) / G6DP (3.3 T-GDi 스포츠 370ps)"
+  },
+  {
+    "brand": "제네시스",
+    "model": "제네시스 G80 디젤 (DH)",
+    "generation": "2세대 (DH, 2018~2020)",
+    "fuel": "디젤",
+    "displacement": "2,199cc",
+    "engine_code": "D4HB (2.2 R e-VGT 유로6 SCR 세로배치 202ps)"
+  },
+  {
+    "brand": "제네시스",
+    "model": "G80 RG3 / 페이스리프트",
+    "generation": "3세대 (RG3, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,497cc / 3,470cc",
+    "engine_code": "G4KR (스마트스트림 G2.5 T-GDi 304ps) / G6DV (스마트스트림 G3.5 T-GDi 380ps)"
+  },
+  {
+    "brand": "제네시스",
+    "model": "G80 RG3 디젤",
+    "generation": "3세대 (RG3, 2020~2021)",
+    "fuel": "디젤",
+    "displacement": "2,151cc",
+    "engine_code": "D4HE (스마트스트림 D2.2 유로6d 210ps)"
+  },
+  {
+    "brand": "제네시스",
+    "model": "Electrified G80",
+    "generation": "3세대 (RG3 EV, 2021~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "EM09 듀얼모터 AWD (87.2kWh / 95.4kWh, 370ps)"
+  },
+  {
+    "brand": "제네시스",
+    "model": "G70 IK",
+    "generation": "1세대 (IK, 2017~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc / 2,497cc / 3,342cc",
+    "engine_code": "G4KL (2.0T) / G4KR (스마트스트림 G2.5T 304ps) / G6DP (3.3 T-GDi 370ps)"
+  },
+  {
+    "brand": "제네시스",
+    "model": "G70 디젤",
+    "generation": "1세대 (IK, 2017~2021)",
+    "fuel": "디젤",
+    "displacement": "2,199cc",
+    "engine_code": "D4HB / D4HC (2.2 R e-VGT 유로6 LNT/SCR 세로배치 202ps)"
+  },
+  {
+    "brand": "제네시스",
+    "model": "GV70 JK1 / 페이스리프트",
+    "generation": "1세대 (JK1, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,497cc / 3,470cc",
+    "engine_code": "G4KR (2.5 T-GDi 304ps) / G6DV (3.5 T-GDi V6 380ps)"
+  },
+  {
+    "brand": "제네시스",
+    "model": "GV70 디젤",
+    "generation": "1세대 (JK1, 2020~2023)",
+    "fuel": "디젤",
+    "displacement": "2,151cc",
+    "engine_code": "D4HE (스마트스트림 D2.2 유로6d 210ps)"
+  },
+  {
+    "brand": "제네시스",
+    "model": "Electrified GV70",
+    "generation": "1세대 (JK1 EV, 2022~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "듀얼모터 AWD (77.4kWh / 84kWh, 490ps 부스트)"
+  },
+  {
+    "brand": "제네시스",
+    "model": "GV80 JX1 / 쿠페",
+    "generation": "1세대 (JX1, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,497cc / 3,470cc",
+    "engine_code": "G4KR (2.5T 304ps) / G6DV (3.5T 380ps / 48V e-S/C 415ps)"
+  },
+  {
+    "brand": "제네시스",
+    "model": "GV80 디젤 JX1",
+    "generation": "1세대 (JX1, 2020~2023)",
+    "fuel": "디젤",
+    "displacement": "2,996cc",
+    "engine_code": "D6JA (스마트스트림 D3.0 직렬 6기통 유로6d 278ps)"
+  },
+  {
+    "brand": "제네시스",
+    "model": "EQ900 / G90 HI",
+    "generation": "1세대 (HI, 2015~2021)",
+    "fuel": "가솔린",
+    "displacement": "3,778cc / 3,342cc / 5,038cc",
+    "engine_code": "G6DJ (3.8 GDi) / G6DP (3.3 T-GDi 370ps) / G8BE (5.0 타우 GDi 425ps)"
+  },
+  {
+    "brand": "제네시스",
+    "model": "G90 RS4",
+    "generation": "2세대 (RS4, 2021~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,470cc",
+    "engine_code": "G6DV (스마트스트림 G3.5 T-GDi 380ps / 48V e-S/C 415ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "프라이드 (구형 1세대)",
+    "generation": "1세대 (Y, 1987~2000)",
+    "fuel": "가솔린",
+    "displacement": "1,139cc / 1,323cc",
+    "engine_code": "마쓰다 B1 (1.1) / B3 (1.3 EGI 73ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "아벨라 (Avella)",
+    "generation": "1세대 (1994~1999)",
+    "fuel": "가솔린",
+    "displacement": "1,323cc / 1,498cc",
+    "engine_code": "마쓰다 B3 (1.3) / B5 (1.5 SOHC/DOHC 88ps~105ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "세피아 / 세피아 II",
+    "generation": "1/2세대 (1992~2000)",
+    "fuel": "가솔린",
+    "displacement": "1,498cc / 1,793cc",
+    "engine_code": "B5 (1.5 SOHC/DOHC 105ps) / T8D (1.8 DOHC 139ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "슈마 (Shuma)",
+    "generation": "1세대 (1997~2001)",
+    "fuel": "가솔린",
+    "displacement": "1,498cc / 1,793cc",
+    "engine_code": "B5 (1.5 밀레니엄 DOHC) / T8D (1.8 DOHC 139ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "엘란 (Elan 로드스터)",
+    "generation": "1세대 (SB, 1996~1999)",
+    "fuel": "가솔린",
+    "displacement": "1,793cc",
+    "engine_code": "T8D Hi-sprint (1.8 DOHC 151ps 고회전형)"
+  },
+  {
+    "brand": "기아",
+    "model": "크레도스 / 파크타운",
+    "generation": "1세대 (1995~2000)",
+    "fuel": "가솔린",
+    "displacement": "1,793cc / 1,998cc",
+    "engine_code": "T8D (1.8 DOHC) / FE (2.0 DOHC 146ps) / 2.0 로버 KV6"
+  },
+  {
+    "brand": "기아",
+    "model": "포텐샤 (Potentia)",
+    "generation": "1세대 (1992~2002)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc / 2,184cc / 2,954cc",
+    "engine_code": "FE (2.0 SOHC/DOHC) / F2 (2.2) / JE (3.0 마쓰다 V6 200ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "엔터프라이즈 (Enterprise)",
+    "generation": "1세대 (1997~2002)",
+    "fuel": "가솔린",
+    "displacement": "2,497cc / 2,954cc / 3,605cc",
+    "engine_code": "마쓰다 J5 (2.5 V6) / JE (3.0 V6 205ps) / 3.6 V6 230ps"
+  },
+  {
+    "brand": "기아",
+    "model": "비스토 (Visto)",
+    "generation": "1세대 (MX, 1999~2004)",
+    "fuel": "가솔린",
+    "displacement": "798cc",
+    "engine_code": "G4HA (0.8 입실론 SOHC 54ps) / G4HA Turbo (터보 70ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "리오 / 뉴 리오",
+    "generation": "1세대 (DC, 1999~2005)",
+    "fuel": "가솔린",
+    "displacement": "1,323cc / 1,498cc",
+    "engine_code": "B3 (1.3 SOHC 84ps) / B5 (1.5 SOHC/DOHC 95ps/108ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "스펙트라 / 스펙트라 윙",
+    "generation": "1세대 (SD, 2000~2004)",
+    "fuel": "가솔린",
+    "displacement": "1,498cc / 1,793cc",
+    "engine_code": "B5 (1.5 밀레니엄 DOHC 108ps) / T8D (1.8 DOHC 139ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "쎄라토 LD",
+    "generation": "1세대 (LD, 2003~2008)",
+    "fuel": "가솔린",
+    "displacement": "1,495cc / 1,591cc / 1,975cc",
+    "engine_code": "G4ED (1.5/1.6 알파 II) / G4FC (1.6 감마) / G4GC (2.0 베타 II)"
+  },
+  {
+    "brand": "기아",
+    "model": "쎄라토 디젤 LD",
+    "generation": "1세대 (LD, 2004~2008)",
+    "fuel": "디젤",
+    "displacement": "1,493cc / 1,582cc",
+    "engine_code": "D4FA (1.5 U) / D4FB (1.6 U VGT 유로4)"
+  },
+  {
+    "brand": "기아",
+    "model": "뉴 프라이드 JB",
+    "generation": "2세대 (JB, 2005~2011)",
+    "fuel": "가솔린",
+    "displacement": "1,399cc / 1,599cc",
+    "engine_code": "G4EE (1.4 알파 II) / G4ED (1.6 알파 II DOHC)"
+  },
+  {
+    "brand": "기아",
+    "model": "뉴 프라이드 디젤 JB",
+    "generation": "2세대 (JB, 2005~2011)",
+    "fuel": "디젤",
+    "displacement": "1,493cc",
+    "engine_code": "D4FA (1.5 U CRDi/VGT 유로4)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 프라이드 UB",
+    "generation": "3세대 (UB, 2011~2017)",
+    "fuel": "가솔린",
+    "displacement": "1,396cc / 1,591cc",
+    "engine_code": "G4FA (1.4 감마 MPI) / G4FD (1.6 감마 GDi)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 프라이드 디젤 UB",
+    "generation": "3세대 (UB, 2011~2015)",
+    "fuel": "디젤",
+    "displacement": "1,396cc",
+    "engine_code": "D4FC (1.4 U2 WGT 유로5)"
+  },
+  {
+    "brand": "기아",
+    "model": "포르테 TD / 쿱",
+    "generation": "1세대 (TD, 2008~2013)",
+    "fuel": "가솔린",
+    "displacement": "1,591cc / 1,998cc",
+    "engine_code": "G4FC (1.6 감마 MPI) / G4FD (1.6 감마 GDi) / G4KD (2.0 세타 II)"
+  },
+  {
+    "brand": "기아",
+    "model": "포르테 디젤 TD",
+    "generation": "1세대 (TD, 2008~2011)",
+    "fuel": "디젤",
+    "displacement": "1,582cc",
+    "engine_code": "D4FB (1.6 U2 VGT 유로4/5)"
+  },
+  {
+    "brand": "기아",
+    "model": "포르테 하이브리드 LPi",
+    "generation": "1세대 (TD HEV, 2009~2013)",
+    "fuel": "LPG 하이브리드",
+    "displacement": "1,591cc",
+    "engine_code": "L4FC (1.6 감마 LPi HEV)"
+  },
+  {
+    "brand": "기아",
+    "model": "K3 YD / 쿱",
+    "generation": "1세대 (YD, 2012~2018)",
+    "fuel": "가솔린",
+    "displacement": "1,591cc",
+    "engine_code": "G4FD (1.6 감마 GDi 140ps) / G4FJ (1.6 T-GDi 204ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "K3 디젤 YD",
+    "generation": "1세대 (YD, 2013~2018)",
+    "fuel": "디젤",
+    "displacement": "1,582cc",
+    "engine_code": "D4FB (1.6 U2 e-VGT 유로5/6 LNT)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 K3 / 더 뉴 K3 BD",
+    "generation": "2세대 (BD, 2018~2024)",
+    "fuel": "가솔린",
+    "displacement": "1,598cc",
+    "engine_code": "G4FM (스마트스트림 G1.6 MPi 123ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "K3 GT BD",
+    "generation": "2세대 (BD GT, 2018~2024)",
+    "fuel": "가솔린",
+    "displacement": "1,591cc",
+    "engine_code": "G4FJ (1.6 감마 T-GDi 204ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 K3 디젤 BD",
+    "generation": "2세대 (BD, 2018~2019)",
+    "fuel": "디젤",
+    "displacement": "1,598cc",
+    "engine_code": "D4FE (스마트스트림 D1.6 유로6d 136ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "K4 CL4",
+    "generation": "1세대 (CL4 글로벌, 2024~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,999cc",
+    "engine_code": "G4NM (스마트스트림 G2.0 MPi 147ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "K4 GT 라인 CL4",
+    "generation": "1세대 (CL4 글로벌, 2024~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,598cc",
+    "engine_code": "G4FP (스마트스트림 G1.6 T-GDi 190ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "모닝 SA",
+    "generation": "1세대 (SA, 2004~2011)",
+    "fuel": "가솔린",
+    "displacement": "999cc",
+    "engine_code": "G4HG (1.0 입실론 SOHC 61ps/64ps) / G4HE (0.8/1.0)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 모닝 TA",
+    "generation": "2세대 (TA, 2011~2017)",
+    "fuel": "가솔린",
+    "displacement": "998cc",
+    "engine_code": "G3LA (1.0 카파 DOHC 82ps) / G3LB (1.0 카파 TCI 터보 106ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 모닝 바이퓨얼 TA",
+    "generation": "2세대 (TA Bi-fuel, 2011~2017)",
+    "fuel": "LPG / 가솔린 겸용",
+    "displacement": "998cc",
+    "engine_code": "B3LA (1.0 카파 바이퓨얼 LPi 82ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 모닝 JA / 모닝 어반",
+    "generation": "3세대 (JA, 2017~현재)",
+    "fuel": "가솔린",
+    "displacement": "998cc",
+    "engine_code": "G3LA (1.0 카파 에코프라임) / G3LD (스마트스트림 G1.0 76ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 모닝 터보 JA",
+    "generation": "3세대 (JA Turbo, 2017~2020)",
+    "fuel": "가솔린",
+    "displacement": "998cc",
+    "engine_code": "G3LC (1.0 카파 T-GDi 100ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "레이 TAM / 더 뉴 레이",
+    "generation": "1세대 (TAM, 2011~현재)",
+    "fuel": "가솔린",
+    "displacement": "998cc",
+    "engine_code": "G3LA (1.0 카파 MPI) / G3LD (스마트스트림 G1.0 76ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "레이 터보 TAM",
+    "generation": "1세대 (TAM Turbo, 2012~2017)",
+    "fuel": "가솔린",
+    "displacement": "998cc",
+    "engine_code": "G3LB (1.0 카파 TCI 터보 106ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "레이 바이퓨얼 / LPi TAM",
+    "generation": "1세대 (TAM LPi, 2011~2019)",
+    "fuel": "LPG",
+    "displacement": "998cc",
+    "engine_code": "B3LA (1.0 카파 LPi)"
+  },
+  {
+    "brand": "기아",
+    "model": "더 뉴 기아 레이 EV",
+    "generation": "1세대 (TAM EV 2세대, 2023~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "35.2kWh LFP 배터리 / 64.3kW (87ps) 구동모터"
+  },
+  {
+    "brand": "기아",
+    "model": "옵티마 / 옵티마 리갈 MS",
+    "generation": "1세대 (MS, 2000~2005)",
+    "fuel": "가솔린",
+    "displacement": "1,795cc / 1,975cc / 1,997cc / 2,493cc",
+    "engine_code": "G4CM (1.8) / G4GC (2.0 베타 II) / G4JP (2.0 시리우스 II) / G6BV (2.5 델타 V6)"
+  },
+  {
+    "brand": "기아",
+    "model": "옵티마 LPG MS",
+    "generation": "1세대 (MS, 2000~2005)",
+    "fuel": "LPG",
+    "displacement": "1,997cc",
+    "engine_code": "L4JP (2.0 시리우스 II LPG 123ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "로체 MG / 이노베이션",
+    "generation": "2세대 (MG, 2005~2010)",
+    "fuel": "가솔린",
+    "displacement": "1,795cc / 1,998cc / 2,359cc",
+    "engine_code": "G4KA/G4KD (2.0 세타 I/II) / G4KC/G4KE (2.4 세타 I/II)"
+  },
+  {
+    "brand": "기아",
+    "model": "로체 디젤 MG",
+    "generation": "2세대 (MG, 2006~2009)",
+    "fuel": "디젤",
+    "displacement": "1,991cc",
+    "engine_code": "D4EA (2.0 D CRDi/VGT 유로4)"
+  },
+  {
+    "brand": "기아",
+    "model": "로체 LPi MG",
+    "generation": "2세대 (MG, 2005~2010)",
+    "fuel": "LPG",
+    "displacement": "1,998cc",
+    "engine_code": "L4KA / L4KB (2.0 세타 LPi 140ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "K5 TF",
+    "generation": "3세대 (TF, 2010~2015)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc / 2,359cc",
+    "engine_code": "G4KD (2.0 세타 II) / G4ND (2.0 누우 CVVL) / G4KJ (2.4 GDi 201ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "K5 터보 GDi TF",
+    "generation": "3세대 (TF Turbo, 2011~2015)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc",
+    "engine_code": "G4KH (2.0 세타 II T-GDi 271ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "K5 하이브리드 TF",
+    "generation": "3세대 (TF HEV, 2011~2015)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,999cc",
+    "engine_code": "G4NE (2.0 누우 MPI HEV)"
+  },
+  {
+    "brand": "기아",
+    "model": "K5 LPi TF",
+    "generation": "3세대 (TF, 2010~2015)",
+    "fuel": "LPG",
+    "displacement": "1,998cc / 1,999cc",
+    "engine_code": "L4KD (2.0 세타 LPi) / L4NA (2.0 누우 LPi)"
+  },
+  {
+    "brand": "기아",
+    "model": "K5 JF",
+    "generation": "4세대 (JF, 2015~2019)",
+    "fuel": "가솔린",
+    "displacement": "1,591cc / 1,998cc / 1,999cc",
+    "engine_code": "G4FJ (1.6 감마T 180ps) / G4ND (2.0 누우) / G4KH (2.0T GT 245ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "K5 디젤 JF",
+    "generation": "4세대 (JF, 2015~2018)",
+    "fuel": "디젤",
+    "displacement": "1,685cc",
+    "engine_code": "D4FD (1.7 U2 e-VGT 유로6 LNT 141ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "K5 하이브리드 / PHEV JF",
+    "generation": "4세대 (JF HEV/PHEV, 2015~2019)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,999cc",
+    "engine_code": "G4NG (2.0 누우 GDi HEV/PHEV)"
+  },
+  {
+    "brand": "기아",
+    "model": "K5 LPi JF",
+    "generation": "4세대 (JF, 2015~2019)",
+    "fuel": "LPG",
+    "displacement": "1,999cc",
+    "engine_code": "L4NA (2.0 누우 LPi 151ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "K5 DL3 / 더 뉴 K5",
+    "generation": "5세대 (DL3, 2019~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,598cc / 1,999cc / 2,497cc",
+    "engine_code": "G4FP (1.6T 180ps) / G4NM (2.0 MPi 160ps) / G4KP (2.5T GT 북미 290ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "K5 하이브리드 DL3",
+    "generation": "5세대 (DL3 HEV, 2019~현재)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,999cc",
+    "engine_code": "G4NR (스마트스트림 G2.0 HEV 152ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "K5 LPi DL3",
+    "generation": "5세대 (DL3 LPi, 2019~현재)",
+    "fuel": "LPG",
+    "displacement": "1,999cc",
+    "engine_code": "L4NB (스마트스트림 L2.0 LPi 146ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "오피러스 GH / 프리미엄",
+    "generation": "1세대 (GH, 2003~2012)",
+    "fuel": "가솔린",
+    "displacement": "2,656cc / 2,972cc / 3,342cc / 3,497cc / 3,778cc",
+    "engine_code": "G6EA (2.7 뮤) / G6AT (3.0) / G6DB (3.3) / G6AU (3.5) / G6DA (3.8 람다 284ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "오피러스 LPi GH",
+    "generation": "1세대 (GH, 2003~2012)",
+    "fuel": "LPG",
+    "displacement": "2,656cc",
+    "engine_code": "L6EA (2.7 뮤 LPi 165ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "K7 VG / 더 뉴 K7",
+    "generation": "1세대 (VG, 2009~2016)",
+    "fuel": "가솔린",
+    "displacement": "2,359cc / 2,656cc / 2,999cc / 3,342cc / 3,470cc",
+    "engine_code": "G4KE/G4KJ (2.4) / G6EA (2.7) / G6DG (3.0 GDi) / G6DH (3.3 GDi) / G6DC (3.5 람다 290ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "K7 하이브리드 VG",
+    "generation": "1세대 (VG HEV, 2013~2016)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "2,359cc",
+    "engine_code": "G4KK (2.4 세타 II MPI HEV)"
+  },
+  {
+    "brand": "기아",
+    "model": "K7 LPi VG",
+    "generation": "1세대 (VG, 2009~2016)",
+    "fuel": "LPG",
+    "displacement": "2,656cc / 2,999cc",
+    "engine_code": "L6EA (2.7 LPi) / L6DC (3.0 람다 LPi 235ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 K7 YG / 프리미어",
+    "generation": "2세대 (YG, 2016~2021)",
+    "fuel": "가솔린",
+    "displacement": "2,359cc / 2,497cc / 2,999cc / 3,342cc",
+    "engine_code": "G4KJ (2.4 GDi) / G4KN (2.5 스마트스트림) / G6DG (3.0 GDi) / G6DH (3.3 GDi 290ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 K7 디젤 YG",
+    "generation": "2세대 (YG, 2016~2018)",
+    "fuel": "디젤",
+    "displacement": "2,199cc",
+    "engine_code": "D4HB (2.2 R e-VGT 유로6b LNT 202ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 K7 하이브리드 YG",
+    "generation": "2세대 (YG HEV, 2016~2021)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "2,359cc",
+    "engine_code": "G4KK (2.4 세타 II MPI HEV)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 K7 LPi YG",
+    "generation": "2세대 (YG, 2016~2021)",
+    "fuel": "LPG",
+    "displacement": "2,999cc",
+    "engine_code": "L6DC (3.0 람다 II LPi 235ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "K8 GL3 / 더 뉴 K8",
+    "generation": "3세대 (GL3, 2021~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,497cc / 3,470cc",
+    "engine_code": "G4KN (2.5 GDi 198ps) / G6DU (3.5 GDi 300ps) / G6DT (3.5 MPi)"
+  },
+  {
+    "brand": "기아",
+    "model": "K8 하이브리드 GL3",
+    "generation": "3세대 (GL3 HEV, 2021~현재)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,598cc",
+    "engine_code": "G4FT (스마트스트림 1.6 Turbo HEV 180ps/합산 230ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "K8 LPi GL3",
+    "generation": "3세대 (GL3 LPi, 2021~현재)",
+    "fuel": "LPG",
+    "displacement": "3,470cc",
+    "engine_code": "L6DV (스마트스트림 L3.5 LPi 240ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "K9 KH / 더 뉴 K9",
+    "generation": "1세대 (KH, 2012~2018)",
+    "fuel": "가솔린",
+    "displacement": "3,342cc / 3,778cc / 5,038cc",
+    "engine_code": "G6DH (3.3 GDi) / G6DJ (3.8 GDi 334ps) / G8BE (5.0 퀀텀 타우 V8 425ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "더 K9 RJ",
+    "generation": "2세대 (RJ, 2018~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,778cc / 3,342cc / 5,038cc",
+    "engine_code": "G6DJ (3.8 GDi 315ps) / G6DP (3.3 T-GDi V6 370ps) / G8BE (5.0 타우 V8 425ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "스팅어 CK / 마이스터",
+    "generation": "1세대 (CK, 2017~2023)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc / 2,497cc / 3,342cc",
+    "engine_code": "G4KL (2.0T 255ps) / G4KR (2.5T 304ps) / G6DP (3.3 T-GDi 370ps/373ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "스팅어 디젤 CK",
+    "generation": "1세대 (CK, 2017~2020)",
+    "fuel": "디젤",
+    "displacement": "2,199cc",
+    "engine_code": "D4HB / D4HC (2.2 R e-VGT 유로6 LNT/SCR 세로배치 202ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "록스타 / 록스타 R2",
+    "generation": "1세대 (1990~1997)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "2,184cc / 1,998cc",
+    "engine_code": "마쓰다 R2 (2.2 디젤 72ps) / FE (2.0 가솔린)"
+  },
+  {
+    "brand": "기아",
+    "model": "레토나 / 레토나 크루저",
+    "generation": "1세대 (RT, 1998~2003)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "1,998cc",
+    "engine_code": "마쓰다 RT (2.0 RF TCI 터보디젤 83ps/87ps) / FE (2.0 가솔린)"
+  },
+  {
+    "brand": "기아",
+    "model": "타우너 (Towner)",
+    "generation": "1세대 (SD, 1992~2002)",
+    "fuel": "LPG / 가솔린",
+    "displacement": "796cc",
+    "engine_code": "다이하쓰 CD (0.8 헬리오스 LPG 35ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "프레지오 (Pregio)",
+    "generation": "1세대 (FP, 1995~2004)",
+    "fuel": "디젤",
+    "displacement": "2,665cc / 2,957cc",
+    "engine_code": "J2 (2.7 디젤 83ps) / JT (3.0 디젤 90ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "카스타 (Carstar)",
+    "generation": "1세대 (DS-II, 1999~2002)",
+    "fuel": "LPG / 가솔린",
+    "displacement": "1,997cc",
+    "engine_code": "L4JP (2.0 시리우스 LPG 82ps/86ps) / G4CP (2.0 가솔린)"
+  },
+  {
+    "brand": "기아",
+    "model": "카렌스 I / 카렌스 II",
+    "generation": "1/2세대 (RS, 1999~2006)",
+    "fuel": "LPG",
+    "displacement": "1,793cc / 1,975cc",
+    "engine_code": "T8D (1.8 LPG 86ps/108ps) / L4GC (2.0 베타 LPG 123ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "카렌스 II / 엑스트렉 디젤",
+    "generation": "2세대 (RS, 2002~2006)",
+    "fuel": "디젤",
+    "displacement": "1,991cc",
+    "engine_code": "D4EA (2.0 D CRDi 유로3 115ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "뉴 카렌스 UN LPi",
+    "generation": "3세대 (UN, 2006~2013)",
+    "fuel": "LPG",
+    "displacement": "1,998cc",
+    "engine_code": "L4KA / L4KB (2.0 세타 LPi 136ps/141ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "뉴 카렌스 UN 디젤/가솔린",
+    "generation": "3세대 (UN, 2006~2013)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "1,991cc / 1,998cc",
+    "engine_code": "D4EA (2.0 D VGT 유로4 151ps) / G4KD (2.0 세타 II)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 카렌스 RP",
+    "generation": "4세대 (RP, 2013~2018)",
+    "fuel": "LPG",
+    "displacement": "1,999cc",
+    "engine_code": "L4NA (2.0 누우 LPi 154ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 카렌스 RP 디젤",
+    "generation": "4세대 (RP, 2013~2018)",
+    "fuel": "디젤",
+    "displacement": "1,685cc",
+    "engine_code": "D4FD (1.7 U2 e-VGT 유로5/유로6 LNT 140ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "스포티지 1세대 (구형)",
+    "generation": "1세대 (NB-7, 1993~2002)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "1,998cc",
+    "engine_code": "마쓰다 RF (2.0 터보디젤 인터쿨러 83ps/87ps) / FE (2.0 DOHC 가솔린 136ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "스포티지 KM / 뉴 스포티지",
+    "generation": "2세대 (KM, 2004~2010)",
+    "fuel": "디젤",
+    "displacement": "1,991cc",
+    "engine_code": "D4EA (2.0 D CRDi/VGT 유로3/4 115ps/151ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "스포티지 KM 가솔린",
+    "generation": "2세대 (KM, 2004~2010)",
+    "fuel": "가솔린",
+    "displacement": "1,975cc / 2,656cc",
+    "engine_code": "G4GC (2.0 베타 II) / G6BA (2.7 델타 V6 175ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "스포티지 R SL",
+    "generation": "3세대 (SL, 2010~2015)",
+    "fuel": "디젤",
+    "displacement": "1,995cc",
+    "engine_code": "D4HA (2.0 R e-VGT 유로5 184ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "스포티지 R SL 가솔린/터보",
+    "generation": "3세대 (SL, 2010~2015)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc / 1,999cc",
+    "engine_code": "G4KD (2.0 세타) / G4NC (2.0 누우 GDi) / G4KH (2.0 T-GDi 261ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "The SUV 스포티지 QL",
+    "generation": "4세대 (QL 전기, 2015~2018)",
+    "fuel": "디젤",
+    "displacement": "1,685cc / 1,995cc",
+    "engine_code": "D4FD (1.7 U2 141ps) / D4HA (2.0 R e-VGT 186ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "스포티지 더 볼드 QL (후기형)",
+    "generation": "4세대 (QL F/L, 2018~2021)",
+    "fuel": "디젤",
+    "displacement": "1,598cc / 1,995cc",
+    "engine_code": "D4FE (스마트스트림 D1.6 136ps) / D4HA (2.0 R e-VGT 유로6d SCR 186ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "The SUV 스포티지 QL 가솔린",
+    "generation": "4세대 (QL, 2015~2021)",
+    "fuel": "가솔린",
+    "displacement": "1,999cc",
+    "engine_code": "G4NA (2.0 누우 MPI 152ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "디 올 뉴 스포티지 NQ5 / 더 뉴 스포티지",
+    "generation": "5세대 (NQ5, 2021~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,598cc",
+    "engine_code": "G4FP (스마트스트림 G1.6 T-GDi 180ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "디 올 뉴 스포티지 NQ5 디젤",
+    "generation": "5세대 (NQ5, 2021~현재)",
+    "fuel": "디젤",
+    "displacement": "1,998cc",
+    "engine_code": "D4HD (스마트스트림 D2.0 유로6d 186ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "디 올 뉴 스포티지 하이브리드 NQ5",
+    "generation": "5세대 (NQ5 HEV, 2021~현재)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,598cc",
+    "engine_code": "G4FT (스마트스트림 1.6 Turbo HEV 180ps/합산 230ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "디 올 뉴 스포티지 LPi NQ5",
+    "generation": "5세대 (NQ5 LPi, 2022~현재)",
+    "fuel": "LPG",
+    "displacement": "1,999cc",
+    "engine_code": "L4NB (스마트스트림 L2.0 LPi 146ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "쏘울 AM",
+    "generation": "1세대 (AM, 2008~2013)",
+    "fuel": "가솔린",
+    "displacement": "1,591cc / 1,975cc",
+    "engine_code": "G4FC (1.6 감마 MPI) / G4FD (1.6 GDi 140ps) / G4GC (2.0 베타 II)"
+  },
+  {
+    "brand": "기아",
+    "model": "쏘울 디젤 AM",
+    "generation": "1세대 (AM, 2008~2013)",
+    "fuel": "디젤",
+    "displacement": "1,582cc",
+    "engine_code": "D4FB (1.6 U2 VGT 유로4/5 128ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 쏘울 PS / 부스터",
+    "generation": "2/3세대 (PS/SK3, 2013~2021)",
+    "fuel": "가솔린",
+    "displacement": "1,591cc",
+    "engine_code": "G4FD (1.6 GDi) / G4FJ (1.6 감마 T-GDi 204ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "쏘울 EV / 쏘울 부스터 EV",
+    "generation": "2/3세대 (EV, 2014~2021)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "27kWh / 30kWh / 64kWh 배터리 (81.4kW / 150kW 204ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "스토닉 (Stonic)",
+    "generation": "1세대 (YB, 2017~2020)",
+    "fuel": "가솔린 / 디젤",
+    "displacement": "1,368cc / 998cc / 1,582cc",
+    "engine_code": "G4LC (1.4 카파 100ps) / G3LC (1.0 T-GDi 120ps) / D4FB (1.6 디젤 110ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "셀토스 (Seltos) / 더 뉴 셀토스",
+    "generation": "1세대 (SP2, 2019~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,591cc / 1,598cc / 1,999cc",
+    "engine_code": "G4FJ (1.6 감마T 177ps) / G4FP (스마트스트림 1.6T 198ps) / G4NM (2.0 MPi 149ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "셀토스 디젤 SP2",
+    "generation": "1세대 (SP2, 2019~2021)",
+    "fuel": "디젤",
+    "displacement": "1,582cc",
+    "engine_code": "D4FB (1.6 U2 e-VGT 유로6d 136ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "텔루라이드 (Telluride)",
+    "generation": "1세대 (ON 북미형, 2019~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,778cc",
+    "engine_code": "G6DN (스마트스트림 G3.8 람다 II 아킨슨 GDi 295ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "니로 DE",
+    "generation": "1세대 (DE HEV/PHEV, 2016~2022)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,580cc",
+    "engine_code": "G4LE (카파 1.6 GDi HEV 105ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "니로 EV DE",
+    "generation": "1세대 (DE EV, 2018~2022)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "64kWh 배터리 / 150kW (204ps) 구동모터"
+  },
+  {
+    "brand": "기아",
+    "model": "니로 플러스 (PBV 택시/업무용)",
+    "generation": "1세대 (DE PBV, 2022~현재)",
+    "fuel": "전기 / 하이브리드",
+    "displacement": "- / 1,580cc",
+    "engine_code": "64kWh 배터리 (150kW 모터) / G4LE (1.6 HEV)"
+  },
+  {
+    "brand": "기아",
+    "model": "디 올 뉴 니로 SG2",
+    "generation": "2세대 (SG2 HEV, 2022~현재)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,580cc",
+    "engine_code": "G4LL (스마트스트림 G1.6 HEV 105ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "디 올 뉴 니로 EV SG2",
+    "generation": "2세대 (SG2 EV, 2022~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "64.8kWh 배터리 / 150kW (204ps) 구동모터"
+  },
+  {
+    "brand": "기아",
+    "model": "쏘렌토 BL / 뉴 쏘렌토",
+    "generation": "1세대 (BL, 2002~2009)",
+    "fuel": "디젤",
+    "displacement": "2,497cc",
+    "engine_code": "D4CB (2.5 A CRDi/VGT 유로3/4 145ps/174ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "쏘렌토 BL 가솔린",
+    "generation": "1세대 (BL, 2002~2009)",
+    "fuel": "가솔린",
+    "displacement": "3,497cc / 3,778cc",
+    "engine_code": "G6AU (3.5 시그마) / G6DA (3.8 람다 266ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "쏘렌토 R XM / 뉴 쏘렌토 R",
+    "generation": "2세대 (XM, 2009~2014)",
+    "fuel": "디젤",
+    "displacement": "1,995cc / 2,199cc",
+    "engine_code": "D4HA (2.0 R 184ps) / D4HB (2.2 R e-VGT 유로4/5 200ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "쏘렌토 R XM 가솔린 / 3.5",
+    "generation": "2세대 (XM, 2009~2014)",
+    "fuel": "가솔린",
+    "displacement": "2,359cc / 3,470cc",
+    "engine_code": "G4KE (2.4 세타 II) / G6DC (3.5 람다 II 276ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "쏘렌토 R LPi XM",
+    "generation": "2세대 (XM, 2009~2012)",
+    "fuel": "LPG",
+    "displacement": "2,656cc",
+    "engine_code": "L6EA (2.7 뮤 LPi 162ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 쏘렌토 UM / 더 뉴 쏘렌토",
+    "generation": "3세대 (UM, 2014~2020)",
+    "fuel": "디젤",
+    "displacement": "1,995cc / 2,199cc",
+    "engine_code": "D4HA (2.0 R 186ps) / D4HB (2.2 R e-VGT 유로5/6 LNT/SCR 202ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 쏘렌토 UM 가솔린 2.0T",
+    "generation": "3세대 (UM, 2017~2020)",
+    "fuel": "가솔린",
+    "displacement": "1,998cc",
+    "engine_code": "G4KH (2.0 세타 II T-GDi 240ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 쏘렌토 UM 3.5 가솔린",
+    "generation": "3세대 (UM 국내/글로벌, 2018~2020)",
+    "fuel": "가솔린",
+    "displacement": "3,470cc",
+    "engine_code": "G6DS (3.5 람다 II MPi 280ps) / G6DT (스마트스트림 G3.5 MPi)"
+  },
+  {
+    "brand": "기아",
+    "model": "4세대 쏘렌토 MQ4 / 더 뉴 쏘렌토",
+    "generation": "4세대 (MQ4, 2020~현재)",
+    "fuel": "디젤",
+    "displacement": "2,151cc",
+    "engine_code": "D4HE (스마트스트림 D2.2 유로6d 202ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "4세대 쏘렌토 MQ4 가솔린 2.5T",
+    "generation": "4세대 (MQ4, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "2,497cc",
+    "engine_code": "G4KP (스마트스트림 G2.5 T-GDi 281ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "4세대 쏘렌토 MQ4 3.5 가솔린",
+    "generation": "4세대 (MQ4 국내/글로벌, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,470cc",
+    "engine_code": "G6DT (스마트스트림 G3.5 MPi 272ps) / G4KN (2.5 자연흡기)"
+  },
+  {
+    "brand": "기아",
+    "model": "4세대 쏘렌토 하이브리드 MQ4",
+    "generation": "4세대 (MQ4 HEV, 2020~현재)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,598cc",
+    "engine_code": "G4FT (스마트스트림 1.6 Turbo HEV 180ps/합산 230ps/235ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "모하비 HM / 더 뉴 모하비 / 더 마스터",
+    "generation": "1세대 (HM, 2008~2024)",
+    "fuel": "디젤",
+    "displacement": "2,959cc",
+    "engine_code": "D6EA (3.0 S V6 유로4 240ps) / D6EB (3.0 S-II V6 유로5/6 SCR 260ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "모하비 가솔린 HM",
+    "generation": "1세대 (HM, 2008~2011)",
+    "fuel": "가솔린",
+    "displacement": "3,778cc / 4,627cc",
+    "engine_code": "G6DA (3.8 람다 274ps) / G8BA (4.6 타우 V8 340ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "카니발 I / 카니발 II",
+    "generation": "1세대 (KV-II, 1998~2005)",
+    "fuel": "디젤",
+    "displacement": "2,902cc",
+    "engine_code": "KJ (2.9 디젤 인터쿨러 135ps) / J3 (2.9 커먼레일 CRDi 유로3 145ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "카니발 I / II 가솔린 / LPG",
+    "generation": "1세대 (1998~2005)",
+    "fuel": "가솔린 / LPG",
+    "displacement": "2,497cc",
+    "engine_code": "K5 (2.5 로버 Rover KV6 가솔린 175ps / LPG 150ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "그랜드 카니발 / 뉴 카니발 VQ (전기형)",
+    "generation": "2세대 (VQ 전기, 2005~2010)",
+    "fuel": "디젤",
+    "displacement": "2,902cc",
+    "engine_code": "J3 (2.9 CRDi/VGT 유로4 170ps/192ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "그랜드 카니발 / 카니발 R VQ (후기형)",
+    "generation": "2세대 (VQ 후기, 2010~2014)",
+    "fuel": "디젤",
+    "displacement": "2,199cc",
+    "engine_code": "D4HB (2.2 R e-VGT 유로5 197ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "그랜드 카니발 LPi VQ",
+    "generation": "2세대 (VQ, 2007~2010)",
+    "fuel": "LPG",
+    "displacement": "2,656cc",
+    "engine_code": "L6EA (2.7 뮤 LPi 161ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "그랜드 카니발 가솔린 VQ",
+    "generation": "2세대 (VQ, 2010~2014)",
+    "fuel": "가솔린",
+    "displacement": "3,470cc",
+    "engine_code": "G6DC (3.5 람다 II 275ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 카니발 YP / 더 뉴 카니발",
+    "generation": "3세대 (YP, 2014~2020)",
+    "fuel": "디젤",
+    "displacement": "2,199cc",
+    "engine_code": "D4HB (2.2 R e-VGT 유로5/6 LNT/SCR 202ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "올 뉴 카니발 가솔린 YP 3.3",
+    "generation": "3세대 (YP, 2014~2020)",
+    "fuel": "가솔린",
+    "displacement": "3,342cc",
+    "engine_code": "G6DH (3.3 람다 II GDi 280ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "카니발 세도나 YP 3.5 가솔린",
+    "generation": "3세대 (YP 국내/글로벌, 2018~2020)",
+    "fuel": "가솔린",
+    "displacement": "3,470cc",
+    "engine_code": "G6DS (3.5 람다 II MPi 276ps) / G6DT (스마트스트림 G3.5 MPi)"
+  },
+  {
+    "brand": "기아",
+    "model": "4세대 카니발 KA4 / 더 뉴 카니발",
+    "generation": "4세대 (KA4, 2020~현재)",
+    "fuel": "디젤",
+    "displacement": "2,151cc",
+    "engine_code": "D4HE (스마트스트림 D2.2 유로6d 202ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "4세대 카니발 가솔린 KA4",
+    "generation": "4세대 (KA4, 2020~현재)",
+    "fuel": "가솔린",
+    "displacement": "3,470cc",
+    "engine_code": "G6DU (스마트스트림 G3.5 GDi 294ps) / G6DT (스마트스트림 G3.5 MPi 272ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "4세대 카니발 하이브리드 KA4",
+    "generation": "4세대 (KA4 HEV, 2023~현재)",
+    "fuel": "가솔린 하이브리드",
+    "displacement": "1,598cc",
+    "engine_code": "G4FT (스마트스트림 1.6 Turbo HEV 180ps/합산 245ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "기아 타스만 TK1 (정통 픽업트럭)",
+    "generation": "1세대 (TK1, 2025~출시)",
+    "fuel": "가솔린",
+    "displacement": "2,497cc",
+    "engine_code": "G4KP (스마트스트림 G2.5 T-GDi 281ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "기아 타스만 TK1 (정통 픽업트럭)",
+    "generation": "1세대 (TK1 호주/글로벌, 2025~출시)",
+    "fuel": "디젤",
+    "displacement": "2,151cc",
+    "engine_code": "D4HE (스마트스트림 D2.2 유로6d 210ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "기아 EV3",
+    "generation": "1세대 (SV1, 2024~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "58.3kWh / 81.4kWh NCM 배터리 / 150kW (204ps) 모터"
+  },
+  {
+    "brand": "기아",
+    "model": "기아 EV5",
+    "generation": "1세대 (OV, 2024~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "64.2kWh / 88.1kWh 배터리 / 160kW~230kW 모터"
+  },
+  {
+    "brand": "기아",
+    "model": "EV6 / 더 뉴 EV6 / GT",
+    "generation": "1세대 (CV, 2021~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "EM07/EM17 (58kWh / 77.4kWh / 84kWh, GT 고성능 585ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "EV9 / EV9 GT",
+    "generation": "1세대 (MV, 2023~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "99.8kWh 배터리 / 150kW 싱글 또는 283kW 듀얼 모터 (385ps)"
+  },
+  {
+    "brand": "기아",
+    "model": "기아 PV5 (전용 전기 PBV)",
+    "generation": "1세대 (PV5, 2025~출시)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "기아 차세대 PBV e-CCPM 플랫폼 / 다양한 모듈형 바디 탑재"
+  }
+];
+
+  let currentBrand = "ALL";
+  let currentCategory = "ALL";
+  let currentFuel = "ALL";
+  let currentSearch = "";
+
+  const tbody = document.getElementById("hk-tbody");
+  const noResults = document.getElementById("hk-no-results");
+  const totalCountEl = document.getElementById("hk-total-count");
+  const searchInput = document.getElementById("hk-search");
+
+  function getBrandBadge(brand) {
+    if (brand.includes("현대")) return '<span class="hk-badge badge-hyundai">' + brand + '</span>';
+    if (brand.includes("기아")) return '<span class="hk-badge badge-kia">' + brand + '</span>';
+    return '<span class="hk-badge badge-genesis">' + brand + '</span>';
+  }
+
+  function getFuelBadge(fuel) {
+    let cls = "fuel-gasoline";
+    if (fuel.includes("디젤")) cls = "fuel-diesel";
+    else if (fuel.includes("하이브리드")) cls = "fuel-hybrid";
+    else if (fuel.includes("LPG")) cls = "fuel-lpg";
+    else if (fuel.includes("전기") || fuel.includes("수소")) cls = "fuel-ev";
+    return '<span class="hk-badge ' + cls + '">' + fuel + '</span>';
+  }
+
+  function render() {
+    const searchVal = currentSearch.trim().toLowerCase();
+    
+    const filtered = rawData.filter(item => {
+      // 브랜드 필터
+      if (currentBrand !== "ALL") {
+        if (currentBrand === "현대" && !item.brand.includes("현대")) return false;
+        if (currentBrand === "기아" && !item.brand.includes("기아")) return false;
+        if (currentBrand === "제네시스" && !item.brand.includes("제네시스")) return false;
+      }
+      // 차종 분류 필터
+      if (currentCategory !== "ALL") {
+        const patterns = currentCategory.split("|");
+        const match = patterns.some(p => item.model.includes(p));
+        if (!match) return false;
+      }
+      // 연료 필터
+      if (currentFuel !== "ALL") {
+        if (currentFuel === "전기" && !(item.fuel.includes("전기") || item.fuel.includes("수소"))) return false;
+        else if (currentFuel !== "전기" && !item.fuel.includes(currentFuel)) return false;
+      }
+      // 검색어 필터
+      if (searchVal) {
+        const targetStr = (item.brand + " " + item.model + " " + item.generation + " " + item.fuel + " " + item.displacement + " " + item.engine_code).toLowerCase();
+        if (!targetStr.includes(searchVal)) return false;
+      }
+      return true;
+    });
+
+    totalCountEl.textContent = filtered.length;
+
+    if (filtered.length === 0) {
+      tbody.innerHTML = "";
+      noResults.style.display = "block";
+      return;
+    }
+
+    noResults.style.display = "none";
+    let html = "";
+    filtered.forEach(item => {
+      html += '<tr>';
+      html += '<td data-label="제조사">' + getBrandBadge(item.brand) + '</td>';
+      html += '<td data-label="차량명"><strong>' + item.model + '</strong></td>';
+      html += '<td data-label="세대">' + item.generation + '</td>';
+      html += '<td data-label="연료">' + getFuelBadge(item.fuel) + '</td>';
+      html += '<td data-label="배기량">' + item.displacement + '</td>';
+      html += '<td data-label="엔진코드"><span class="engine-code-text">' + item.engine_code + '</span></td>';
+      html += '</tr>';
+    });
+
+    tbody.innerHTML = html;
+  }
+
+  // 검색 이벤트
+  if (searchInput) {
+    searchInput.addEventListener("input", function(e) {
+      currentSearch = e.target.value;
+      render();
+    });
+  }
+
+  // 필터 버튼 이벤트
+  document.querySelectorAll("#hk-engine-wrap .hk-btn-chip").forEach(btn => {
+    btn.addEventListener("click", function() {
+      const type = this.getAttribute("data-filter-type");
+      const val = this.getAttribute("data-val");
+
+      const siblings = this.parentElement.querySelectorAll(".hk-btn-chip");
+      siblings.forEach(s => s.classList.remove("active"));
+      this.classList.add("active");
+
+      if (type === "brand") currentBrand = val;
+      if (type === "category") currentCategory = val;
+      if (type === "fuel") currentFuel = val;
+      render();
+    });
+  });
+
+  // CSV 다운로드 기능
+  const csvBtn = document.getElementById("hk-btn-csv");
+  if (csvBtn) {
+    csvBtn.addEventListener("click", function() {
+      let csvContent = "\uFEFF제조사,차량명,세대,연료,배기량,엔진코드\n";
+      rawData.forEach(r => {
+        csvContent += `"${r.brand}","${r.model}","${r.generation}","${r.fuel}","${r.displacement}","${r.engine_code}"\n`;
+      });
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", "hyundai_kia_engine_specs.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  }
+
+  // 클립보드 복사 기능
+  const copyBtn = document.getElementById("hk-btn-copy");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function() {
+      let text = "제조사\t차량명\t세대\t연료\t배기량\t엔진코드\n";
+      rawData.forEach(r => {
+        text += `${r.brand}\t${r.model}\t${r.generation}\t${r.fuel}\t${r.displacement}\t${r.engine_code}\n`;
+      });
+      navigator.clipboard.writeText(text).then(() => {
+        alert("전체 데이터가 클립보드로 복사되었습니다. (엑셀/구글 시트에 바로 붙여넣기 가능)");
+      }).catch(() => {
+        alert("클립보드 복사 권한을 확인해주세요.");
+      });
+    });
+  }
+
+  // 초기 렌더링
+  render();
+})();
+</script>

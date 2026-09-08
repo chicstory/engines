@@ -1,0 +1,897 @@
+<!-- 블로그스팟 게시용: 폭스바겐(Volkswagen) 세대별 엔진코드 / 제원 일람표 (총 52개 모델) -->
+<div id="vw-engine-wrap">
+  <!-- 헤더 영역 -->
+  <div class="vw-header">
+    <h2 class="vw-title">🚙 폭스바겐(Volkswagen) 세대별 엔진코드 · 제원 일람표</h2>
+    <p class="vw-desc">골프(GTI/GTD/R), 제타, 파사트, 아테온, 페이톤 W12/V10, 티구안, 투아렉 및 ID.4/ID.Buzz 순수전기차 총정리</p>
+  </div>
+
+  <!-- 검색 및 필터 컨트롤 -->
+  <div class="vw-controls">
+    <!-- 검색창 -->
+    <div class="vw-search-box">
+      <span class="vw-search-icon">🔍</span>
+      <input type="text" id="vw-search" class="vw-search-input" placeholder="차량명, 세대코드, 엔진코드, 배기량 등으로 검색... (예: 골프, GTI, 2.0 TDI, EA888, 티구안, 파사트, 아테온, 투아렉, ID.4)" autocomplete="off">
+    </div>
+
+    <!-- 라인업/세그먼트 필터 -->
+    <div class="vw-filter-group">
+      <span class="vw-filter-label">라인업</span>
+      <button type="button" class="vw-btn-chip active" data-filter-type="segment" data-val="ALL">전체 모델</button>
+      <button type="button" class="vw-btn-chip" data-filter-type="segment" data-val="골프|시로코|폴로|비틀">해치백 · 콤팩트 (골프/폴로/비틀)</button>
+      <button type="button" class="vw-btn-chip" data-filter-type="segment" data-val="제타|파사트|CC|아테온|페이톤">세단 · 패스트백 (파사트/아테온/페이톤)</button>
+      <button type="button" class="vw-btn-chip" data-filter-type="segment" data-val="티구안|투아렉">SUV (티구안 / 투아렉)</button>
+      <button type="button" class="vw-btn-chip" data-filter-type="segment" data-val="GTI|GTD|골프 R|R32|시로코 R|아테온 R|티구안 R|투아렉 R">고성능 (GTI / GTD / R)</button>
+    </div>
+
+    <!-- 연료 필터 -->
+    <div class="vw-filter-group" style="margin-bottom:0;">
+      <span class="vw-filter-label">연료별</span>
+      <button type="button" class="vw-btn-chip active" data-filter-type="fuel" data-val="ALL">전체</button>
+      <button type="button" class="vw-btn-chip" data-filter-type="fuel" data-val="디젤">디젤 (TDI)</button>
+      <button type="button" class="vw-btn-chip" data-filter-type="fuel" data-val="가솔린">가솔린 (TSI / FSI / VR6)</button>
+      <button type="button" class="vw-btn-chip" data-filter-type="fuel" data-val="전기">순수 전기 (ID. EV)</button>
+    </div>
+  </div>
+
+  <!-- 메타 정보 및 액션 버튼 -->
+  <div class="vw-meta-bar">
+    <div>
+      총 <span id="vw-total-count" class="vw-count-highlight">52</span>개 세부 모델 제원 수록
+    </div>
+    <div class="vw-action-buttons">
+      <button type="button" class="vw-tool-btn" id="vw-btn-copy">📋 표 복사</button>
+      <button type="button" class="vw-tool-btn" id="vw-btn-csv">💾 CSV 다운로드</button>
+    </div>
+  </div>
+
+  <!-- 데이터 테이블 (반응형 모바일 카드 자동 전환) -->
+  <div class="vw-table-container">
+    <table id="vw-table">
+      <thead>
+        <tr>
+          <th style="width: 75px;">브랜드</th>
+          <th style="width: 190px;">차량명 / 모델트림</th>
+          <th>세대 (바디코드 / 연식)</th>
+          <th style="width: 110px;">연료</th>
+          <th style="width: 120px;">배기량</th>
+          <th>엔진코드 (형식 / 최고출력 / 사양)</th>
+        </tr>
+      </thead>
+      <tbody id="vw-tbody">
+        <!-- Javascript로 동적 렌더링 -->
+      </tbody>
+    </table>
+    <div id="vw-no-results" class="no-results" style="display:none;">
+      검색 조건에 해당하는 폭스바겐 차량 제원 정보가 없습니다.
+    </div>
+  </div>
+</div>
+
+<style>
+  /* 블로그스팟 독립형 스타일 네임스페이스 (#vw-engine-wrap) */
+  #vw-engine-wrap {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
+    max-width: 980px;
+    margin: 16px auto;
+    padding: 16px 12px;
+    color: #1e293b;
+    line-height: 1.5;
+    box-sizing: border-box;
+  }
+  #vw-engine-wrap * {
+    box-sizing: border-box;
+  }
+  #vw-engine-wrap .vw-header {
+    background: linear-gradient(135deg, #001e50 0%, #003399 50%, #0050d8 100%);
+    color: #ffffff;
+    padding: 24px 20px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 30, 80, 0.25);
+  }
+  #vw-engine-wrap .vw-title {
+    margin: 0 0 8px 0;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    color: #ffffff;
+  }
+  #vw-engine-wrap .vw-desc {
+    margin: 0;
+    font-size: 0.88rem;
+    color: #dbeafe;
+  }
+  #vw-engine-wrap .vw-controls {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    margin-bottom: 16px;
+  }
+  #vw-engine-wrap .vw-search-box {
+    position: relative;
+    margin-bottom: 12px;
+  }
+  #vw-engine-wrap .vw-search-input {
+    width: 100%;
+    padding: 12px 16px 12px 40px;
+    font-size: 0.92rem;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    outline: none;
+    background: #f8fafc;
+    color: #0f172a;
+    transition: all 0.2s;
+  }
+  #vw-engine-wrap .vw-search-input:focus {
+    background: #ffffff;
+    border-color: #003399;
+    box-shadow: 0 0 0 3px rgba(0, 51, 153, 0.15);
+  }
+  #vw-engine-wrap .vw-search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 1.05rem;
+    pointer-events: none;
+  }
+  #vw-engine-wrap .vw-filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  #vw-engine-wrap .vw-filter-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #64748b;
+    margin-right: 4px;
+    min-width: 48px;
+  }
+  #vw-engine-wrap .vw-btn-chip {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    padding: 5px 11px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+  #vw-engine-wrap .vw-btn-chip:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+  }
+  #vw-engine-wrap .vw-btn-chip.active {
+    background: #003399;
+    color: #ffffff;
+    border-color: #003399;
+  }
+  #vw-engine-wrap .vw-meta-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 4px 12px 4px;
+    font-size: 0.85rem;
+    color: #64748b;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  #vw-engine-wrap .vw-count-highlight {
+    color: #003399;
+    font-weight: 700;
+  }
+  #vw-engine-wrap .vw-action-buttons {
+    display: flex;
+    gap: 8px;
+  }
+  #vw-engine-wrap .vw-tool-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  #vw-engine-wrap .vw-tool-btn:hover {
+    background: #f1f5f9;
+    border-color: #94a3b8;
+  }
+
+  /* 데스크톱 테이블 뷰 */
+  #vw-engine-wrap .vw-table-container {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  }
+  #vw-engine-wrap table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.88rem;
+  }
+  #vw-engine-wrap th {
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 700;
+    padding: 12px 14px;
+    border-bottom: 2px solid #e2e8f0;
+    white-space: nowrap;
+  }
+  #vw-engine-wrap td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+  }
+  #vw-engine-wrap tr:last-child td {
+    border-bottom: none;
+  }
+  #vw-engine-wrap tr:hover td {
+    background-color: #f8fafc;
+  }
+
+  /* 배지 스타일 */
+  #vw-engine-wrap .vw-badge {
+    display: inline-block;
+    padding: 3px 7px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+  #vw-engine-wrap .badge-vw { background: #eff6ff; color: #003399; border: 1px solid #bfdbfe; }
+  
+  #vw-engine-wrap .fuel-gasoline { background: #f0fdf4; color: #15803d; }
+  #vw-engine-wrap .fuel-diesel { background: #f1f5f9; color: #334155; }
+  #vw-engine-wrap .fuel-ev { background: #faf5ff; color: #7e22ce; }
+
+  #vw-engine-wrap .engine-code-text {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-weight: 700;
+    color: #0f172a;
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+
+  /* 모바일 반응형 카드 뷰 (700px 이하) */
+  @media (max-width: 700px) {
+    #vw-engine-wrap {
+      padding: 10px 4px;
+    }
+    #vw-engine-wrap .vw-header {
+      padding: 18px 14px;
+      border-radius: 12px;
+    }
+    #vw-engine-wrap .vw-title {
+      font-size: 1.15rem;
+    }
+    #vw-engine-wrap .vw-controls {
+      padding: 12px;
+    }
+    #vw-engine-wrap .vw-table-container {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+    #vw-engine-wrap table, 
+    #vw-engine-wrap thead, 
+    #vw-engine-wrap tbody, 
+    #vw-engine-wrap th, 
+    #vw-engine-wrap tr {
+      display: block;
+    }
+    #vw-engine-wrap thead {
+      display: none;
+    }
+    #vw-engine-wrap tr {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 12px;
+      padding: 12px 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    #vw-engine-wrap td {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px dashed #f1f5f9;
+      font-size: 0.85rem;
+    }
+    #vw-engine-wrap td:last-child {
+      border-bottom: none;
+      padding-top: 8px;
+    }
+    #vw-engine-wrap td::before {
+      content: attr(data-label);
+      font-weight: 700;
+      color: #64748b;
+      font-size: 0.78rem;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+  }
+
+  #vw-engine-wrap .no-results {
+    text-align: center;
+    padding: 40px 20px;
+    color: #94a3b8;
+    font-size: 0.92rem;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px dashed #cbd5e1;
+  }
+</style>
+
+<script>
+(function() {
+  const rawData = [
+  {
+    "brand": "폭스바겐",
+    "model": "골프 2.0 / 1.9 TDI (Mk4)",
+    "generation": "4세대 (1J, 1997~2004)",
+    "fuel": "가솔린 / 디젤",
+    "displacement": "1,984cc / 1,896cc",
+    "engine_code": "2.0 8V (115ps) / 1.9 TDI PD (100ps/130ps/150ps)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "골프 R32 (Mk4 VR6 최초의 DSG)",
+    "generation": "4세대 (1J R32, 2002~2004)",
+    "fuel": "가솔린",
+    "displacement": "3,189cc",
+    "engine_code": "VR6 (3.2 6기통 241ps / 4Motion / 세계최초 양산형 6단 DSG)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "골프 2.0 FSI / 2.0 TDI (Mk5)",
+    "generation": "5세대 (1K, 2003~2008)",
+    "fuel": "가솔린 / 디젤",
+    "displacement": "1,984cc / 1,968cc",
+    "engine_code": "2.0 FSI (150ps) / EA188 (2.0 TDI PD 펌프노즐 140ps)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "골프 GTI (Mk5)",
+    "generation": "5세대 (1K GTI, 2004~2008)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA113 (2.0 TFSI 직분사 터보 200ps / 6단 DSG)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "골프 GTD / GT TSI (Mk5)",
+    "generation": "5세대 (1K, 2006~2008)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "1,968cc / 1,390cc",
+    "engine_code": "2.0 TDI (170ps) / EA111 (1.4 TSI 트윈차저 170ps)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "골프 R32 (Mk5 VR6)",
+    "generation": "5세대 (1K R32, 2005~2008)",
+    "fuel": "가솔린",
+    "displacement": "3,189cc",
+    "engine_code": "VR6 (3.2 자연흡기 250ps / 4Motion)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "골프 1.6 TDI / 2.0 TDI (Mk6)",
+    "generation": "6세대 (5K, 2008~2012)",
+    "fuel": "디젤",
+    "displacement": "1,598cc / 1,968cc",
+    "engine_code": "EA189 (1.6 TDI 105ps / 2.0 TDI 커먼레일 140ps)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "골프 1.4 TSI (Mk6)",
+    "generation": "6세대 (5K, 2008~2012)",
+    "fuel": "가솔린",
+    "displacement": "1,390cc",
+    "engine_code": "EA111 (1.4 TSI 트윈차저 160ps / 7단 DSG)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "골프 GTI (Mk6)",
+    "generation": "6세대 (5K GTI, 2009~2013)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen1 (2.0 TSI 211ps / 6단 습식 DSG)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "골프 GTD (Mk6)",
+    "generation": "6세대 (5K GTD, 2009~2013)",
+    "fuel": "디젤",
+    "displacement": "1,968cc",
+    "engine_code": "EA189 (2.0 TDI 커먼레일 170ps / 350Nm)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "골프 R (Mk6)",
+    "generation": "6세대 (5K R, 2009~2013)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA113 (2.0 TSI 고출력 270ps / 4Motion)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "골프 1.4 TSI / 2.0 TDI (Mk7)",
+    "generation": "7세대 (5G MQB, 2013~2020)",
+    "fuel": "가솔린 / 디젤",
+    "displacement": "1,395cc / 1,968cc",
+    "engine_code": "EA211 (1.4 TSI 140ps) / EA288 (2.0 TDI 150ps)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "골프 GTI (Mk7)",
+    "generation": "7세대 (5G GTI, 2013~2020)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen3 (2.0 TSI 220ps / Performance 230ps/245ps VAQ 차동제한장치)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "골프 GTD (Mk7)",
+    "generation": "7세대 (5G GTD, 2013~2020)",
+    "fuel": "디젤",
+    "displacement": "1,968cc",
+    "engine_code": "EA288 (2.0 TDI 184ps / 380Nm)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "골프 R (Mk7)",
+    "generation": "7세대 (5G R, 2014~2020)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen3 (2.0 TSI 292ps / 300ps / 4Motion)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "골프 2.0 TDI (Mk8)",
+    "generation": "8세대 (CD1 MQB Evo, 2022~현재)",
+    "fuel": "디젤",
+    "displacement": "1,968cc",
+    "engine_code": "EA288 evo (2.0 TDI 트윈도징 SCR 150ps / 7단 DSG)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "골프 GTI (Mk8)",
+    "generation": "8세대 (CD1 GTI, 2022~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen4 evo4 (2.0 TSI 245ps / 370Nm / VAQ 전자식 LSD)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "골프 R (Mk8)",
+    "generation": "8세대 (CD1 R, 2022~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen4 (2.0 TSI 320ps / R-퍼포먼스 토크벡터링 4Motion)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "시로코 2.0 TDI / 2.0 TSI (Type 13)",
+    "generation": "3세대 (Type 13, 2008~2017)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "1,968cc / 1,984cc",
+    "engine_code": "EA189 (2.0 TDI 170ps/177ps) / EA888 (2.0 TSI 210ps)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "시로코 R (Type 13 R)",
+    "generation": "3세대 (Type 13 R, 2010~2017)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA113 (2.0 TSI 265ps / 280ps 전륜구동)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "폴로 1.4 TDI / 1.6 TDI (6R)",
+    "generation": "5세대 (6R, 2009~2017)",
+    "fuel": "디젤",
+    "displacement": "1,422cc / 1,598cc",
+    "engine_code": "EA189/EA288 (1.4/1.6 TDI 90ps / 105ps / 7단 DSG)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "폴로 GTI (6R)",
+    "generation": "5세대 (6R GTI, 2010~2017)",
+    "fuel": "가솔린",
+    "displacement": "1,390cc / 1,798cc",
+    "engine_code": "EA111 (1.4 트윈차저 180ps) / EA888 (1.8 TSI 192ps)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "뉴 비틀 2.0 / 1.8T / 카브리올레 (Type 9C)",
+    "generation": "1세대 (Type 9C, 1998~2011)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc / 1,781cc",
+    "engine_code": "2.0 MPI (115ps) / 1.8T (150ps)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "더 비틀 2.0 TDI (Type 5C)",
+    "generation": "2세대 (Type 5C, 2011~2019)",
+    "fuel": "디젤",
+    "displacement": "1,968cc",
+    "engine_code": "EA189 / EA288 (2.0 TDI 140ps / 150ps / 6단 DSG)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "제타 1.6 TDI / 2.0 TDI / 2.0 TSI (A6)",
+    "generation": "6세대 (A6, 2011~2018)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "1,598cc / 1,968cc / 1,984cc",
+    "engine_code": "EA189/EA288 (1.6 TDI 105ps / 2.0 TDI 140ps/150ps) / EA888 (2.0 TSI 200ps)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "제타 1.4 TSI (A7)",
+    "generation": "7세대 (A7, 2020~2022)",
+    "fuel": "가솔린",
+    "displacement": "1,395cc",
+    "engine_code": "EA211 (1.4 TSI 150ps / 8단 자동변속기)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "제타 1.5 TSI (A7 페이스리프트)",
+    "generation": "7세대 F/L (A7, 2022~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,498cc",
+    "engine_code": "EA211 evo (1.5 TSI 가변터보 160ps / 8단 자동)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "파사트 2.0 FSI / 2.0 TDI / 3.2 V6 (B6)",
+    "generation": "6세대 (B6, 2005~2010)",
+    "fuel": "가솔린 / 디젤",
+    "displacement": "1,984cc / 1,968cc / 3,189cc",
+    "engine_code": "2.0 FSI (150ps) / EA188/189 (2.0 TDI 140ps/170ps) / 3.2 VR6 (250ps 4Motion)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "파사트 R36 (B6 3.6 VR6 스포츠)",
+    "generation": "6세대 (B6 R, 2008~2010)",
+    "fuel": "가솔린",
+    "displacement": "3,597cc",
+    "engine_code": "3.6 VR6 FSI (300ps / 4Motion)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "파사트 2.0 TDI / 2.5 가솔린 / 1.8 TSI (NMS 북미형)",
+    "generation": "NMS 북미형 (2012~2018)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "1,968cc / 2,480cc / 1,798cc",
+    "engine_code": "EA189/EA288 (2.0 TDI 140ps/150ps) / 2.5 5기통 (170ps) / EA888 (1.8 TSI 170ps)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "파사트 GT 2.0 TDI / 4Motion (B8 유럽형)",
+    "generation": "8세대 (B8 MQB, 2018~2023)",
+    "fuel": "디젤",
+    "displacement": "1,968cc",
+    "engine_code": "EA288 (2.0 TDI 190ps / 200ps / BiTDI 240ps 4Motion)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "폭스바겐 CC 2.0 TDI / 2.0 TSI / 3.6 4Motion",
+    "generation": "1세대 (Type 35, 2008~2017)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "1,968cc / 1,984cc / 3,597cc",
+    "engine_code": "EA189 (2.0 TDI 140ps/170ps/177ps) / EA888 (2.0 TSI 200ps) / 3.6 VR6 (300ps)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "아테온 2.0 TDI / 4Motion (3H)",
+    "generation": "1세대 (3H, 2018~현재)",
+    "fuel": "디젤",
+    "displacement": "1,968cc",
+    "engine_code": "EA288 / EA288 evo (2.0 TDI 190ps / 200ps / 7단 DSG)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "아테온 2.0 TSI 4Motion (3H)",
+    "generation": "1세대 (3H, 2022~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen4 (2.0 TSI 280ps / 400Nm / 4Motion)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "아테온 R / 슈팅브레이크 R (해외/고성능)",
+    "generation": "1세대 (3H R, 2021~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen4 (2.0 TSI 320ps / R-Performance 4Motion)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "페이톤 3.2 / 3.6 V6 (3D)",
+    "generation": "1세대 (3D, 2002~2016)",
+    "fuel": "가솔린",
+    "displacement": "3,189cc / 3,597cc",
+    "engine_code": "VR6 (3.2 241ps / 3.6 FSI 280ps / 4Motion)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "페이톤 4.2 V8 (3D)",
+    "generation": "1세대 (3D, 2002~2016)",
+    "fuel": "가솔린",
+    "displacement": "4,172cc",
+    "engine_code": "4.2 V8 (335ps / 4Motion)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "페이톤 6.0 W12 (3D 플래그십)",
+    "generation": "1세대 (3D, 2002~2011)",
+    "fuel": "가솔린",
+    "displacement": "5,998cc",
+    "engine_code": "6.0 W12 자연흡기 (420ps / 450ps / 4Motion)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "페이톤 3.0 V6 TDI (3D)",
+    "generation": "1세대 (3D, 2004~2016)",
+    "fuel": "디젤",
+    "displacement": "2,967cc",
+    "engine_code": "EA896 (3.0 V6 TDI 225ps / 233ps / 240ps / 500Nm)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "페이톤 5.0 V10 TDI (3D 디젤 괴물)",
+    "generation": "1세대 (3D, 2003~2007)",
+    "fuel": "디젤",
+    "displacement": "4,921cc",
+    "engine_code": "5.0 V10 TDI 바이터보 (313ps / 750Nm / 4Motion)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "티구안 2.0 TDI / 2.0 TSI (5N)",
+    "generation": "1세대 (5N, 2007~2016)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "1,968cc / 1,984cc",
+    "engine_code": "EA189 (2.0 TDI 140ps/177ps) / EA888 (2.0 TSI 170ps/200ps)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "티구안 2.0 TDI / 4Motion (AD1)",
+    "generation": "2세대 (AD1 MQB, 2016~현재)",
+    "fuel": "디젤",
+    "displacement": "1,968cc",
+    "engine_code": "EA288 / EA288 evo (2.0 TDI 트윈도징 150ps / 190ps / 240ps 바이터보)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "티구안 2.0 TSI (AD1)",
+    "generation": "2세대 (AD1, 2022~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen3 (2.0 TSI 186ps / 8단 자동변속기)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "티구안 올스페이스 2.0 TDI / 2.0 TSI (7인승)",
+    "generation": "2세대 롱바디 (BW2, 2018~현재)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "1,968cc / 1,984cc",
+    "engine_code": "EA288 (2.0 TDI 150ps) / EA888 (2.0 TSI 186ps / 8단 자동)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "티구안 R (AD1 고성능 SUV)",
+    "generation": "2세대 (AD1 R, 2021~현재)",
+    "fuel": "가솔린",
+    "displacement": "1,984cc",
+    "engine_code": "EA888 Gen4 (2.0 TSI 320ps / R-Performance 4Motion)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "투아렉 3.0 TDI / 5.0 V10 TDI / 4.2 V8 (7L)",
+    "generation": "1세대 (7L, 2002~2010)",
+    "fuel": "디젤 / 가솔린",
+    "displacement": "2,967cc / 4,921cc / 4,163cc",
+    "engine_code": "EA896 (3.0 V6 TDI 225ps/240ps) / 5.0 V10 TDI (313ps) / 4.2 V8 (310ps/350ps FSI)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "투아렉 3.0 TDI / 4.2 V8 TDI / 3.0 TSI 하이브리드 (7P)",
+    "generation": "2세대 (7P, 2010~2018)",
+    "fuel": "디젤 / HEV",
+    "displacement": "2,967cc / 4,134cc / 2,995cc",
+    "engine_code": "EA897 (3.0 V6 TDI 240ps/245ps) / 4.2 V8 TDI (340ps) / 3.0 TSI HEV (380ps)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "투아렉 3.0 TDI / 4.0 V8 TDI (CR)",
+    "generation": "3세대 (CR, 2018~현재)",
+    "fuel": "디젤",
+    "displacement": "2,967cc / 3,956cc",
+    "engine_code": "EA897 evo2 (3.0 V6 TDI 231ps / 286ps) / EA898 (4.0 V8 디젤 421ps / 900Nm)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "투아렉 R PHEV (CR 고성능 플러그인)",
+    "generation": "3세대 (CR R PHEV, 2020~현재)",
+    "fuel": "가솔린 플러그인 HEV",
+    "displacement": "2,995cc",
+    "engine_code": "EA839 (3.0 V6 340ps) + 100kW 모터 (합산 462ps / 700Nm)"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "ID.4 Pro (E21 MEB)",
+    "generation": "1세대 (E21 EV, 2022~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "82kWh 리튬이온 배터리 / 150kW (204ps) / APP550 모터 210kW (286ps) 후륜"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "ID.5 Pro / ID.5 GTX (쿠페형 EV)",
+    "generation": "1세대 (E39 EV, 2022~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "82kWh 배터리 / 210kW (286ps) 후륜 / GTX 듀얼모터 250kW (340ps) AWD"
+  },
+  {
+    "brand": "폭스바겐",
+    "model": "ID. Buzz (아이디 버즈 전기 미니버스/밴)",
+    "generation": "1세대 (EB EV, 2022~현재)",
+    "fuel": "전기",
+    "displacement": "-",
+    "engine_code": "82kWh / 91kWh 롱휠베이스 배터리 / 150kW(204ps) / 210kW(286ps) 후륜 / GTX 250kW"
+  }
+];
+
+  let currentSegment = "ALL";
+  let currentFuel = "ALL";
+  let currentSearch = "";
+
+  const tbody = document.getElementById("vw-tbody");
+  const noResults = document.getElementById("vw-no-results");
+  const totalCountEl = document.getElementById("vw-total-count");
+  const searchInput = document.getElementById("vw-search");
+
+  function getBrandBadge(brand) {
+    return '<span class="vw-badge badge-vw">' + brand + '</span>';
+  }
+
+  function getFuelBadge(fuel) {
+    let cls = "fuel-gasoline";
+    if (fuel.includes("디젤")) cls = "fuel-diesel";
+    else if (fuel.includes("전기")) cls = "fuel-ev";
+    return '<span class="vw-badge ' + cls + '">' + fuel + '</span>';
+  }
+
+  function render() {
+    const searchVal = currentSearch.trim().toLowerCase();
+    
+    const filtered = rawData.filter(item => {
+      // 라인업 세그먼트 필터
+      if (currentSegment !== "ALL") {
+        const patterns = currentSegment.split("|");
+        const match = patterns.some(p => item.model.includes(p));
+        if (!match) return false;
+      }
+      // 연료 필터
+      if (currentFuel !== "ALL") {
+        if (currentFuel === "전기" && !item.fuel.includes("전기")) return false;
+        else if (currentFuel === "가솔린" && !item.fuel.includes("가솔린")) return false;
+        else if (currentFuel === "디젤" && !item.fuel.includes("디젤")) return false;
+      }
+      // 검색어 필터
+      if (searchVal) {
+        const targetStr = (item.brand + " " + item.model + " " + item.generation + " " + item.fuel + " " + item.displacement + " " + item.engine_code).toLowerCase();
+        if (!targetStr.includes(searchVal)) return false;
+      }
+      return true;
+    });
+
+    totalCountEl.textContent = filtered.length;
+
+    if (filtered.length === 0) {
+      tbody.innerHTML = "";
+      noResults.style.display = "block";
+      return;
+    }
+
+    noResults.style.display = "none";
+    let html = "";
+    filtered.forEach(item => {
+      html += '<tr>';
+      html += '<td data-label="브랜드">' + getBrandBadge(item.brand) + '</td>';
+      html += '<td data-label="차량명"><strong>' + item.model + '</strong></td>';
+      html += '<td data-label="세대">' + item.generation + '</td>';
+      html += '<td data-label="연료">' + getFuelBadge(item.fuel) + '</td>';
+      html += '<td data-label="배기량">' + item.displacement + '</td>';
+      html += '<td data-label="엔진코드"><span class="engine-code-text">' + item.engine_code + '</span></td>';
+      html += '</tr>';
+    });
+
+    tbody.innerHTML = html;
+  }
+
+  // 검색 이벤트
+  if (searchInput) {
+    searchInput.addEventListener("input", function(e) {
+      currentSearch = e.target.value;
+      render();
+    });
+  }
+
+  // 필터 버튼 이벤트
+  document.querySelectorAll("#vw-engine-wrap .vw-btn-chip").forEach(btn => {
+    btn.addEventListener("click", function() {
+      const type = this.getAttribute("data-filter-type");
+      const val = this.getAttribute("data-val");
+
+      const siblings = this.parentElement.querySelectorAll(".vw-btn-chip");
+      siblings.forEach(s => s.classList.remove("active"));
+      this.classList.add("active");
+
+      if (type === "segment") currentSegment = val;
+      if (type === "fuel") currentFuel = val;
+      render();
+    });
+  });
+
+  // CSV 다운로드 기능
+  const csvBtn = document.getElementById("vw-btn-csv");
+  if (csvBtn) {
+    csvBtn.addEventListener("click", function() {
+      let csvContent = "\uFEFF제조사,차량명,세대,연료,배기량,엔진코드\n";
+      rawData.forEach(r => {
+        csvContent += `"${r.brand}","${r.model}","${r.generation}","${r.fuel}","${r.displacement}","${r.engine_code}"\n`;
+      });
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", "volkswagen_engine_specs.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  }
+
+  // 클립보드 복사 기능
+  const copyBtn = document.getElementById("vw-btn-copy");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function() {
+      let text = "제조사\t차량명\t세대\t연료\t배기량\t엔진코드\n";
+      rawData.forEach(r => {
+        text += `${r.brand}\t${r.model}\t${r.generation}\t${r.fuel}\t${r.displacement}\t${r.engine_code}\n`;
+      });
+      navigator.clipboard.writeText(text).then(() => {
+        alert("전체 데이터가 클립보드로 복사되었습니다. (엑셀/구글 시트에 바로 붙여넣기 가능)");
+      }).catch(() => {
+        alert("클립보드 복사 권한을 확인해주세요.");
+      });
+    });
+  }
+
+  // 초기 렌더링
+  render();
+})();
+</script>
