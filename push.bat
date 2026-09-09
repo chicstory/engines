@@ -17,7 +17,7 @@ if not exist ".git" (
 )
 
 echo [2/4] 변경 사항 추적 및 스테이징...
-git add .
+git add index.html sitemap.xml audi_engine_table.html bmw_engine_table.html hyundai_kia_engine_table.html kgm_ssangyong_engine_table.html mercedes_benz_engine_table.html volkswagen_engine_table.html 현대/ 기아/ 제네시스/ BMW/ 벤츠/ 아우디/ 폭스바겐/ 쌍용/ KGM/
 
 echo [3/4] 커밋 생성 중...
 git commit -m "feat: ThePathLab Automotive Engine Encyclopedia Archive"
