@@ -35,9 +35,12 @@
             select.dispatchEvent(new Event('change'));
         } else {
             document.cookie = 'googtrans=/ko/' + lang + '; path=/; SameSite=Lax; Secure';
+            document.cookie = 'googtrans=/ko/' + lang + '; path=/; domain=' + location.hostname + '; SameSite=Lax; Secure';
             location.reload();
         }
     }
+    window.changeLanguage = tplChangeLang;
+    window.tplChangeLang = tplChangeLang;
 </script>
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <style>
