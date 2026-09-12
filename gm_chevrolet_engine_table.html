@@ -583,8 +583,9 @@
             font-weight: 800;
             letter-spacing: -0.8px;
             color: #ffffff;
-            margin-bottom: 0.6rem;
-            background: linear-gradient(135deg, #ffffff 40%, #fde68a 100%);
+            margin-bottom: 0.8rem;
+            line-height: 1.35;
+            background: linear-gradient(135deg, #ffffff 40%, #fde047 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -771,7 +772,17 @@
 
         /* 모바일 최적화 */
         @media (max-width: 768px) {
-            .gm-title { font-size: 1.6rem; }
+            .gm-title {
+            font-size: 2.1rem;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+            line-height: 1.35;
+            background: linear-gradient(135deg, #ffffff 40%, #fde047 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
             .gm-desc { font-size: 0.88rem; }
             .gm-controls { padding: 1rem; }
             .mfg-page-container { padding: 1rem 0.6rem 3rem; }
@@ -975,13 +986,17 @@
     </div>
 
     <!-- 헤더 영역 -->
+    <!-- 헤더 영역 (Unboxed Centered Text Style) -->
     <div class="gm-header">
-        <div class="gm-badge"><i class="bi-gear-wide-connected"></i> ECOTEC & SMALL BLOCK ARCHIVE</div>
-        <h1 class="gm-title">🇺🇸 한국GM · 쉐보레 세대별 엔진코드 · 제원 일람표</h1>
-        <p class="gm-desc">
-            마티즈·스파크(S-TEC)부터 라세티·크루즈(1.4T/디젤), 말리부(1.5T/2.0T), 올란도(LPG/VCDi),<br>
-            최신 트레일블레이저·트랙스 크로스오버(CSS3 E-Turbo), 임팔라·카마로 SS V8까지 전수 데이터베이스
-        </p>
+      <div class="gm-badge"><i class="bi-gear-wide-connected"></i> ECOTEC & SMALL BLOCK ARCHIVE</div>
+      <h1 class="gm-title">
+        🇺🇸 한국GM · 쉐보레<br>
+        세대별 엔진코드 · 제원<br>
+        일람표
+      </h1>
+      <p class="gm-desc">
+        마티즈·스파크(S-TEC)부터 라세티·크루즈(1.4T/디젤), 말리부(1.5T/2.0T), 올란도(LPG/VCDi),<br>최신 트레일블레이저·트랙스 크로스오버(CSS3 E-Turbo), 임팔라·카마로 SS V8까지 전수 데이터베이스
+      </p>
     </div>
 
     <!-- 검색 및 필터 컨트롤 -->

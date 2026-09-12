@@ -564,30 +564,60 @@ body {
   box-sizing: border-box;
 }
 
-#audi-engine-wrap .audi-header {
-  background: linear-gradient(135deg, #881337 0%, #be123c 50%, #e11d48 100%);
-  color: #ffffff;
-  padding: 24px 22px;
-  border-radius: 16px;
-  margin-bottom: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+#audi-engine-wrap .audi-header, .audi-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  background: none;
+  border: none;
+  padding: 0;
+  box-shadow: none;
 }
 
-#audi-engine-wrap .audi-title {
-  margin: 0 0 8px 0;
-  font-size: 1.45rem;
+.audi-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#audi-engine-wrap .audi-title, .audi-title {
+  margin: 0 0 0.8rem 0;
+  font-size: 2.1rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.3;
+  letter-spacing: -0.8px;
+  line-height: 1.35;
   color: #ffffff;
+  background: linear-gradient(135deg, #ffffff 40%, #fca5a5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-#audi-engine-wrap .audi-desc {
-  margin: 0;
-  font-size: 0.92rem;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.5;
+#audi-engine-wrap .audi-desc, .audi-desc {
+  margin: 0 auto;
+  font-size: 1rem;
+  color: #94a3b8;
+  max-width: 820px;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+@media (max-width: 768px) {
+  #audi-engine-wrap .audi-title, .audi-title {
+    font-size: 1.55rem;
+    line-height: 1.35;
+  }
+  #audi-engine-wrap .audi-desc, .audi-desc {
+    font-size: 0.88rem;
+  }
 }
 
 #audi-engine-wrap .audi-controls {
@@ -1055,10 +1085,18 @@ body {
     </div>
     <div id="audi-engine-wrap">
   <!-- 헤더 영역 -->
-  <div class="audi-header">
-    <h2 class="audi-title">🔴 아우디(Audi) 세대별 엔진코드 · 제원 일람표</h2>
-    <p class="audi-desc">A3~A8 세단, Q2~Q8 SUV, 고성능 S/RS 시리즈(EA888/EA839/EA825), 5기통 RS3, V10 R8 및 e-tron 전기차 총정리</p>
-  </div>
+  <!-- 헤더 영역 (Unboxed Centered Text Style) -->
+    <div class="audi-header">
+      <div class="audi-badge"><i class="bi-circle-square"></i> TFSI & TDI QUATTRO ARCHIVE</div>
+      <h1 class="audi-title">
+        🇩🇪 아우디 (Audi)<br>
+        세대별 엔진코드 · 제원<br>
+        일람표
+      </h1>
+      <p class="audi-desc">
+        A3~A8 세단, Q2~Q8 SUV, 고성능 S/RS 시리즈(EA888/EA839/EA825), 5기통 RS3, V10 R8 및 e-tron 전기차 총정리
+      </p>
+    </div>
 
   <!-- 검색 및 필터 컨트롤 -->
   <div class="audi-controls">

@@ -583,7 +583,8 @@
             font-weight: 800;
             letter-spacing: -0.8px;
             color: #ffffff;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.35;
             background: linear-gradient(135deg, #ffffff 40%, #fca5a5 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -770,7 +771,17 @@
 
         /* 모바일 최적화 */
         @media (max-width: 768px) {
-            .toyota-title { font-size: 1.6rem; }
+            .toyota-title {
+            font-size: 2.1rem;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+            line-height: 1.35;
+            background: linear-gradient(135deg, #ffffff 40%, #fca5a5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
             .toyota-desc { font-size: 0.88rem; }
             .toyota-controls { padding: 1rem; }
             .mfg-page-container { padding: 1rem 0.6rem 3rem; }
@@ -974,13 +985,17 @@
     </div>
 
     <!-- 헤더 영역 -->
+    <!-- 헤더 영역 (Unboxed Centered Text Style) -->
     <div class="toyota-header">
-        <div class="toyota-badge"><i class="bi-lightning-charge-fill"></i> HYBRID & POWERTRAIN ARCHIVE</div>
-        <h1 class="toyota-title">🇯🇵 토요타 · 렉서스 세대별 엔진코드 · 제원 일람표</h1>
-        <p class="toyota-desc">
-            캠리(XV40~XV80), 프리우스(2~5세대), RAV4, 시에나부터 렉서스 ES300h, LS500, RX, NX, UX까지<br>
-            국내에 정식 수입·시판된 전 차종 세대별 파워트레인 제원 전수 아카이브
-        </p>
+      <div class="toyota-badge"><i class="bi-lightning-charge-fill"></i> HYBRID & POWERTRAIN ARCHIVE</div>
+      <h1 class="toyota-title">
+        🇯🇵 토요타 · 렉서스<br>
+        세대별 엔진코드 · 제원<br>
+        일람표
+      </h1>
+      <p class="toyota-desc">
+        캠리(XV40~XV80), 프리우스(2~5세대), RAV4, 시에나부터 렉서스 ES300h, LS500, RX, NX, UX까지<br>국내에 정식 수입·시판된 전 차종 세대별 파워트레인 제원 전수 아카이브
+      </p>
     </div>
 
     <!-- 검색 및 필터 컨트롤 -->

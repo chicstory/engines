@@ -583,7 +583,8 @@
             font-weight: 800;
             letter-spacing: -0.8px;
             color: #ffffff;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.35;
             background: linear-gradient(135deg, #ffffff 40%, #fef08a 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -771,7 +772,17 @@
 
         /* 모바일 최적화 */
         @media (max-width: 768px) {
-            .renault-title { font-size: 1.6rem; }
+            .renault-title {
+            font-size: 2.1rem;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+            line-height: 1.35;
+            background: linear-gradient(135deg, #ffffff 40%, #fef08a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
             .renault-desc { font-size: 0.88rem; }
             .renault-controls { padding: 1rem; }
             .mfg-page-container { padding: 1rem 0.6rem 3rem; }
@@ -975,13 +986,17 @@
     </div>
 
     <!-- 헤더 영역 -->
+    <!-- 헤더 영역 (Unboxed Centered Text Style) -->
     <div class="renault-header">
-        <div class="renault-badge"><i class="bi-gem"></i> ALLIANCE DOHC & TCe POWERTRAIN</div>
-        <h1 class="renault-title">🇫🇷 르노코리아 · 르노 세대별 엔진코드 · 제원 일람표</h1>
-        <p class="renault-desc">
-            SM5(SR/CVTC/LPe)·SM6(GDe/TCe260/TCe300)부터 QM6(LPe/GDe/dCi), XM3(아르카나 E-Tech 하이브리드),<br>
-            QM3·클리오(1.5 dCi), SM7(VQ V6), 마스터, 최신 그랑 콜레오스까지 전수 데이터베이스
-        </p>
+      <div class="renault-badge"><i class="bi-gem"></i> ALLIANCE DOHC & TCe POWERTRAIN</div>
+      <h1 class="renault-title">
+        🇫🇷 르노코리아 · 르노<br>
+        세대별 엔진코드 · 제원<br>
+        일람표
+      </h1>
+      <p class="renault-desc">
+        SM5(SR/CVTC/LPe)·SM6(GDe/TCe260/TCe300)부터 QM6(LPe/GDe/dCi), XM3(아르카나 E-Tech 하이브리드),<br>QM3·클리오(1.5 dCi), SM7(VQ V6), 마스터, 최신 그랑 콜레오스까지 전수 데이터베이스
+      </p>
     </div>
 
     <!-- 검색 및 필터 컨트롤 -->
