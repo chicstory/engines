@@ -484,38 +484,38 @@
         }
 
         /* 9대 제조사 퀵점프 내비게이션 바 */
-        .mfg-quick-nav {
+                .mfg-quick-nav {
+            margin-bottom: 1.5rem;
+            background: rgba(18, 26, 43, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 0.85rem 1.2rem;
             display: flex;
             align-items: center;
             flex-wrap: wrap;
             gap: 8px;
-            background: rgba(18, 26, 43, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
-            padding: 0.9rem 1.2rem;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .mfg-quick-label {
             font-size: 0.86rem;
             font-weight: 700;
-            color: var(--tpl-cyan);
+            color: #94a3b8;
             margin-right: 4px;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
         }
 
         .mfg-quick-chip {
+            text-decoration: none;
             font-size: 0.82rem;
             font-weight: 600;
             color: #cbd5e1;
-            text-decoration: none;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 5px 12px;
-            border-radius: 8px;
+            border-radius: 20px;
             transition: all 0.2s;
             white-space: nowrap;
         }
@@ -523,17 +523,38 @@
         .mfg-quick-chip:hover {
             color: #ffffff;
             background: rgba(0, 242, 254, 0.15);
-            border-color: rgba(0, 242, 254, 0.4);
+            border-color: rgba(0, 242, 254, 0.35);
             transform: translateY(-1px);
         }
 
         .mfg-quick-chip.active {
-            color: #0b0f19;
-            background: var(--tpl-cyan);
-            border-color: var(--tpl-cyan);
+            color: #00f2fe;
+            background: rgba(0, 242, 254, 0.15);
+            border-color: #00f2fe;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.25);
             font-weight: 700;
-            box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
         }
+
+        .tool-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tool-btn:hover {
+            background: rgba(0, 242, 254, 0.15);
+            border-color: rgba(0, 242, 254, 0.35);
+            color: #00f2fe;
+        }
+
 
         /* 헤더 섹션 */
         .toyota-header {
@@ -765,10 +786,10 @@
     <a href="https://chicstory.github.io/" class="tpl-nav-brand">
       <i class="bi-bounding-box-circles"></i>
       <span>ThePathLab</span>
-      <span class="tpl-brand-badge" id="tplNavBadge">ENGINES ARCHIVE</span>
+      <span class="tpl-brand-badge" id="tplNavBadge">SPECS ARCHIVE</span>
     </a>
 
-    <div class="tpl-nav-links">
+        <div class="tpl-nav-links">
       <a href="https://chicstory.github.io/" class="tpl-nav-link"><i class="bi-house-door"></i> 포털 홈</a>
       <a href="https://chicstory.github.io/autoissue/" class="tpl-nav-link"><i class="bi-bell-fill"></i> 자동차 데일리 이슈</a>
       <a href="https://chicstory.github.io/metals/" class="tpl-nav-link"><i class="bi-graph-up-arrow"></i> 금속 원자재·스크랩</a>
@@ -814,7 +835,7 @@
 
   <div class="tpl-drawer-body">
     <!-- Section 1: Core Hubs -->
-    <div class="tpl-drawer-group">
+        <div class="tpl-drawer-group">
       <div class="tpl-drawer-group-title"><i class="bi-stars"></i> 핵심 서비스 포털</div>
       <a href="https://chicstory.github.io/" class="tpl-drawer-item">
         <div class="tpl-drawer-icon icon-portal"><i class="bi-house-door"></i></div>
@@ -856,7 +877,7 @@
     <!-- Section 2: Manufacturer Tables Quick Jump -->
     <div class="tpl-drawer-group">
       <div class="tpl-drawer-group-title"><i class="bi-table"></i> 제조사별 전수 스펙 종합비교표</div>
-      <div class="tpl-drawer-chips">
+            <div class="tpl-drawer-chips">
         <a href="https://chicstory.github.io/engines/hyundai_kia_engine_table.html" class="tpl-chip-link">현대·기아 (87종)</a>
         <a href="https://chicstory.github.io/engines/bmw_engine_table.html" class="tpl-chip-link">BMW (45종)</a>
         <a href="https://chicstory.github.io/engines/mercedes_benz_engine_table.html" class="tpl-chip-link">메르세데스-벤츠 (40종)</a>
@@ -939,7 +960,7 @@
 
 <main class="mfg-page-container">
     <!-- 9대 제조사 퀵점프 바 -->
-    <div class="mfg-quick-nav">
+        <div class="mfg-quick-nav">
       <span class="mfg-quick-label"><i class="bi-table"></i> 제조사별 전수 스펙표:</span>
       <a href="hyundai_kia_engine_table.html" class="mfg-quick-chip">현대·기아 (87종)</a>
       <a href="bmw_engine_table.html" class="mfg-quick-chip">BMW (45종)</a>
@@ -984,9 +1005,15 @@
         </div>
     </div>
 
-    <!-- 결과 통계 -->
-    <div style="margin-bottom: 0.8rem; color: #94a3b8; font-size: 0.88rem;">
-        검색 결과: <strong id="toyota-count" style="color: var(--tpl-cyan);">35</strong>개 세대별 차종·엔진
+    <!-- 결과 통계 및 액션 버튼 -->
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 0.8rem;">
+        <div style="color: #94a3b8; font-size: 0.88rem;">
+            검색 결과: <strong id="toyota-count" style="color: var(--tpl-cyan);">35</strong>개 세대별 차종·엔진
+        </div>
+        <div style="display: flex; gap: 8px;">
+            <button type="button" class="tool-btn" id="toyota-btn-copy">📋 표 복사</button>
+            <button type="button" class="tool-btn" id="toyota-btn-csv">💾 CSV 다운로드</button>
+        </div>
     </div>
 
     <!-- 데이터 테이블 -->
@@ -1141,6 +1168,42 @@
             renderTable();
         });
     });
+
+    
+    // CSV 다운로드 기능
+    const csvBtn = document.getElementById("toyota-btn-csv");
+    if (csvBtn) {
+        csvBtn.addEventListener("click", function() {
+            let csvContent = "\uFEFF제조사,차량명,세대,연료,배기량,엔진코드\n";
+            rawData.forEach(r => {
+                csvContent += `"${r.brand}","${r.model}","${r.generation}","${r.fuel}","${r.displacement}","${r.engine_code}"\n`;
+            });
+            const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", "toyota_lexus_engine_specs.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    }
+
+    // 클립보드 복사 기능
+    const copyBtn = document.getElementById("toyota-btn-copy");
+    if (copyBtn) {
+        copyBtn.addEventListener("click", function() {
+            let text = "제조사\t차량명\t세대\t연료\t배기량\t엔진코드\n";
+            rawData.forEach(r => {
+                text += `${r.brand}\t${r.model}\t${r.generation}\t${r.fuel}\t${r.displacement}\t${r.engine_code}\n`;
+            });
+            navigator.clipboard.writeText(text).then(() => {
+                alert("전체 데이터가 클립보드로 복사되었습니다. (엑셀/구글 시트에 바로 붙여넣기 가능)");
+            }).catch(err => {
+                alert("복사 실패: " + err);
+            });
+        });
+    }
 
     renderTable();
 })();

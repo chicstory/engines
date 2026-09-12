@@ -870,11 +870,13 @@ body {
       <span class="tpl-brand-badge" id="tplNavBadge">SPECS ARCHIVE</span>
     </a>
 
-    <div class="tpl-nav-links">
-      <a href="https://chicstory.github.io/" class="tpl-nav-link "><i class="bi-house-door"></i> 포털 홈</a>
-      <a href="https://chicstory.github.io/metals/" class="tpl-nav-link "><i class="bi-graph-up-arrow"></i> 금속 원자재·스크랩</a>
-      <a href="https://chicstory.github.io/engines/" class="tpl-nav-link "><i class="bi-cpu"></i> 엔진 전수 백과</a>
+        <div class="tpl-nav-links">
+      <a href="https://chicstory.github.io/" class="tpl-nav-link"><i class="bi-house-door"></i> 포털 홈</a>
+      <a href="https://chicstory.github.io/autoissue/" class="tpl-nav-link"><i class="bi-bell-fill"></i> 자동차 데일리 이슈</a>
+      <a href="https://chicstory.github.io/metals/" class="tpl-nav-link"><i class="bi-graph-up-arrow"></i> 금속 원자재·스크랩</a>
       <a href="https://chicstory.github.io/engines/hyundai_kia_engine_table.html" class="tpl-nav-link active"><i class="bi-table"></i> 제조사별 스펙표</a>
+      <a href="https://chicstory.github.io/engines/" class="tpl-nav-link"><i class="bi-cpu"></i> 엔진 전수 백과</a>
+      <a href="https://chicstory.github.io/guide.html" class="tpl-nav-link"><i class="bi-compass"></i> 이용 가이드</a>
     </div>
 
     <div class="tpl-nav-actions">
@@ -914,13 +916,20 @@ body {
 
   <div class="tpl-drawer-body">
     <!-- Section 1: Core Hubs -->
-    <div class="tpl-drawer-group">
+        <div class="tpl-drawer-group">
       <div class="tpl-drawer-group-title"><i class="bi-stars"></i> 핵심 서비스 포털</div>
       <a href="https://chicstory.github.io/" class="tpl-drawer-item">
         <div class="tpl-drawer-icon icon-portal"><i class="bi-house-door"></i></div>
         <div class="tpl-drawer-item-text">
           <div class="tpl-drawer-item-title">ThePathLab 포털 메인</div>
           <div class="tpl-drawer-item-desc">통합 인텔리전스 허브 대시보드</div>
+        </div>
+      </a>
+      <a href="https://chicstory.github.io/autoissue/" class="tpl-drawer-item">
+        <div class="tpl-drawer-icon" style="background: rgba(244, 63, 94, 0.15); color: #fb7185;"><i class="bi-bell-fill"></i></div>
+        <div class="tpl-drawer-item-text">
+          <div class="tpl-drawer-item-title">자동차 데일리 이슈 허브</div>
+          <div class="tpl-drawer-item-desc">10대 제조사 결함·리콜 & 미국 NHTSA 선제 공고</div>
         </div>
       </a>
       <a href="https://chicstory.github.io/metals/" class="tpl-drawer-item">
@@ -930,11 +939,18 @@ body {
           <div class="tpl-drawer-item-desc">일일 시세 분석 · 1초 즉시 계산기 · 캘린더 아카이브</div>
         </div>
       </a>
+      <a href="https://chicstory.github.io/engines/hyundai_kia_engine_table.html" class="tpl-drawer-item">
+        <div class="tpl-drawer-icon" style="background: rgba(168, 85, 247, 0.15); color: #c084fc;"><i class="bi-table"></i></div>
+        <div class="tpl-drawer-item-text">
+          <div class="tpl-drawer-item-title">제조사별 전수 스펙표</div>
+          <div class="tpl-drawer-item-desc">9대 제조사 파워트레인 전수 비교표</div>
+        </div>
+      </a>
       <a href="https://chicstory.github.io/engines/" class="tpl-drawer-item">
         <div class="tpl-drawer-icon icon-engines"><i class="bi-cpu"></i></div>
         <div class="tpl-drawer-item-text">
           <div class="tpl-drawer-item-title">자동차 엔진 전수 백과사전</div>
-          <div class="tpl-drawer-item-desc">260개 파워트레인 실측 제원 & 다이노 그래프</div>
+          <div class="tpl-drawer-item-desc">280+개 파워트레인 실측 제원 & 다이노 그래프</div>
         </div>
       </a>
     </div>
@@ -942,10 +958,10 @@ body {
     <!-- Section 2: Manufacturer Tables Quick Jump -->
     <div class="tpl-drawer-group">
       <div class="tpl-drawer-group-title"><i class="bi-table"></i> 제조사별 전수 스펙 종합비교표</div>
-      <div class="tpl-drawer-chips">
+            <div class="tpl-drawer-chips">
         <a href="https://chicstory.github.io/engines/hyundai_kia_engine_table.html" class="tpl-chip-link">현대·기아 (87종)</a>
         <a href="https://chicstory.github.io/engines/bmw_engine_table.html" class="tpl-chip-link">BMW (45종)</a>
-        <a href="https://chicstory.github.io/engines/mercedes_benz_engine_table.html" class="tpl-chip-link">메르세데스-벤츠 (40종)</a>
+        <a href="https://chicstory.github.io/engines/mercedes_benz_engine_table.html" class="tpl-chip-link active">메르세데스-벤츠 (40종)</a>
         <a href="https://chicstory.github.io/engines/audi_engine_table.html" class="tpl-chip-link">아우디 (32종)</a>
         <a href="https://chicstory.github.io/engines/volkswagen_engine_table.html" class="tpl-chip-link">폭스바겐 (20종)</a>
         <a href="https://chicstory.github.io/engines/kgm_ssangyong_engine_table.html" class="tpl-chip-link">KGM·쌍용 (20종)</a>
@@ -1025,7 +1041,7 @@ body {
 
 
 <main class="mfg-page-container">
-        <div class="mfg-quick-nav">
+            <div class="mfg-quick-nav">
       <span class="mfg-quick-label"><i class="bi-table"></i> 제조사별 전수 스펙표:</span>
       <a href="hyundai_kia_engine_table.html" class="mfg-quick-chip">현대·기아 (87종)</a>
       <a href="bmw_engine_table.html" class="mfg-quick-chip">BMW (45종)</a>
