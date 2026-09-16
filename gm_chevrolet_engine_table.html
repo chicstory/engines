@@ -904,7 +904,7 @@
         <a href="https://chicstory.github.io/engines/volkswagen_engine_table.html" class="tpl-chip-link">폭스바겐 (20종)</a>
         <a href="https://chicstory.github.io/engines/kgm_ssangyong_engine_table.html" class="tpl-chip-link">KGM·쌍용 (20종)</a>
         <a href="https://chicstory.github.io/engines/toyota_lexus_engine_table.html" class="tpl-chip-link">토요타·렉서스 (35종)</a>
-        <a href="https://chicstory.github.io/engines/gm_chevrolet_engine_table.html" class="tpl-chip-link active">한국GM·쉐보레 (32종)</a>
+        <a href="https://chicstory.github.io/engines/gm_chevrolet_engine_table.html" class="tpl-chip-link active">한국GM·GM대우·쉐보레 (45종)</a>
         <a href="https://chicstory.github.io/engines/renault_korea_engine_table.html" class="tpl-chip-link">르노코리아 (26종)</a>
       </div>
     </div>
@@ -988,21 +988,21 @@
       <a href="volkswagen_engine_table.html" class="mfg-quick-chip">폭스바겐 (20종)</a>
       <a href="kgm_ssangyong_engine_table.html" class="mfg-quick-chip">KGM·쌍용 (20종)</a>
       <a href="toyota_lexus_engine_table.html" class="mfg-quick-chip">토요타·렉서스 (35종)</a>
-      <a href="gm_chevrolet_engine_table.html" class="mfg-quick-chip active">한국GM·쉐보레 (32종)</a>
+      <a href="gm_chevrolet_engine_table.html" class="mfg-quick-chip active">한국GM·GM대우·쉐보레 (45종)</a>
       <a href="renault_korea_engine_table.html" class="mfg-quick-chip">르노코리아 (26종)</a>
     </div>
 
     <!-- 헤더 영역 -->
     <!-- 헤더 영역 (Unboxed Centered Text Style) -->
     <div class="gm-header">
-      <div class="gm-badge"><i class="bi-gear-wide-connected"></i> ECOTEC & SMALL BLOCK ARCHIVE</div>
+      <div class="gm-badge"><i class="bi-gear-wide-connected"></i> GM DAEWOO & CHEVROLET RPO ARCHIVE</div>
       <h1 class="gm-title">
-        🇺🇸 한국GM · 쉐보레<br>
-        세대별 엔진코드 · 제원<br>
-        일람표
+        🇺🇸 한국GM · GM대우 · 쉐보레<br>
+        세대별 엔진코드 & RPO 제원<br>
+        전수 일람표
       </h1>
       <p class="gm-desc">
-        마티즈·스파크(S-TEC)부터 라세티·크루즈(1.4T/디젤), 말리부(1.5T/2.0T), 올란도(LPG/VCDi),<br>최신 트레일블레이저·트랙스 크로스오버(CSS3 E-Turbo), 임팔라·카마로 SS V8까지 전수 데이터베이스
+        대우·GM대우(티코, 마티즈, 누비라, 레간자, 매그너스, 토스카, 윈스톰)부터 크루즈·올란도·말리부(디젤 RPO: LLW, LNP, LNQ, LVL, LFS),<br>최신 트레일블레이저·트랙스 크로스오버(CSS3 E-Turbo), 카마로 SS 스몰블록 V8까지 45종 전수 데이터베이스
       </p>
     </div>
 
@@ -1010,15 +1010,15 @@
     <div class="gm-controls">
         <div class="gm-search-box">
             <span class="gm-search-icon">🔍</span>
-            <input type="text" id="gm-search" class="gm-search-input" placeholder="차량명, 코드명, 엔진코드, 배기량 등으로 검색... (예: 말리부, 크루즈, LUJ, 올란도, L3T, 스파크, 1.4터보, 디젤)" autocomplete="off">
+            <input type="text" id="gm-search" class="gm-search-input" placeholder="차량명, RPO 코드, 엔진형식, 배기량 등으로 검색... (예: LNP, LLW, LNQ, LVL, LFS, Z20S, 올란도, 크루즈, 윈스톰, 토스카, 디젤, 말리부)" autocomplete="off">
         </div>
 
         <div class="gm-filter-group">
             <span class="gm-filter-label">연료:</span>
             <button class="gm-btn active" data-filter-type="fuel" data-val="all">전체</button>
             <button class="gm-btn" data-filter-type="fuel" data-val="가솔린">가솔린 (에코텍/E-Turbo)</button>
-            <button class="gm-btn" data-filter-type="fuel" data-val="디젤">디젤 (VCDi/CDTi)</button>
-            <button class="gm-btn" data-filter-type="fuel" data-val="LPG">LPG (LPi)</button>
+            <button class="gm-btn" data-filter-type="fuel" data-val="디젤">디젤 (VCDi/CDTi RPO)</button>
+            <button class="gm-btn" data-filter-type="fuel" data-val="LPG">LPG (LPGi)</button>
             <button class="gm-btn" data-filter-type="fuel" data-val="하이브리드">하이브리드 (e-Assist/HEV)</button>
         </div>
     </div>
@@ -1026,7 +1026,7 @@
     <!-- 결과 통계 및 액션 버튼 -->
     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 0.8rem;">
         <div style="color: #94a3b8; font-size: 0.88rem;">
-            검색 결과: <strong id="gm-count" style="color: var(--tpl-gold);">32</strong>개 세대별 차종·엔진
+            검색 결과: <strong id="gm-count" style="color: var(--tpl-gold);">45</strong>개 세대별 차종·엔진
         </div>
         <div style="display: flex; gap: 8px;">
             <button type="button" class="tool-btn" id="gm-btn-copy">📋 표 복사</button>
@@ -1060,47 +1060,58 @@
 <script>
 (function() {
     const rawData = [
-        // --- 경차 (마티즈 크리에이티브 & 스파크) ---
-        { brand: "쉐보레", model: "더 넥스트 스파크 / 더 뉴 스파크 (M400)", generation: "2세대 (2015~2022)", fuel: "가솔린", displacement: "999cc", engine_code: "1.0 SGE Ecotec (LV7 직렬 3기통 올 알루미늄, 75ps)" },
-        { brand: "쉐보레", model: "스파크 S (M300 Gen2)", generation: "1세대 후기 (2013~2015)", fuel: "가솔린", displacement: "995cc", engine_code: "1.0 S-TEC III Gen2 (B10D2 DOHC C-TECH CVT, 75ps)" },
-        { brand: "쉐보레", model: "마티즈 크리에이티브 / 스파크 (M300)", generation: "1세대 (2009~2015)", fuel: "가솔린", displacement: "995cc", engine_code: "1.0 S-TEC II (B10D1 직렬 4기통 DOHC, 70ps)" },
-        { brand: "쉐보레", model: "스파크 LPG (M300 LPGi)", generation: "1세대 (2010~2015)", fuel: "LPG", displacement: "995cc", engine_code: "1.0 S-TEC II LPGi (LB10D 액상분사 65ps)" },
+        // ==========================================
+        // 1. 디젤 파워트레인 (유로4, 유로5, 유로6 전수 계보 - 15종)
+        // ==========================================
+        { brand: "GM대우", model: "윈스톰 2.0 디젤 (C100)", generation: "1세대 (2006~2011)", fuel: "디젤", displacement: "1,991cc", engine_code: "2.0 VCDi [RPO: LLW / 형식명: Z20S (RA420)] SOHC 16V 커먼레일 VGT (150ps / 32.7kg·m) - 유로4 VM 모토리 라이선스 군산공장 생산" },
+        { brand: "GM대우", model: "윈스톰 맥스 2.0 디젤 (C105)", generation: "1세대 (2008~2010)", fuel: "디젤", displacement: "1,991cc", engine_code: "2.0 VCDi [RPO: LLW / Z20S] SOHC 16V VGT 전자식 4WD (150ps / 32.7kg·m) - 독일 오펠 안타라 형제차" },
+        { brand: "GM대우", model: "토스카 2.0 디젤 (V250)", generation: "1세대 (2007~2011)", fuel: "디젤", displacement: "1,991cc", engine_code: "2.0 VCDi [RPO: LLW / Z20S] SOHC 16V VGT 아이신 6단 자동 (150ps / 32.7kg·m) - 국산 중형 세단 최초 유로4 디젤" },
+        { brand: "GM대우", model: "라세티 프리미어 2.0 디젤 (J300 전기형)", generation: "1세대 (2009~2011)", fuel: "디젤", displacement: "1,991cc", engine_code: "2.0 VCDi [RPO: LLW / Z20S] SOHC 16V VGT (150ps / 32.7kg·m) - 유로4 라프디 원조" },
+        { brand: "GM대우", model: "라세티 프리미어 2.0 디젤 SE (J300 디튠형)", generation: "1세대 (2009~2010)", fuel: "디젤", displacement: "1,991cc", engine_code: "2.0 VCDi [RPO: LMN / Z20S Eco] SOHC 16V VGT 디튠 경제형 사양 (121ps / 28.6kg·m)" },
+        { brand: "쉐보레", model: "크루즈 2.0 디젤 (J300 유로5)", generation: "1세대 (2011~2014)", fuel: "디젤", displacement: "1,998cc", engine_code: "2.0 VCDi [RPO: LNP / Family Z (Z20D1)] DOHC 16V 체인구동 VGT (163ps / 36.7kg·m) - 유로5 고출력 크디수/크디자" },
+        { brand: "쉐보레", model: "올란도 2.0 디젤 (J309 유로5)", generation: "1세대 (2011~2015)", fuel: "디젤", displacement: "1,998cc", engine_code: "2.0 VCDi [RPO: LNP / Family Z (Z20D1)] DOHC 16V VGT (163ps / 36.7kg·m) - 서민 패밀리카의 명기" },
+        { brand: "쉐보레", model: "캡티바 2.0 디젤 (C140)", generation: "1세대 (2011~2015)", fuel: "디젤", displacement: "1,998cc", engine_code: "2.0 VCDi [RPO: LNP / Family Z (Z20D1)] DOHC 16V VGT (163ps / 40.8kg·m) - 유로5 토크 증대형" },
+        { brand: "쉐보레", model: "캡티바 2.2 디젤 4WD (C140)", generation: "1세대 (2011~2015)", fuel: "디젤", displacement: "2,231cc", engine_code: "2.2 VCDi [RPO: LNQ / Family Z (Z22D1 / A22DMH)] DOHC 16V 체인구동 (184ps / 40.8kg·m) - 플래그십 파워트레인" },
+        { brand: "쉐보레", model: "말리부 2.0 디젤 (V300)", generation: "8세대 (2014~2016)", fuel: "디젤", displacement: "1,998cc", engine_code: "2.0 VCDi [RPO: LNP / 오펠 직수입 A20DTH] DOHC 16V 아이신 6단 (156ps / 35.8kg·m, 오버부스트 38.8kg·m)" },
+        { brand: "GM대우", model: "GM 글로벌 유로5 디젤 파생 옵션군", generation: "유로5 세대 (2010~2015)", fuel: "디젤", displacement: "1,998cc", engine_code: "2.0 VCDi [RPO: LKR / LZH 식별군] Family Z DOHC 16V VGT (163ps / 36.7kg·m) - 글로벌 배출가스 및 변속기 매칭 파생코드" },
+        { brand: "쉐보레", model: "올란도 1.6 디젤 (J309 유로6)", generation: "1세대 후기 (2015~2018)", fuel: "디젤", displacement: "1,598cc", engine_code: "1.6 CDTi 위스퍼 디젤 [RPO: LVL / B16DTH] 올알루미늄 DOHC 16V VGT (134ps / 32.6kg·m) - 소음진동 억제형" },
+        { brand: "쉐보레", model: "트랙스 1.6 디젤 (U200 유로6)", generation: "1세대 (2015~2022)", fuel: "디젤", displacement: "1,598cc", engine_code: "1.6 CDTi 위스퍼 디젤 [RPO: LVL / B16DTH] 올알루미늄 DOHC 16V (135ps / 32.8kg·m)" },
+        { brand: "쉐보레", model: "더 뉴 말리부 1.6 디젤 (V400 F/L)", generation: "9세대 후기 (2018~2020)", fuel: "디젤", displacement: "1,598cc", engine_code: "1.6 CDTi 위스퍼 디젤 [RPO: LVL / B16DTH] 올알루미늄 DOHC 16V (136ps / 32.6kg·m)" },
+        { brand: "쉐보레", model: "캡티바 2.0 CDTi 유로6 SCR (C140 F/L2)", generation: "1세대 후기 (2016~2018)", fuel: "디젤", displacement: "1,956cc", engine_code: "2.0 CDTi 유로6 SCR [RPO: LFS / Family B (B20DTH)] 아이신 6단 자동 (170ps / 40.8kg·m) - 요소수 SCR 최종 진화형" },
 
-        // --- 소형/준중형 (아베오 & 라세티 프리미어 & 크루즈) ---
-        { brand: "쉐보레", model: "아베오 세단 / 해치백 / RS (T300)", generation: "2세대 (2011~2019)", fuel: "가솔린", displacement: "1,364cc / 1,598cc", engine_code: "1.4 터보 Ecotec (LUJ/LUV 140ps) / 1.6 Ecotec (F16D4 114ps)" },
-        { brand: "쉐보레", model: "올 뉴 크루즈 (J400)", generation: "2세대 (2017~2018)", fuel: "가솔린", displacement: "1,399cc", engine_code: "1.4 SIDI 터보 (LE2 직분사 가솔린 터보 알루미늄 블록, 153ps)" },
-        { brand: "쉐보레", model: "크루즈 1.4 터보 (J300)", generation: "1세대 후기 (2013~2017)", fuel: "가솔린", displacement: "1,364cc", engine_code: "1.4 터보 Ecotec (LUJ 멀티포인트 터보인터쿨러, 140ps)" },
-        { brand: "쉐보레", model: "라세티 프리미어 / 크루즈 가솔린 (J300)", generation: "1세대 (2008~2017)", fuel: "가솔린", displacement: "1,598cc / 1,796cc", engine_code: "1.6 Ecotec (F16D4 114~124ps) / 1.8 Ecotec (F18D4 142ps)" },
-        { brand: "쉐보레", model: "라세티 프리미어 / 크루즈 디젤 (J300)", generation: "1세대 (2009~2017)", fuel: "디젤", displacement: "1,991cc / 1,998cc", engine_code: "2.0 VCDi (RA420 150ps 유로4) / 2.0 VCDi (Z20D1 LNP 163ps 유로5)" },
-
-        // --- 중형 (토스카 & 말리부 세대별) ---
-        { brand: "쉐보레", model: "더 뉴 말리부 1.35 E-Turbo (V400 F/L)", generation: "9세대 후기 (2018~2022)", fuel: "가솔린", displacement: "1,341cc", engine_code: "CSS3 1.35 E-Turbo (L3T 직렬 3기통 전동식 워터펌프/웨이스트게이트, 156ps)" },
-        { brand: "쉐보레", model: "올 뉴 말리부 1.5 터보 (V400)", generation: "9세대 전기 (2016~2018)", fuel: "가솔린", displacement: "1,490cc", engine_code: "1.5 SIDI 터보 Ecotec (LFV 직분사 터보, 166ps)" },
-        { brand: "쉐보레", model: "올 뉴 말리부 / 더 뉴 말리부 2.0 터보", generation: "9세대 (2016~2022)", fuel: "가솔린", displacement: "1,998cc", engine_code: "2.0 SIDI 터보 Ecotec (LTG 트윈스크롤 터보, 253ps)" },
-        { brand: "쉐보레", model: "더 뉴 말리부 1.6 디젤 (V400 F/L)", generation: "9세대 후기 (2018~2020)", fuel: "디젤", displacement: "1,598cc", engine_code: "1.6 CDTi 위스퍼 디젤 (LVL B16DTH 올알루미늄 136ps)" },
-        { brand: "쉐보레", model: "말리부 2.0 / 2.4 가솔린 (V300)", generation: "8세대 (2011~2016)", fuel: "가솔린", displacement: "1,998cc / 2,384cc", engine_code: "2.0 Ecotec (LPK 141ps) / 2.4 Ecotec (LE5 170ps)" },
-        { brand: "쉐보레", model: "말리부 2.0 디젤 (V300)", generation: "8세대 (2014~2016)", fuel: "디젤", displacement: "1,998cc", engine_code: "2.0 VCDi 독일 오펠 개발 디젤 (LNP 유로5, 156ps)" },
-        { brand: "쉐보레", model: "토스카 2.0 / 2.5 가솔린 (V250)", generation: "1세대 (2006~2011)", fuel: "가솔린", displacement: "1,993cc / 2,492cc", engine_code: "XK L6 가로배치 직렬 6기통 DOHC (142ps / 157ps 실키스무스)" },
-        { brand: "쉐보레", model: "토스카 2.0 디젤 / LPG (V250)", generation: "1세대 (2006~2011)", fuel: "디젤", displacement: "1,991cc", engine_code: "2.0 VCDi (RA420 커먼레일 150ps) / 2.0 L6 LPGi (137ps)" },
-
-        // --- 준대형 (알페온 & 임팔라) ---
-        { brand: "쉐보레", model: "임팔라 2.5 / 3.6 (10세대 북미직수입)", generation: "10세대 (2015~2020)", fuel: "가솔린", displacement: "2,457cc / 3,564cc", engine_code: "2.5 Ecotec SIDI (LKW 197ps) / 3.6 High Feature V6 (LFX 309ps)" },
-        { brand: "쉐보레", model: "알페온 2.4 / 3.0 SIDI (GM K-Body)", generation: "1세대 (2010~2015)", fuel: "가솔린", displacement: "2,384cc / 2,997cc", engine_code: "2.4 SIDI Ecotec (LAF 185ps) / 3.0 High Feature V6 SIDI (LFW 263ps)" },
-        { brand: "쉐보레", model: "알페온 e-어시스트 하이브리드", generation: "1세대 (2011~2015)", fuel: "하이브리드", displacement: "2,384cc", engine_code: "2.4 Ecotec BAS 마일드 하이브리드 (LUK 시스템 181ps)" },
-
-        // --- SUV / CUV (트랙스, 트랙스 크로스오버, 트레일블레이저, 올란도, 캡티바, 이쿼녹스, 트래버스, 타호) ---
-        { brand: "쉐보레", model: "트랙스 크로스오버 (9BQC)", generation: "1세대 (2023~현재)", fuel: "가솔린", displacement: "1,199cc", engine_code: "CSS3 1.2 E-Turbo (LIH 직렬 3기통 전동 웨이스트게이트 터보, 139ps)" },
-        { brand: "쉐보레", model: "트레일블레이저 (9BQX)", generation: "1세대 (2020~현재)", fuel: "가솔린", displacement: "1,199cc / 1,341cc", engine_code: "CSS3 1.2 E-Turbo (LIH 139ps) / CSS3 1.35 E-Turbo (L3T 156ps)" },
-        { brand: "쉐보레", model: "트랙스 1.4 터보 / 1.6 디젤 (U200)", generation: "1세대 (2013~2022)", fuel: "가솔린", displacement: "1,364cc / 1,598cc", engine_code: "1.4 터보 Ecotec (LUJ/LUV 140ps) / 1.6 CDTi 위스퍼 디젤 (LVL 135ps)" },
-        { brand: "쉐보레", model: "올란도 2.0 디젤 / 1.6 디젤 (J309)", generation: "1세대 (2011~2018)", fuel: "디젤", displacement: "1,998cc / 1,598cc", engine_code: "2.0 VCDi (Z20D1 LNP 163ps) / 1.6 CDTi 위스퍼 디젤 (LVL 134ps 유로6)" },
-        { brand: "쉐보레", model: "올란도 2.0 LPG (J309)", generation: "1세대 (2011~2018)", fuel: "LPG", displacement: "1,998cc", engine_code: "2.0 Ecotec LPGi (L2N 직렬 4기통 DOHC 액상분사, 140ps)" },
-        { brand: "쉐보레", model: "캡티바 2.0 / 2.2 디젤 (C140)", generation: "1세대 (2011~2018)", fuel: "디젤", displacement: "1,998cc / 2,231cc", engine_code: "2.0/2.2 VCDi (Z20D1 163ps / Z22D1 184ps) / 유로6 2.0 CDTi (170ps)" },
-        { brand: "쉐보레", model: "윈스톰 2.0 디젤 (C100)", generation: "1세대 (2006~2011)", fuel: "디젤", displacement: "1,991cc", engine_code: "2.0 VCDi (RA420 이탈리아 VM 모토리 설계 커먼레일, 150ps)" },
-        { brand: "쉐보레", model: "이쿼녹스 1.6 디젤 / 1.5 터보", generation: "3세대 (2018~2023)", fuel: "가솔린", displacement: "1,598cc / 1,490cc", engine_code: "1.6 CDTi 위스퍼 디젤 (LVL 136ps) / 1.5 SIDI 가솔린 터보 (LYX 172ps)" },
-        { brand: "쉐보레", model: "트래버스 3.6 가솔린 (2세대)", generation: "2세대 (2019~현재)", fuel: "가솔린", displacement: "3,564cc", engine_code: "3.6 High Feature V6 직분사 (LFY 9단 변속기, 314ps)" },
-        { brand: "쉐보레", model: "콜로라도 3.6 / 2.7 터보 (픽업)", generation: "2/3세대 (2019~현재)", fuel: "가솔린", displacement: "3,564cc / 2,727cc", engine_code: "3.6 V6 LGX (312ps) / 3세대 2.7 직렬 4기통 가솔린 터보 L3B (314ps)" },
-        { brand: "쉐보레", model: "타호 6.2 V8 (대형 SUV)", generation: "5세대 (2022~현재)", fuel: "가솔린", displacement: "6,162cc", engine_code: "6.2 EcoTec3 스몰블록 V8 (L87 가변 실린더 DFM, 426ps)" },
-        { brand: "쉐보레", model: "카마로 SS 6.2 V8 (스포츠카)", generation: "6세대 (2016~2023)", fuel: "가솔린", displacement: "6,162cc", engine_code: "6.2 스몰블록 LT1 V8 자연흡기 직분사 (453ps 괴력)" }
+        // ==========================================
+        // 2. 대우 / GM대우 / 쉐보레 가솔린·LPG 명차 계보 (30종)
+        // ==========================================
+        { brand: "대우", model: "티코 (Tico / PM-51)", generation: "1세대 (1991~2001)", fuel: "가솔린", displacement: "796cc", engine_code: "대우 헬리오스 F8C (스즈키 알토 라이선스 직렬 3기통 카뷰레터, 41ps / 6.0kg·m)" },
+        { brand: "대우", model: "마티즈 I & II (M100 / M150)", generation: "1세대 (1998~2005)", fuel: "가솔린", displacement: "796cc", engine_code: "M-TEC F8CV (직렬 3기통 SOHC 6V 전자제어 멀티포인트 분사, 52ps / 7.3kg·m)" },
+        { brand: "대우", model: "마티즈 II CVT (M150 E3CVT)", generation: "1세대 (2000~2005)", fuel: "가솔린", displacement: "796cc", engine_code: "M-TEC F8CV (직렬 3기통 전자제어 MPI + 아이치기계 E3CVT 무단변속기, 52ps)" },
+        { brand: "GM대우", model: "올 뉴 마티즈 (M200)", generation: "2세대 (2005~2009)", fuel: "가솔린", displacement: "796cc", engine_code: "M-TEC II A08S3 (직렬 3기통 실린더헤드 고효율 개선형, 52ps / 7.3kg·m)" },
+        { brand: "GM대우", model: "마티즈 크리에이티브 / 스파크 (M300)", generation: "1세대 (2009~2015)", fuel: "가솔린", displacement: "995cc", engine_code: "1.0 S-TEC II (B10D1 직렬 4기통 DOHC 16V, 70ps / 9.4kg·m)" },
+        { brand: "쉐보레", model: "스파크 S / 더 넥스트 스파크 C-TECH", generation: "1세대 후기/2세대 (2013~2015)", fuel: "가솔린", displacement: "995cc", engine_code: "1.0 S-TEC III Gen2 (B10D2 자트코 C-TECH 무단변속기 매칭 DOHC, 75ps / 9.6kg·m)" },
+        { brand: "쉐보레", model: "더 넥스트 스파크 / 더 뉴 스파크 (M400)", generation: "2세대 (2015~2022)", fuel: "가솔린", displacement: "999cc", engine_code: "1.0 SGE Ecotec [RPO: LV7] 올 알루미늄 직렬 3기통 DOHC (75ps / 9.7kg·m)" },
+        { brand: "쉐보레", model: "스파크 LPGi (M300)", generation: "1세대 (2010~2015)", fuel: "LPG", displacement: "995cc", engine_code: "1.0 S-TEC II LPGi [RPO: LB10D] 직렬 4기통 DOHC 16V 액상분사 (65ps / 9.3kg·m)" },
+        { brand: "대우", model: "누비라 I & II (Nubira / J100, J150)", generation: "1세대 (1997~2002)", fuel: "가솔린", displacement: "1,498cc", engine_code: "1.5 E-TEC DOHC [F15S3] 직렬 4기통 16V (107ps / 14.0kg·m) - 힘 좋은 독일 오펠 기반" },
+        { brand: "대우", model: "레간자 1.8 / 2.0 (Leganza / V100)", generation: "1세대 (1997~2002)", fuel: "가솔린", displacement: "1,799cc / 1,998cc", engine_code: "1.8 SOHC (C18SED 102ps) / 2.0 D-TEC DOHC (T20SED 141ps / 19.0kg·m) '쉿! 소리없이 강하다'" },
+        { brand: "대우", model: "레조 2.0 LPG (Rezzo / U100)", generation: "1세대 (2000~2007)", fuel: "LPG", displacement: "1,998cc", engine_code: "2.0 D-TEC LPGi (C20NED SOHC 95ps / T20SED DOHC 123ps) - 국민 7인승 미니밴" },
+        { brand: "대우", model: "매그너스 2.0 Classic / Eagle (V200)", generation: "1세대 (2000~2006)", fuel: "가솔린", displacement: "1,998cc", engine_code: "2.0 D-TEC DOHC 16V (148ps / 19.6kg·m) - 고장력 강판 중형 플래그십" },
+        { brand: "대우", model: "매그너스 L6 2.0 / 2.5 (V200)", generation: "1세대 후기 (2002~2006)", fuel: "가솔린", displacement: "1,993cc / 2,492cc", engine_code: "XK L6 직렬 6기통 가로배치 알루미늄 블록 (142ps / 157ps) - 실키스무스 엔진" },
+        { brand: "GM대우", model: "라세티 세단 / 해치백 (J200)", generation: "1세대 (2002~2008)", fuel: "가솔린", displacement: "1,498cc / 1,598cc", engine_code: "1.5 E-TEC II (F15S3 107ps) / 1.6 E-TEC II (F16D3 DOHC 109ps / 15.0kg·m)" },
+        { brand: "GM대우", model: "토스카 L6 2.0 / 2.5 가솔린 (V250)", generation: "1세대 (2006~2011)", fuel: "가솔린", displacement: "1,993cc / 2,492cc", engine_code: "XK L6 가로배치 직렬 6기통 DOHC 24V (142ps / 157ps) - 국산 유일 가로배치 직렬 6기통" },
+        { brand: "GM대우", model: "토스카 L6 2.0 LPGi (V250)", generation: "1세대 (2006~2011)", fuel: "LPG", displacement: "1,993cc", engine_code: "XK L6 2.0 LPGi 액상분사 직렬 6기통 DOHC (137ps / 19.5kg·m) - 극상의 정숙성 택시/렌터카" },
+        { brand: "쉐보레", model: "아베오 세단 / 해치백 / RS (T300)", generation: "2세대 (2011~2019)", fuel: "가솔린", displacement: "1,364cc / 1,598cc", engine_code: "1.4 터보 Ecotec [LUJ/LUV 140ps] / 1.6 Ecotec [F16D4 114ps]" },
+        { brand: "쉐보레", model: "라세티 프리미어 / 크루즈 가솔린 (J300)", generation: "1세대 (2008~2017)", fuel: "가솔린", displacement: "1,598cc / 1,796cc", engine_code: "1.6 Ecotec [F16D4 114~124ps] / 1.8 Ecotec [F18D4 142ps]" },
+        { brand: "쉐보레", model: "크루즈 1.4 터보 (J300)", generation: "1세대 후기 (2013~2017)", fuel: "가솔린", displacement: "1,364cc", engine_code: "1.4 터보 Ecotec [RPO: LUJ] 멀티포인트 터보인터쿨러 (140ps / 20.4kg·m)" },
+        { brand: "쉐보레", model: "올 뉴 크루즈 (J400)", generation: "2세대 (2017~2018)", fuel: "가솔린", displacement: "1,399cc", engine_code: "1.4 SIDI 터보 [RPO: LE2] 직분사 알루미늄 블록 (153ps / 24.5kg·m)" },
+        { brand: "쉐보레", model: "말리부 2.0 / 2.4 가솔린 (V300)", generation: "8세대 (2011~2016)", fuel: "가솔린", displacement: "1,998cc / 2,384cc", engine_code: "2.0 Ecotec [RPO: LPK 141ps] / 2.4 Ecotec [RPO: LE5 170ps]" },
+        { brand: "쉐보레", model: "올 뉴 말리부 1.5 터보 (V400)", generation: "9세대 전기 (2016~2018)", fuel: "가솔린", displacement: "1,490cc", engine_code: "1.5 SIDI 터보 Ecotec [RPO: LFV] 직분사 터보 (166ps / 25.5kg·m)" },
+        { brand: "쉐보레", model: "올 뉴 말리부 / 더 뉴 말리부 2.0 터보", generation: "9세대 (2016~2022)", fuel: "가솔린", displacement: "1,998cc", engine_code: "2.0 SIDI 터보 Ecotec [RPO: LTG] 트윈스크롤 터보 (253ps / 36.0kg·m)" },
+        { brand: "쉐보레", model: "더 뉴 말리부 1.35 E-Turbo (V400 F/L)", generation: "9세대 후기 (2018~2022)", fuel: "가솔린", displacement: "1,341cc", engine_code: "CSS3 1.35 E-Turbo [RPO: L3T] 전동식 워터펌프/전자식 웨이스트게이트 (156ps / 24.1kg·m)" },
+        { brand: "쉐보레", model: "올란도 2.0 LPGi (J309)", generation: "1세대 (2011~2018)", fuel: "LPG", displacement: "1,998cc", engine_code: "2.0 Ecotec LPGi [RPO: L2N] 직렬 4기통 DOHC 액상분사 (140ps / 18.8kg·m)" },
+        { brand: "쉐보레", model: "알페온 2.4 / 3.0 SIDI (GM K-Body)", generation: "1세대 (2010~2015)", fuel: "가솔린", displacement: "2,384cc / 2,997cc", engine_code: "2.4 SIDI Ecotec [LAF 185ps] / 3.0 High Feature V6 SIDI [LFW 263ps]" },
+        { brand: "쉐보레", model: "임팔라 2.5 / 3.6 (10세대 북미직수입)", generation: "10세대 (2015~2020)", fuel: "가솔린", displacement: "2,457cc / 3,564cc", engine_code: "2.5 Ecotec SIDI [LKW 197ps] / 3.6 High Feature V6 [LFX 309ps]" },
+        { brand: "쉐보레", model: "트랙스 크로스오버 & 트레일블레이저 (CSS3)", generation: "1세대 (2020~현재)", fuel: "가솔린", displacement: "1,199cc / 1,341cc", engine_code: "CSS3 1.2 E-Turbo [RPO: LIH 139ps] / CSS3 1.35 E-Turbo [RPO: L3T 156ps]" },
+        { brand: "쉐보레", model: "트래버스 & 콜로라도 (V6 / 2.7T)", generation: "2/3세대 (2019~현재)", fuel: "가솔린", displacement: "3,564cc / 2,727cc", engine_code: "3.6 High Feature V6 [LFY/LGX 312~314ps] / 2.7 직렬 4기통 가솔린 터보 [RPO: L3B 314ps]" },
+        { brand: "쉐보레", model: "타호 & 카마로 SS (스몰블록 V8)", generation: "5/6세대 (2016~현재)", fuel: "가솔린", displacement: "6,162cc", engine_code: "6.2 EcoTec3 스몰블록 V8 [RPO: L87 DFM 426ps] / 6.2 스몰블록 LT1 V8 자연흡기 직분사 (453ps 괴력)" }
     ];
 
     let currentFuel = 'all';
